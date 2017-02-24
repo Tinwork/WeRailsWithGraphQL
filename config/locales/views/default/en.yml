@@ -1,0 +1,9 @@
+# ruby encoding: utf-8
+
+en:
+  views:
+    default:
+      index: 
+        lang: 
+          french: French
+          english: English

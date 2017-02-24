@@ -1,0 +1,6 @@
+# ruby encoding: utf-8
+
+en:
+  views:
+    adminhtml:
+      index: 
