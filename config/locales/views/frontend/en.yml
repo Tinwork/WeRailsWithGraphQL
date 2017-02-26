@@ -3,4 +3,6 @@
 en:
   views:
     frontend:
-      index: 
+      index:
+        button:
+          admin: Admin ? It's this way 

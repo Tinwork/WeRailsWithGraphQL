@@ -1,4 +1,4 @@
-class Adminhtml::IndexController < ApplicationController
+class Adminhtml::IndexController < Adminhtml::AdminController
     def index
     end
 end

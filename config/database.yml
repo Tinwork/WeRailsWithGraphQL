@@ -24,7 +24,7 @@ default: &default
 development: &default
   adapter: postgresql
   encoding: unicode
-  database: myapp_development
+  database: werails_dev
   pool: 5
   username: postgres
   password:

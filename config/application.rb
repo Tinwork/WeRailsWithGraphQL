@@ -12,6 +12,9 @@ module App
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
   
+    # Autoload
+    config.autoload_paths += %W(#{config.root}/app/models/graph)
+
     # i18n configuration 
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'views', '*', '*.yml').to_s]
     config.i18n.default_locale = :fr

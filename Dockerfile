@@ -6,6 +6,7 @@ MAINTAINER Didier Youn "didier.youn@gmail.com"
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 # Define workdir
 RUN mkdir /app
+VOLUME /app
 WORKDIR /app
 # Add Gemfile to container
 ADD Gemfile /app/Gemfile
