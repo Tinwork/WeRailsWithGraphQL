@@ -15,12 +15,6 @@ ActiveRecord::Schema.define(version: 20170226170131) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "universe_tables", force: :cascade do |t|
-    t.string "libelle"
-    t.string "size"
-    t.string "thumbnail"
-  end
-
   create_table "universes", force: :cascade do |t|
     t.string   "libelle"
     t.string   "size"

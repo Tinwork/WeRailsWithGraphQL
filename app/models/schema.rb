@@ -11,5 +11,5 @@ QueryType = GraphQL::ObjectType.define do
 end
 
 Schema = GraphQL::Schema.define do
-   query Types::QueryType
+   query QueryType
 end
