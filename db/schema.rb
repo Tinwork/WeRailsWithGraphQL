@@ -10,15 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170226170131) do
+ActiveRecord::Schema.define(version: 20170412204228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "universes", force: :cascade do |t|
-    t.string   "libelle"
-    t.string   "size"
-    t.text     "thumbnail"
+  create_table "menus", force: :cascade do |t|
+    t.string   "label"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

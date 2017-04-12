@@ -1,2 +1,0 @@
-class Universe < ApplicationRecord
-end
