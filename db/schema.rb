@@ -10,15 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170412204228) do
+ActiveRecord::Schema.define(version: 20170413082409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "eatables", force: :cascade do |t|
+    t.string  "name"
+    t.string  "type"
+    t.decimal "price"
+    t.decimal "calories"
+    t.string  "thumbnail"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string  "name"
+    t.decimal "calories"
+  end
 
   create_table "menus", force: :cascade do |t|
     t.string   "label"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "promotions", force: :cascade do |t|
+    t.string   "name"
+    t.decimal  "discount"
+    t.string   "code"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.boolean  "permanent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sizes", force: :cascade do |t|
+    t.string   "name"
+    t.decimal  "extra_price"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end

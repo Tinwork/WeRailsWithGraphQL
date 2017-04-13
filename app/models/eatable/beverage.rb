@@ -1,0 +1,3 @@
+class Beverage < Eatable
+
+end
