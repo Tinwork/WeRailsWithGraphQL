@@ -22,7 +22,6 @@ Rails.application.routes.draw do
     end
   end
 
-
   post '/graphql', to: 'frontend/graphql#query'
 
   if Rails.env.development?

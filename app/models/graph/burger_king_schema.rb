@@ -46,6 +46,6 @@ QueryType = GraphQL::ObjectType.define do
   end
 end
 
-Schema = GraphQL::Schema.define do
-   query QueryType
+BurgerKingSchema = GraphQL::Schema.define do
+   query Types::QueryType
 end

@@ -2,7 +2,7 @@ class Frontend::GraphqlController < ApplicationController
     def query
         query_string = params[:query]
         query_variables = ensure_hash(params[:variables])
-        result_hash = Schema.execute(query_string, variables: query_variables)
+        result_hash = BurgerKingSchema.execute(query_string, variables: query_variables)
         render json: result_hash
     end
     
