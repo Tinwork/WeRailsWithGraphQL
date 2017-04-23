@@ -1,3 +1,0 @@
-class Burger < Eatable
-
-end
