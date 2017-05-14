@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: 'frontend/index#index'
 
   post '/graphql', to: 'frontend/graphql#query'
