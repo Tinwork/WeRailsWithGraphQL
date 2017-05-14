@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # Front routes
+  devise_for :users
+  root to: 'frontend/index#index'
 
   # Admin routes
   #
