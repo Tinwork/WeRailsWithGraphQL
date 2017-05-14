@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
+  root to: 'frontend/index#index'
+
   post '/graphql', to: 'frontend/graphql#query'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
