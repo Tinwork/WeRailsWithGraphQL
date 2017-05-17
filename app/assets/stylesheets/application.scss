@@ -13,4 +13,21 @@
  *= require_tree .
  *= require_self
  */
- 
+
+@import "header.scss";
+@import "main.scss";
+@import "footer.scss";
+
+html, body {
+  height: 100%;
+}
+
+.site-content {
+  height: 100%;
+  overflow: hidden;
+}
+
+img {
+  display : block;
+  margin: 0 auto;
+}

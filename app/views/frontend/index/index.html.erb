@@ -1,12 +1,12 @@
-<div class="container">
-    <div class="row">
-        <h1> We Rails and try GraphQL ! </h1>
+<div class="site-content">
+  <%= render 'frontend/header/header.html.erb' %>
+  <div class="content">
+    <div class="container">
+        <div class="row">
+            <a href="/<%= I18n.locale %>/admin"><%= t 'views.frontend.index.button.admin' %></a>
+        </div>
+      fdsf
     </div>
-    <div class="row">
-        <div class="col-lg-6">3</div>
-        <div class="col-lg-6">2</div>
-    </div>
-    <div class="row">
-        <a href="/<%= I18n.locale %>/admin"><%= t 'views.frontend.index.button.admin' %></a>
-    </div>
+  </div>
+  <%= render 'frontend/footer/footer.html.erb' %>
 </div>

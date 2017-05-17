@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  # Front routes
-  devise_for :users
-  root to: 'frontend/index#index'
 
   # Admin routes
   #
   # - Prefix : /locale => :fr | :en
   scope "(:locale)", locale: /fr|en/ do
+    root to: 'frontend/index#index'
+
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+    # Front routes
+    devise_for :users
   end
 
   # GraphQL POST queries

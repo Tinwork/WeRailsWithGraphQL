@@ -20,7 +20,4 @@
 # Public
 /public/assets/*
 .idea/
-app/views/frontend/footer/
-app/views/frontend/header/
-app/views/frontend/index/action/
 public/assets/

@@ -1,0 +1,12 @@
+header {
+  height: 30%;
+
+  &::after {
+    display: table;
+    clear: both;
+  }
+}
+
+header h1 {
+
+}
