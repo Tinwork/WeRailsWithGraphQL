@@ -14,6 +14,7 @@
  *= require_self
  */
 
+@import "variable.scss";
 @import "header.scss";
 @import "main.scss";
 @import "footer.scss";
@@ -25,9 +26,14 @@ html, body {
 .site-content {
   height: 100%;
   overflow: hidden;
+  margin-left: 120px;
 }
 
 img {
   display : block;
   margin: 0 auto;
+}
+
+body{
+  display: flex;
 }

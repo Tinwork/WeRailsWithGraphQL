@@ -1,0 +1,28 @@
+@import "variable.scss";
+
+// Menu 
+
+.menu {
+  width: 120px;
+  background: url('/assets/wood.png'), $menu-bg-color;
+  position: fixed;
+  left: 0;
+  height: 100vh;
+  box-shadow: 2px 0px 5px $menu-shadow-color;
+  transition: all ease .25s;
+
+  &.expand {
+    width: 300px;
+  }
+
+  &.retract {
+    width: 120px;
+  }
+
+  .menu-header {
+    img {
+      width: 75px;
+      margin-top: 10px;
+    }
+  }
+}
