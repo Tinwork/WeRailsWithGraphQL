@@ -1,12 +1,14 @@
 ##
-# Class Menu
+# Class Condiment
 #
 # @package             Models
 # @authors             Didier Youn <didier.youn@gmail.com>, Marc Intha-Amnouay <marc.inthaamnouay@gmail.com>, Antoine Renault <antoine.renault.mmi@gmail.com>
 # @copyright           Copyright (c) 2017 Tinwork
 # @link                https://github.com/Tinwork/WeRailsWithGraphQl
 ##
-class Menu < ApplicationRecord
+class Condiment < ApplicationRecord
   # Relations
-  belongs_to :burger
+  has_many :menus
+  has_many :condiment_ingredients
+  has_many :ingredients, through: :condiment_ingredients
 end

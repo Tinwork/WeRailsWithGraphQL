@@ -10,66 +10,78 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514134046) do
+ActiveRecord::Schema.define(version: 20170528190704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "beverages", force: :cascade do |t|
-    t.string   "name"
-    t.string   "type"
-    t.decimal  "price"
-    t.decimal  "calories"
+    t.string   "label"
     t.boolean  "ice"
-    t.string   "thumbnail"
+    t.float    "calories"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
+    t.index ["category_id"], name: "index_beverages_on_category_id", using: :btree
+  end
+
+  create_table "burger_ingredients", force: :cascade do |t|
+    t.integer  "burger_id"
+    t.integer  "ingredient_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["burger_id"], name: "index_burger_ingredients_on_burger_id", using: :btree
+    t.index ["ingredient_id"], name: "index_burger_ingredients_on_ingredient_id", using: :btree
+  end
+
+  create_table "burgers", force: :cascade do |t|
+    t.string   "label"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "burgers", force: :cascade do |t|
-    t.string   "name"
-    t.string   "type"
-    t.decimal  "price"
-    t.decimal  "calories"
-    t.json     "composition"
-    t.string   "thumbnail"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "categories", force: :cascade do |t|
+    t.string   "label"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "eatables", force: :cascade do |t|
-    t.string  "name"
-    t.string  "type"
-    t.decimal "price"
-    t.decimal "calories"
-    t.string  "thumbnail"
+  create_table "condiment_ingredients", force: :cascade do |t|
+    t.integer  "condiment_id"
+    t.integer  "ingredient_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["condiment_id"], name: "index_condiment_ingredients_on_condiment_id", using: :btree
+    t.index ["ingredient_id"], name: "index_condiment_ingredients_on_ingredient_id", using: :btree
+  end
+
+  create_table "condiments", force: :cascade do |t|
+    t.string   "label"
+    t.float    "calories"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "ingredients", force: :cascade do |t|
-    t.string  "name"
-    t.decimal "calories"
+    t.string   "label"
+    t.float    "calories"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
+    t.index ["category_id"], name: "index_ingredients_on_category_id", using: :btree
   end
 
   create_table "menus", force: :cascade do |t|
     t.string   "label"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "promotions", force: :cascade do |t|
-    t.string   "name"
-    t.decimal  "discount"
-    t.string   "code"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.boolean  "permanent"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "burger_id"
+    t.index ["burger_id"], name: "index_menus_on_burger_id", using: :btree
   end
 
   create_table "sizes", force: :cascade do |t|
-    t.string   "name"
-    t.decimal  "extra_price"
+    t.string   "label"
+    t.float    "extra_price"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -91,4 +103,11 @@ ActiveRecord::Schema.define(version: 20170514134046) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "beverages", "categories"
+  add_foreign_key "burger_ingredients", "burgers"
+  add_foreign_key "burger_ingredients", "ingredients"
+  add_foreign_key "condiment_ingredients", "condiments"
+  add_foreign_key "condiment_ingredients", "ingredients"
+  add_foreign_key "ingredients", "categories"
+  add_foreign_key "menus", "burgers"
 end
