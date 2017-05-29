@@ -26,4 +26,18 @@ RailsAdmin.config do |config|
   #       field :password
   #     end
   #   end
+
+  config.included_models = [
+      'Beverage',
+      'Burger',
+      'Condiment',
+      'Ingredient',
+      'Menu',
+      'Size',
+      'Category'
+  ]
+
+  config.model 'User' do
+    navigation_icon 'icon-user'
+  end
 end

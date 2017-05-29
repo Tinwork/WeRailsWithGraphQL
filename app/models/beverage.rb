@@ -9,4 +9,11 @@
 class Beverage < ApplicationRecord
   # Relations
   belongs_to :category
+
+  rails_admin do
+    configure :beverage do
+      label = 'Beverage'
+      label_plural = 'Beverages'
+    end
+  end
 end

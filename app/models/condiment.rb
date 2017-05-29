@@ -8,7 +8,6 @@
 ##
 class Condiment < ApplicationRecord
   # Relations
-  has_many :menus
   has_many :condiment_ingredients
   has_many :ingredients, through: :condiment_ingredients
 end

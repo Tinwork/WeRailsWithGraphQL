@@ -1,0 +1,20 @@
+# ruby encoding: utf-8
+
+en:
+  activerecord:
+    models:
+      category:
+        one: Categorie
+        other: Categories
+      ingredient:
+        one: Ingredient
+        other: Ingredients
+      size:
+        one: Size
+        other: Sizes
+      beverage:
+        one: Beverage
+        other: Beverages
+    attributes:
+      category:
+          label: Libellé

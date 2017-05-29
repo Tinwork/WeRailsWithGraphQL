@@ -10,5 +10,13 @@ class Category < ApplicationRecord
   # Relations
   has_many :ingredients
   has_many :beverages
-  has_many :condiments
+
+  rails_admin do
+    list do
+      field :label
+    end
+    actions do
+      new
+    end
+  end
 end

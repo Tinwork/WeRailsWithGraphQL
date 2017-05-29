@@ -16,6 +16,8 @@ module Types
     field :menu, MenuType, field: Fields::FetchField.build(type: MenuType, model: Menu)
     field :beverage, BeverageType, field: Fields::FetchField.build(type: BeverageType, model: Beverage)
     field :condiment, CondimentType, field: Fields::FetchField.build(type: CondimentType, model: Condiment)
+    field :size, SizeType, field: Fields::FetchField.build(type: SizeType, model: Size)
+
     field :kings do
       type MenuType.to_list_type
       description "All the dishes from Burger King"
