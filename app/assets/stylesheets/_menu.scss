@@ -1,28 +1,97 @@
 @import "variable.scss";
 
+
 // Menu 
 
 .menu {
   width: 120px;
   background: url('/assets/wood.png'), $menu-bg-color;
-  position: fixed;
   left: 0;
   height: 100vh;
   box-shadow: 2px 0px 5px $menu-shadow-color;
   transition: all ease .25s;
+  font-family: 'Noto Sans', 'arial' ,'sans-serif';
+  color: white;
+  display: flex;
+  z-index: 9;
 
   &.expand {
     width: 300px;
+
+    .col.list {
+      width: 180px;
+      height: 100vh;
+    }
+
   }
 
   &.retract {
     width: 120px;
+
+    .col.list {
+      width: 0px;
+    }
+  }
+
+  .col {
+
+    transition: all ease .25s;
+    
+    &.fixed {
+      width: 120px;
+    }
   }
 
   .menu-header {
     img {
       width: 75px;
       margin-top: 10px;
+    }
+  }
+
+  .menu-items {
+
+    position: absolute;
+    bottom: 0;
+    width: 120px;
+
+    .item{
+
+      padding-top: 20px;
+      padding-bottom: 20px;
+
+      &.burger {
+        background-color: $burger
+      }
+
+      &.salad {
+        background-color: $salad;
+      }
+
+      &.condiments {
+        background-color: $condiments;
+      }
+
+      .circle-items {
+
+        width: 70px;
+        height: 70px;
+        background-color: white;
+        border-radius: 100%;
+        overflow: hidden;
+        margin: 0 auto;
+
+        img {
+          width: 65px;
+        }
+        
+      }
+
+      p {
+        text-align: center;
+        margin-top: 8px;
+      }
+  
     }
   }
 }

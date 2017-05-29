@@ -42,4 +42,46 @@ class utils {
         let e = document.getElementById(DOMString);
         e.addEventListener(type, callback);
     }
+
+    /**
+     * 
+     * @param {DOMElement} DOMElement 
+     * @param {String} target 
+     * @param {Mixed} value 
+     */
+    static _stylizer(DOMElement, target, value) {
+        DOMElement.style[target] = value;
+    }
+
+    /**
+     * _Generate Static Items
+     *      Generate static items as the bo is not working yet
+     * @return {Promise} data
+     */
+    static _generateStaticMenuItems() {
+
+        /**
+         * Param structure 
+         * @param {Array <Object>}
+         *      - src: String
+         *      - name: String
+         *      - type: Enum <String> (burger | salad | condiments)
+         */
+
+        let data = [{
+            src: '/assets/burger.png',
+            name: 'Burger',
+            type: 'burger'
+        },{
+            src: '/assets/nuggets.jpg',
+            name: 'Condiments',
+            type: 'condiments'
+        },{
+            src: '/assets/salad.jpg',
+            name: 'Salads',
+            type: 'salad'
+        }];
+
+        return Promise.resolve(data);
+    }
 }

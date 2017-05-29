@@ -26,7 +26,8 @@ html, body {
 .site-content {
   height: 100%;
   overflow: hidden;
-  margin-left: 120px;
+  background: url('/assets/plate_wood.png'), $menu-bg-color;
+  background-size: 250px 250px;
 }
 
 img {
