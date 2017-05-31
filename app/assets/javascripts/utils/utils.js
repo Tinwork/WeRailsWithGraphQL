@@ -9,26 +9,27 @@ class utils {
      * @param {*} props 
      * @return {Promise} fetch
      */
-    static _fetch(...props) {
+    static _fetch(props) {
         const HEADERS = new Headers();
         const {endpoint, method, prop} = props;
         
         if (typeof endpoint !== 'string')
             return Promise.reject(`endpoint is not a String ${endpoint}`);
 
-        // In case of the method is empty then we set it to post
-        if (method === null)
-            method = 'POST';
-
-        if (prop == null) 
-            prop = {};
-
-        return fetch(endpoint, {
+        let opts = Object.assign({}, {
             method: method,
             headers: HEADERS,
-            body: method == 'POST' ? JSON.stringify(prop) : ''
-        })
-        .then(payload => payload.json)
+            mode: 'cors'
+        });
+
+        // In case of the method is empty then we set it to post
+        if (method === null) {
+            method = 'POST';
+            opts.body = prop !== undefined ? JSON.stringify(prop) : JSON.stringify({});
+        }
+
+        return fetch(endpoint, opts)
+        .then(payload => payload.json())
         .then(res => Promise.resolve(res))
         .catch(e => Promise.reject(e));
     }
@@ -51,6 +52,23 @@ class utils {
      */
     static _stylizer(DOMElement, target, value) {
         DOMElement.style[target] = value;
+    }
+
+    /**
+     * _Insert DOM String
+     *      Insert an html string into a dom element
+     * @param {String} DOMString 
+     * @param {String} DOMTarget 
+     * @param {Boolean} clean 
+     * @void
+     */
+    static _insertDOMString(DOMString, DOMTarget, clean = true) {
+
+        // If we need to clean the component 
+        if (clean)
+            document.getElementById(DOMTarget).innerHTML = '';
+
+        document.getElementById(DOMTarget).insertAdjacentHTML('beforeend', DOMString);
     }
 
     /**
@@ -83,5 +101,30 @@ class utils {
         }];
 
         return Promise.resolve(data);
+    }
+
+    /**
+     * Generate the subs menu items 
+     * @param {String} predicate
+     */
+    static _generateSubMenuItems(predicate = 'burger') {
+        let flag = true;
+        // we will simulate the way we'll return the data.. as we're going to use the _fetch method we'll promisify the process
+
+        return utils._fetch({endpoint: 'https://marcintha.fr/json/menu.json', method: 'POST'})
+            .then(res => {
+                const data = res.data.kings;
+
+                data.map(d => {
+                    if (d[predicate] !== undefined || d[predicate] !== null)
+                        flag = false;
+                })
+
+                if (flag)
+                    return Promise.reject(`${predicate} does not exist in the menu that you'd selected`);
+
+                return Promise.resolve(data);
+            })
+            .catch(e => Promise.reject(e));
     }
 }

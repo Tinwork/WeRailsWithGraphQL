@@ -79,8 +79,30 @@
      */
     _menu.addList = (colors) => {
         let DOMList = document.getElementById('col-list');
-        utils._stylizer(DOMList, 'backgroundColor', MENU_COLORS[colors.toString()]);
+        utils._stylizer(DOMList, 'backgroundColor', MENU_COLORS[colors]);
+
+        // get the dataset 
+        utils._generateSubMenuItems()
+            .then(res => {
+                console.log(res);
+                // Create menu items that we're going to append in the DOM
+                let DOMString = ``;
+
+                res.map(d => {
+                    DOMString += `<div class="menu-items" data-id="${d.id}">
+                        <img src="http://localhost:8080/assets/${d.label}.jpg"/>
+                        <p>${d.label}</p>
+                    </div>`
+                });
+
+                // should append to the slide container
+                utils._insertDOMString(DOMString, 'col-list');
+
+                // we should also add a listener to these new items...
+            })
+            .catch(e => console.log(e));
     };
+
 
     /**
      * Init
