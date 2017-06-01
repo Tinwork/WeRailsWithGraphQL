@@ -89,16 +89,19 @@
                 let DOMString = ``;
 
                 res.map(d => {
-                    DOMString += `<div class="menu-items" data-id="${d.id}">
-                        <img src="http://localhost:8080/assets/${d.label}.jpg"/>
+                    DOMString += `
+                    <div class="menu-items-data" data-id="${d.id}">
+                        <div class="items">
+                           <img src="http://localhost:8080/assets/${d.label}.jpg"/>                 
+                        </div>
                         <p>${d.label}</p>
                     </div>`
                 });
 
                 // should append to the slide container
                 utils._insertDOMString(DOMString, 'col-list');
-
-                // we should also add a listener to these new items...
+                // add a listener
+                utils._addClassListener('menu-items-data', burgerManager.init);
             })
             .catch(e => console.log(e));
     };

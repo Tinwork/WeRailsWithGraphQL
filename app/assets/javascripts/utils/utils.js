@@ -46,6 +46,23 @@ class utils {
 
     /**
      * 
+     * @param {String} DOMString 
+     * @param {Function} callback 
+     * @param {String} type 
+     */
+    static _addClassListener(DOMString, callback, type = 'click') {
+        if (typeof DOMString !== 'string')
+            throw new Error('Dom string is not a string');
+
+        let bem = document.getElementsByClassName(DOMString);
+
+        // This is an html Collection therefore we don't use map to loop over it
+        for (let idx of bem) 
+            idx.addEventListener(type, callback.bind(idx));
+    }   
+
+    /**
+     * 
      * @param {DOMElement} DOMElement 
      * @param {String} target 
      * @param {Mixed} value 
@@ -127,4 +144,20 @@ class utils {
             })
             .catch(e => Promise.reject(e));
     }
+
+    /**
+     * Create Fake Data
+     * @param {String} arc 
+     */
+    static createFakeData(arc) {
+        let arcArray = [];
+        let idx = 0;
+
+        while(idx < 10) {
+            arcArray.push({'arc': arc, 'dx': (idx * 100)});
+            idx++;
+        }
+
+        return arcArray;
+    } 
 }
