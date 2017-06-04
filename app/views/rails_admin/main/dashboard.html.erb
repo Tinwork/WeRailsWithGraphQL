@@ -1,0 +1,16 @@
+<%
+  models = %w(menu burger beverage condiment ingredient category size)
+%>
+<div id="list">
+  <h2 class="h2">Ajout rapide: </h2>
+  <div class="row burger-rails-icons">
+    <% models.each do | model | %>
+        <div class="col-xs-12 col-md-3 col-sm-3 col-lg-4 item-element <%= model.downcase %>">
+          <a href="<%= rails_admin.new_path(model_name: model) %>">
+            <span class="item-element-image"></span>
+            <span class="item-element-title"><%= model.capitalize %></span>
+          </a>
+        </div>
+    <% end %>
+  </div>
+</div>

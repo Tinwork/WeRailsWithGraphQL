@@ -12,7 +12,7 @@ RailsAdmin.config do |config|
     dashboard
     index
     new
-    export
+    #export
     bulk_delete
     show
     edit
@@ -27,17 +27,9 @@ RailsAdmin.config do |config|
   #     end
   #   end
 
-  config.included_models = [
-      'Beverage',
-      'Burger',
-      'Condiment',
-      'Ingredient',
-      'Menu',
-      'Size',
-      'Category'
-  ]
+  config.included_models = %w(Beverage Burger Condiment Ingredient Menu Size Category)
 
-  config.model 'User' do
-    navigation_icon 'icon-user'
-  end
+  config.label_methods.unshift(:label)
+
+  require Rails.root.join('lib', 'rails_admin.rb')
 end

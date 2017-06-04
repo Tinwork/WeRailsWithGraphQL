@@ -1,0 +1,8 @@
+<% inputs = form.object.ingredients %>
+<% inputs.each do |input, value| %>
+    <div class="field">
+      <%= form.select :role_type, User::ROLES.each_with_index.map { |e, i| [e, i] } %>
+      <%= f.label "Get Email" %> <br />
+      <%= f.check_box :input %> <br />
+    </div>
+<% end %>
