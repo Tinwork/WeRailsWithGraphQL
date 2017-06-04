@@ -1,13 +1,17 @@
+<div id="overlay" class="show">
+  <img src="assets/burgerking.png">
+  <div id="svg-progress"></div>
+</div>
 <%= render 'frontend/menu/menu.html.erb' %>
 <div class="site-content">
   <%= render 'frontend/header/header.html.erb' %>
   <div class="content">
-    <div class="container">
+    <div class="container app-container" id="interact-layout">
         <div class="row">
-            <a href="/<%= I18n.locale %>/admin"><%= t 'views.frontend.index.button.admin' %></a>
-            <div class="svg-container"></div>
+            <div id="burger-container"></div>
         </div>
     </div>
+    <%= render 'frontend/menu/menu_right.html.erb' %>
   </div>
   <%= render 'frontend/footer/footer.html.erb' %>
 </div>

@@ -1,163 +1,95 @@
 /**
- * List of static function that we might use...
+ * Utils
+ *      List of static method that we might need 
+ *      during the whole app
  */
-class utils {
-    
+class Utils {
+
     /**
-     * _Fetch
-     *      Control and trigger the fetch utils
-     * @param {*} props 
+     * Loader
+     *      Preloader of the app
+     */
+    static hideLoader() {
+        document.getElementById('overlay').classList.remove('show');
+        document.getElementById('overlay').classList.add('hide');
+        setTimeout(() => {
+            document.getElementById('overlay').style.display = 'none';
+        }, 1000);
+    }
+
+    /**
+     * Display Error
+     *      Display the error
+     * @param {Mixed} e 
+     */
+    static displayError(e) {
+        console.warn(e);
+    }
+
+    /**
+     * Get Color By Modulo
+     *      Return the colors depending of the type of dish and the index
+     * @param {String} dishType
+     * @param {Number} idx 
+     */
+    static getColorByModulo(dishType, idx) {
+        let colors = [];
+        
+        switch (dishType) {
+            case "burger":
+                colors.push('#CF9867', '#713B30');
+            break;
+            case "salad":
+                colors.push('#F7A600', '#F79700');
+            break;
+            case "condiments":
+                colors.push('#93C0E9', '#0171CE');
+            break;
+        }
+
+        return idx % 2 === 0 ? colors[0] : colors[1];
+    }
+
+    /**
+     * Fetcher
+     *     Fetch the datas
+     * @param {Object} props
      * @return {Promise} fetch
      */
-    static _fetch(props) {
+    static fetcher(props) {
         const HEADERS = new Headers();
-        const {endpoint, method, prop} = props;
-        
-        if (typeof endpoint !== 'string')
-            return Promise.reject(`endpoint is not a String ${endpoint}`);
 
-        let opts = Object.assign({}, {
-            method: method,
+        if (typeof props !== 'object')
+            return Promise.reject('props is not an object');
+
+        const {method, data, endpoint} = props;
+
+        if (typeof method !== 'string')
+            return Promise.reject(`endpoint: ${endpoint} is not a type of String`);
+
+        const opts = Object.assign({}, {
             headers: HEADERS,
+            method: method,
             mode: 'cors'
         });
 
-        // In case of the method is empty then we set it to post
-        if (method === null) {
-            method = 'POST';
-            opts.body = prop !== undefined ? JSON.stringify(prop) : JSON.stringify({});
-        }
+        if (method === 'POST')
+            opts.body = data === undefined ? JSON.stringify({}) : JSON.stringify(data);
 
         return fetch(endpoint, opts)
-        .then(payload => payload.json())
-        .then(res => Promise.resolve(res))
-        .catch(e => Promise.reject(e));
+                .then(payload => payload.json())
+                .then(res => Promise.resolve(res))
+                .catch(e => Promise.reject(e));
     }
 
     /**
-     * _add Listener
-     *      Add listener to element
-     * @void
+     * Type Of
+     *      Return the typeof of a given variable
+     * @param {Mixed} props
      */
-    static _addListener(DOMString, callback, type = 'click') {
-        let e = document.getElementById(DOMString);
-        e.addEventListener(type, callback);
+    static typeOf(props) {
+        let type = Object.prototype.toString.call(props);
+
+        return type.replace(/[\[\]']+/g, '').split('object')[1].trim();
     }
-
-    /**
-     * 
-     * @param {String} DOMString 
-     * @param {Function} callback 
-     * @param {String} type 
-     */
-    static _addClassListener(DOMString, callback, type = 'click') {
-        if (typeof DOMString !== 'string')
-            throw new Error('Dom string is not a string');
-
-        let bem = document.getElementsByClassName(DOMString);
-
-        // This is an html Collection therefore we don't use map to loop over it
-        for (let idx of bem) 
-            idx.addEventListener(type, callback.bind(idx));
-    }   
-
-    /**
-     * 
-     * @param {DOMElement} DOMElement 
-     * @param {String} target 
-     * @param {Mixed} value 
-     */
-    static _stylizer(DOMElement, target, value) {
-        DOMElement.style[target] = value;
-    }
-
-    /**
-     * _Insert DOM String
-     *      Insert an html string into a dom element
-     * @param {String} DOMString 
-     * @param {String} DOMTarget 
-     * @param {Boolean} clean 
-     * @void
-     */
-    static _insertDOMString(DOMString, DOMTarget, clean = true) {
-
-        // If we need to clean the component 
-        if (clean)
-            document.getElementById(DOMTarget).innerHTML = '';
-
-        document.getElementById(DOMTarget).insertAdjacentHTML('beforeend', DOMString);
-    }
-
-    /**
-     * _Generate Static Items
-     *      Generate static items as the bo is not working yet
-     * @return {Promise} data
-     */
-    static _generateStaticMenuItems() {
-
-        /**
-         * Param structure 
-         * @param {Array <Object>}
-         *      - src: String
-         *      - name: String
-         *      - type: Enum <String> (burger | salad | condiments)
-         */
-
-        let data = [{
-            src: '/assets/burger.png',
-            name: 'Burger',
-            type: 'burger'
-        },{
-            src: '/assets/nuggets.jpg',
-            name: 'Condiments',
-            type: 'condiments'
-        },{
-            src: '/assets/salad.jpg',
-            name: 'Salads',
-            type: 'salad'
-        }];
-
-        return Promise.resolve(data);
-    }
-
-    /**
-     * Generate the subs menu items 
-     * @param {String} predicate
-     */
-    static _generateSubMenuItems(predicate = 'burger') {
-        let flag = true;
-        // we will simulate the way we'll return the data.. as we're going to use the _fetch method we'll promisify the process
-
-        return utils._fetch({endpoint: 'https://marcintha.fr/json/menu.json', method: 'POST'})
-            .then(res => {
-                const data = res.data.kings;
-
-                data.map(d => {
-                    if (d[predicate] !== undefined || d[predicate] !== null)
-                        flag = false;
-                })
-
-                if (flag)
-                    return Promise.reject(`${predicate} does not exist in the menu that you'd selected`);
-
-                return Promise.resolve(data);
-            })
-            .catch(e => Promise.reject(e));
-    }
-
-    /**
-     * Create Fake Data
-     * @param {String} arc 
-     */
-    static createFakeData(arc) {
-        let arcArray = [];
-        let idx = 0;
-
-        while(idx < 10) {
-            arcArray.push({'arc': arc, 'dx': (idx * 100)});
-            idx++;
-        }
-
-        return arcArray;
-    } 
 }

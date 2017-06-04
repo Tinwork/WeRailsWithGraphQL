@@ -39,43 +39,54 @@ const burgerManager = (() => {
      * @param {Object} svg 
      */
     const makeBum = (svg, type = '1') => {
-        // Something is strange with the arc generation that doesn't make sense...
-        let arc = (d3.arc()
-            .innerRadius(1)
-            .outerRadius(100)
-            .startAngle(Math.PI / 2)
-            .endAngle(-Math.PI / 2))();
-
-        let bumGroup = svg.append('g').attr('transform', `translate(${SCREEN.WIDTH / 2}, ${SCREEN.HEIGHT / 2})`);
+        let bumGroup = svg.append('g').attr('transform', `translate(${SCREEN.WIDTH / 2}, ${SCREEN.HEIGHT / 2 - 100})`);
         bumGroup.append('path')
-                .attr('d', arc)
+                .attr('d', D3Utils.generateArc({
+                    start: Math.PI / 2,
+                    end: -Math.PI / 2,
+                    inner: 1,
+                    outer: 100
+                }))
                 .attr('fill', '#bf5f00');
     };
 
+    /**
+     * 
+     * @param {*} svg 
+     * @param {*} type 
+     */
     const makeOnion = (svg, type = '1') => {
-        let onionArc = (d3.arc()
-                .innerRadius(50)
-                .outerRadius(60)
-                .startAngle(Math.PI / 2)
-                .endAngle(-Math.PI / 2))();
+        let onionArc = D3Utils.generateArc({
+            start: Math.PI / 2, 
+            end: -Math.PI / 2,
+            inner: 15,
+            outer: 20
+        });
 
         let fakeOnion = utils.createFakeData(onionArc);
-        console.log(fakeOnion);
-        
-        let onionGroup = svg.append('g').attr('transform', `translate(${SCREEN.WIDTH / 2}, ${SCREEN.HEIGHT / 2})`)
-                            .attr('id', 'onion-layer');
+        let onionGroup = svg.append('g').attr('transform', `translate(${SCREEN.WIDTH / 2 - 85}, ${SCREEN.HEIGHT / 2 - 90})`).attr('id', 'onion-layer');
 
         onionGroup.selectAll('#onion-layer')
                   .data(fakeOnion)
                   .enter()
+                  .append('g')
+                  .attr('transform', (d) => {
+                      return `translate(${d.dx}, 0)`;
+                  })
                   .append('path')
                   .attr('d', (d,i) => {
-                      console.log(d);
                       return d.arc
                   })
                   .attr('dx', d => d.dx)
                   .attr('fill', '#EBDCD7');                  
-    }
+    };
+
+    /**
+     * Draw Meat
+     */
+    const drawMeat = () => {
+        
+    };
 
     /**
      * Init

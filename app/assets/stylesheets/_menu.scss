@@ -5,41 +5,15 @@
 
 .menu {
   width: 120px;
-  background: url('/assets/wood.png'), $menu-bg-color;
+  background: url('/assets/plate_wood.png'), $menu-bg-color;
+  background-size: 250px 250px;
   left: 0;
   height: 100vh;
-  box-shadow: 2px 0px 5px $menu-shadow-color;
   transition: all ease .25s;
   font-family: 'Noto Sans', 'arial' ,'sans-serif';
   color: white;
   display: flex;
   z-index: 9;
-
-  &.expand {
-    width: 300px;
-
-    .col.list {
-      width: 180px;
-      height: 100vh;
-    }
-
-    .menu-items-data{
-      opacity: 1;
-    }
-
-  }
-
-  &.retract {
-    width: 120px;
-
-    .menu-items-data{
-      opacity: 0;
-    }
-
-    .col.list {
-      width: 0px;
-    }
-  }
 
   .col {
 
@@ -47,85 +21,34 @@
     
     &.fixed {
       width: 120px;
-      box-shadow: 2px 0px 5px $menu-shadow-color;
       z-index: 99;
     }
   }
 
-  .menu-header {
+  img {
+    width: 60px;
+  }
+
+  .logo{
+    margin-top: 120px;
+
     img {
-      width: 75px;
-      margin-top: 10px;
+      padding-top: 15px;
+      padding-bottom: 15px;
     }
   }
 
-  .menu-items {
 
-    position: absolute;
-    bottom: 0;
-    width: 120px;
+  .items {
+    height: 160px;
 
-    .item{
-
-      padding-top: 20px;
-      padding-bottom: 20px;
-
-      &.burger {
-        background-color: $burger
-      }
-
-      &.salad {
-        background-color: $salad;
-      }
-
-      &.condiments {
-        background-color: $condiments;
-      }
-
-      .circle-items {
-
-        width: 70px;
-        height: 70px;
-        background-color: white;
-        border-radius: 100%;
-        overflow: hidden;
-        margin: 0 auto;
-
-        img {
-          width: 65px;
-        }
-        
-      }
-
-      p {
-        text-align: center;
-        margin-top: 8px;
-      }
-  
-    }
-  }
-
-  .menu-items-data {
-
-    transition: all ease .2s;
-    padding-top: 15px;
-    padding-bottom: 15px;
-
-    .items {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      margin: 0 auto;
-
-      img {
-        display: block;
-        width: 100%;
-      }
+    img {
+      padding-top: 30px;
     }
 
     p {
       text-align: center;
-      padding-top: 8px;
+      padding-top: 10px;
     }
   }
 }
