@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Insanibc';
+  src: url(font_path("fonts/Insanibc.eot"));
+  src:  url(font_path("fonts/Insanibc.eot")) format('embedded-opentype'),
+  url(font_path("fonts/Insanibc.woff")) format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Insanibu';
+  src: url(font_path("fonts/Insanibu.eot"));
+  src: url(font_path("fonts/Insanibu.eot")) format('embedded-opentype'),
+  url(font_path("fonts/Insanibu.woff")) format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -14,12 +14,15 @@
  *= require_self
  */
 
+@import "variables.scss";
 @import "header.scss";
 @import "main.scss";
 @import "footer.scss";
+@import "devise.scss";
 
 html, body {
   height: 100%;
+  background-color: $bodyBgColor;
 }
 
 .site-content {

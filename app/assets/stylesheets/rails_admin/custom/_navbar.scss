@@ -1,0 +1,37 @@
+@import 'mixins';
+
+.navbar.navbar-default {
+  font-family: Insanibu;
+  font-weight: 400;
+
+  padding: 5px 0;
+  background-color: $navbarBgColor;
+  border-color: $navbarBgColor;
+
+  .navbar-header {
+    content: url(image_path('rails_admin/burgerking.png'));
+    display: block;
+    width: 48px;
+    height: auto;
+  }
+
+  .navbar-brand {
+    color: transparent;
+
+    &:hover {
+      color: transparent;
+    }
+  }
+
+  .navbar-nav {
+
+    li > a {
+      color: white;
+      transition: 0.3s all;
+
+      &:hover {
+        color: lightgrey;
+      }
+    }
+  }
+}

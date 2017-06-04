@@ -1,0 +1,17 @@
+@import 'mixins';
+
+body.rails_admin {
+  background-color: $bodyBgAdminColor;
+}
+
+.h2 {
+  font-family: Insanibu;
+  color: white;
+}
+
+.nav.nav-tabs {
+  border-bottom: none;
+  .icon.dashboard_root_link {
+    display: none;
+  }
+}
