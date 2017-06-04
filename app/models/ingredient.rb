@@ -13,4 +13,7 @@ class Ingredient < ApplicationRecord
   has_many :condiment_ingredients
   has_many :condiments, through: :condiment_ingredients
   belongs_to :category
+
+  # Admin
+  include IngredientAdmin
 end

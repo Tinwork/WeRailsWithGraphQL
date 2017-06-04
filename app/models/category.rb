@@ -11,12 +11,10 @@ class Category < ApplicationRecord
   has_many :ingredients
   has_many :beverages
 
-  rails_admin do
-    list do
-      field :label
-    end
-    actions do
-      new
-    end
+  # Rails Admin
+  include CategoryAdmin
+
+  def display_name
+    "Volume #{self.label}"
   end
 end

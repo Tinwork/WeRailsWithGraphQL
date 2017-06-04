@@ -10,4 +10,7 @@ class Condiment < ApplicationRecord
   # Relations
   has_many :condiment_ingredients
   has_many :ingredients, through: :condiment_ingredients
+
+  # Admin
+  include CondimentAdmin
 end

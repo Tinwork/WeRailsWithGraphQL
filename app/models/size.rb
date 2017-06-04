@@ -7,4 +7,6 @@
 # @link                https://github.com/Tinwork/WeRailsWithGraphQl
 ##
 class Size < ApplicationRecord
+  # Admin
+  include SizeAdmin
 end

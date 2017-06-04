@@ -9,4 +9,7 @@
 class Menu < ApplicationRecord
   # Relations
   belongs_to :burger
+
+  # Admin
+  include MenuAdmin
 end
