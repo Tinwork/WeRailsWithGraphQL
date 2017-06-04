@@ -13,6 +13,9 @@ module BurgerAdmin
       label_plural "Burgers"
 
       list do
+        field :id do
+          column_width 50
+        end
         exclude_fields :created_at , :updated_at
       end
 

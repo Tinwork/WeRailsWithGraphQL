@@ -13,10 +13,21 @@ module BeverageAdmin
       label_plural "Beverages"
 
       list do
-        field :label
-        # TODO ajouter grammes
-        field :calories
-        field :category
+        field :id do
+          column_width 50
+        end
+        field :label do
+          column_width 200
+        end
+        field :calories do
+          column_width 200
+          pretty_value do
+            value.to_s + 'G'
+          end
+        end
+        field :category do
+          column_width 200
+        end
 
         exclude_fields :created_at , :updated_at
       end

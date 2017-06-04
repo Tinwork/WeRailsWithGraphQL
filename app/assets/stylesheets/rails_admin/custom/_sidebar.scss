@@ -12,6 +12,12 @@ body.rails_admin .sidebar-nav {
       color: $fontAdminColor;
     }
     li {
+      &.active {
+        background-color: $navbarBgColor;
+        a {
+          background-color: $navbarBgColor;
+        }
+      }
       a {
         color: white;
         &:hover {

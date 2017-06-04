@@ -13,8 +13,12 @@ module CategoryAdmin
       label_plural "Categories"
 
       list do
-        field :id
-        field :label
+        field :id do
+          column_width 50
+        end
+        field :label do
+          column_width 250
+        end
 
         exclude_fields :updated_at, :created_at, :beverages, :ingredients
       end

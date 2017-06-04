@@ -13,9 +13,15 @@ module MenuAdmin
       label_plural "Menus"
 
       list do
-        field :id
-        field :label
-        field :burger
+        field :id do
+          column_width 50
+        end
+        field :label do
+          column_width 200
+        end
+        field :burger do
+          column_width 300
+        end
 
         exclude_fields :updated_at, :created_at
       end

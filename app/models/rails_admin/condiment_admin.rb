@@ -14,10 +14,18 @@ module CondimentAdmin
 
 
       list do
-        field :id
-        field :label
-        field :calories
-        field :ingredients
+        field :id do
+          column_width 50
+        end
+        field :label do
+          column_width 200
+        end
+        field :calories do
+          column_width 200
+        end
+        field :ingredients do
+          column_width 300
+        end
 
         exclude_fields :updated_at, :created_at
       end
@@ -30,6 +38,7 @@ module CondimentAdmin
           required true
         end
         field :ingredients do
+
           required true
         end
       end

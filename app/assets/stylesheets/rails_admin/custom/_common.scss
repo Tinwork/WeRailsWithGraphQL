@@ -9,9 +9,21 @@ body.rails_admin {
   color: white;
 }
 
-.nav.nav-tabs {
+
+body.rails_admin .nav.nav-tabs {
   border-bottom: none;
+  margin-bottom: 0;
   .icon.dashboard_root_link {
     display: none;
   }
+  .icon.index_collection_link {
+
+    &.active {
+      background-color: #135296;
+    }
+  }
+}
+
+body.rails_admin .form-horizontal.dense {
+  background-color: red;
 }
