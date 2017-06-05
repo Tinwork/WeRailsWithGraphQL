@@ -48,12 +48,15 @@
         });
     };
 
+    /**
+     * Fire
+     */
     const fire = () => {
         // init the loader
         SVGHelper.doLoader();
 
         setTimeout(() => {
-            Promise.all([appendSideBar(), burgerComponent.init()])
+            Promise.all([appendSideBar(), burgerComponent.init('sample')])
                 .then(() => Utils.hideLoader.call())
                 .catch(e => console.log('error '+e));
         }, 2000);

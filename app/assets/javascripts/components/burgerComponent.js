@@ -18,20 +18,37 @@ const burgerComponent = (() => {
             footer: document.getElementById('footer')
         });
 
+        if (type === 'sample')
+            return Promise.resolve(getSampleBurgerParts());
+
         return Promise.resolve(getBurgerParts());
     };
 
+    /**
+     * Get Sample Burger Parts
+     *      Build a sample burger with annotation
+     */
+    const getSampleBurgerParts = () => {
+        return Promise.resolve(Utils.sampleBurgerData())
+            .then(res => getMenuIngredients(res, 0))
+            .then(buildSVG)
+            .then(buildAnnotation)
+            .then(res => Promise.resolve(true))
+            .then(buildUserWarning)
+            .catch(e => Promise.reject(e));
+    };
 
     /**
      * Get Burger Parts
      * @param {Object} props 
      */
     const getBurgerParts = (props, id = 1) => {
-        Utils.fetcher({method: 'POST', data: id,endpoint: 'https://marcintha.fr/json/menu.json'})
+        return Utils.fetcher({method: 'POST', data: id,endpoint: 'https://marcintha.fr/json/menu.json'})
             .then(res => getMenuIngredients(res, id))
             .then(buildSVG)
             .then(buildAnnotation)
             .then(res => Promise.resolve(true))
+            .then(buildUserWarning)
             .catch(e => Promise.reject(e));
     }
 
@@ -42,6 +59,7 @@ const burgerComponent = (() => {
      */
     const getMenuIngredients = (datas, id = '1') => {
         let menulist = datas.data.kings;
+        console.log(menulist);
 
         if (Utils.typeOf(menulist) !== 'Array')
             return Promise.reject('Menu is not an array');
@@ -53,7 +71,7 @@ const burgerComponent = (() => {
                     CALORIES += ig.calories;
                 });
 
-                return Promise.resolve({igredients: idx.burger.ingredients, name: idx.label, id: idx.id});
+                return Promise.resolve({ingredients: idx.burger.ingredients, name: idx.label, id: idx.id});
             }
         }
 
@@ -63,19 +81,23 @@ const burgerComponent = (() => {
     /**
      * Build SVG
      * @param {Object} props
+     * @return {Promise}
      */
     const buildSVG = (props) => {
         const {id, name} = props;
 
-        // as we only have the sample we're going to build the sample svg
-        d3.xml(`assets/burger_sample_svg.svg`).mimeType('image/svg+xml').get((e, xml) => {
-            if (e)
-                return Promise.reject(e);
+        return new Promise((resolve, reject) => {
+            d3.xml(`assets/burger_sample_svg.svg`).mimeType('image/svg+xml').get((e, xml) => {
+                if (e)
+                    return Promise.reject(e);
 
-            DOMELement.svg.appendChild(xml.documentElement);
-        })
-
-        return Promise.resolve(props);
+                DOMELement.svg.appendChild(xml.documentElement);
+                D3burger.init(name);
+                D3burger.resize(500);
+                D3burger.center();
+                resolve(props);
+            })
+        });    
     };
 
     /**
@@ -83,11 +105,20 @@ const burgerComponent = (() => {
      * @param {Object} props 
      */
     const buildAnnotation = (props) => {
-        const {ingredients, id} = props;
+        const {ingredients, name} = props;
+        const adviser = new AdviseComponent(ingredients, name);
+
+        return Promise.resolve(adviser.build());
+    };
+
+    /**
+     * build User Warning
+     */
+    const buildUserWarning = () => {
         document.getElementById('fat').innerHTML = `${CALORIES} kcal`;
 
         return Promise.resolve('done');
-    };
+    }
 
 
     return {

@@ -92,4 +92,36 @@ class Utils {
 
         return type.replace(/[\[\]']+/g, '').split('object')[1].trim();
     }
+
+    /**
+     * Sample Burger Data
+     *      Return a sample burger
+     */
+    static sampleBurgerData() {
+        return Object.assign({}, {
+            data: {
+                kings: [{
+                    id: '0',
+                    label: 'crunchy_chicken_burger',
+                    burger: {
+                        id: 0,
+                        label: 'sample',
+                        ingredients: [{
+                            label: 'Salad',
+                            calories: 100,
+                            category: {
+                                label: 'legume vert'
+                            }
+                        }, {
+                            label: 'Steak',
+                            calories: 350,
+                            category: {
+                                label: 'viande'
+                            }
+                        }]
+                    }
+                }]
+            }
+        });
+    }
 }
