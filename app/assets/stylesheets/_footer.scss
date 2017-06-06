@@ -1,3 +1,11 @@
+@import "variable.scss";
+
 footer {
-  height: 10%;
+  height: 8%;
+  width: 100%;
+  background-color: $calories;
+
+  p {
+      margin-top: 0px;
+  }
 }

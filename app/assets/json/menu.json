@@ -1,0 +1,47 @@
+{
+  "data": {
+    "kings": [
+      {
+        "id": "1",
+        "label": "Menu Whopper",
+        "burger": {
+          "id": "1",
+          "label": "Whopper",
+          "ingredients": [
+            {
+              "label": "Salade",
+              "calories": 100.5,
+              "category": {
+                "label": "Légume vert"
+              }
+            },
+            {
+              "label": "Steak haché",
+              "calories": 500.5,
+              "category": {
+                "label": "Viande bovine"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "2",
+        "label": "Menu Double Steakhouse",
+        "burger": {
+          "id": "2",
+          "label": "Double Steakhouse",
+          "ingredients": [
+            {
+              "label": "Steak haché",
+              "calories": 500.5,
+              "category": {
+                "label": "Viande bovine"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

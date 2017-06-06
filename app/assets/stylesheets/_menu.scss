@@ -1,0 +1,54 @@
+@import "variable.scss";
+
+
+// Menu 
+
+.menu {
+  width: 120px;
+  background: url('/assets/plate_wood.png'), $menu-bg-color;
+  background-size: 250px 250px;
+  left: 0;
+  height: 100vh;
+  transition: all ease .25s;
+  font-family: 'Noto Sans', 'arial' ,'sans-serif';
+  color: white;
+  display: flex;
+  z-index: 9;
+
+  .col {
+
+    transition: all ease .25s;
+    
+    &.fixed {
+      width: 120px;
+      z-index: 99;
+    }
+  }
+
+  img {
+    width: 60px;
+  }
+
+  .logo{
+    margin-top: 120px;
+
+    img {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+  }
+
+
+  .items {
+    height: 160px;
+
+    img {
+      padding-top: 30px;
+    }
+
+    p {
+      text-align: center;
+      padding-top: 10px;
+    }
+  }
+}
