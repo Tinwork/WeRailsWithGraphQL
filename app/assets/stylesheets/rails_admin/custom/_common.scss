@@ -51,16 +51,69 @@ body.rails_admin {
 body.rails_admin .nav.nav-tabs {
   border-bottom: none;
   margin-bottom: 0;
+  .icon > a:hover {
+    background-color: $variantThemeColor;
+    border: 1px solid $variantThemeColorDarken;
+  }
   .icon.dashboard_root_link {
     display: none;
   }
-  .icon.index_collection_link {
-
-    &.active {
-    }
+  .icon.index_collection_link.active a {
+    background-color: $variantThemeColor;
+    border: 1px solid $variantThemeColorDarken;
   }
+  .icon.new_collection_link.active a {
+    background-color: $variantThemeColor;
+    border: 1px solid $variantThemeColorDarken;
+  }
+  .dropdown {
+    color: black;
+  }
+}
+
+body.rails_admin .table {
+  background-color: $variantThemeColor;
 }
 
 body.rails_admin .form-horizontal.dense {
   background-color: red;
+}
+
+body.rails_admin .well {
+  background-color: $variantThemeColor;
+  border: 1px solid $variantThemeColorDarken;
+}
+
+body.rails_admin .btn {
+  background-color: $variantThemeColor;
+  border: 1px solid $variantThemeColorDarken;
+  &:hover {
+    background-color: $variantThemeColorDarken;
+  }
+}
+
+body.rails_admin .btn-info {
+
+}
+
+body.rails_admin .btn-primary {
+  background-color: seagreen;
+  border: 1px solid darkgreen;
+  &:hover {
+    background-color: darkgreen;
+  }
+}
+
+body.rails_admin .btn-info {
+  background-color: darkseagreen;
+  border: 1px solid mediumseagreen;
+  &:hover {
+    background-color: mediumseagreen;
+  }
+}
+body.rails_admin > a.pjax {
+  color: $breadcrumbBgColor;
+  &:hover {
+    color: $breadcrumbBgColor;
+  }
 }
