@@ -18,6 +18,4 @@
 .byebug_history
 
 # Public
-/public/assets/*
-.idea/
 public/assets/

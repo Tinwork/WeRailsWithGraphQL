@@ -14,7 +14,7 @@ module App
   
     # Autoload
     config.autoload_paths += %W(#{config.root}/app/models/graph)
-    config.autoload_paths += %W(#{config.root}/app/models/eatable)
+    config.autoload_paths += %W(#{config.root}/app/models/rails_admin)
 
     # i18n configuration 
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'views', '*', '*.yml').to_s]

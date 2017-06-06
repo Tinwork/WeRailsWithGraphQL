@@ -1,3 +1,0 @@
-class Dessert < Eatable
-
-end

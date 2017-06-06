@@ -1,0 +1,110 @@
+@import "mixins";
+
+.page-header {
+  padding-bottom: 0px;
+  border-bottom: 2px solid #AB182B;
+
+  h1 {
+    font-family: Insanibu;
+    color: white;
+  }
+}
+
+.breadcrumb {
+  background-color: $breadcrumbBgColor;
+
+  li {
+    color: #753C2D;
+    a {
+      color: #753C2D;
+      .false {
+
+      }
+      .active {
+        font-weight: bold;
+      }
+    }
+
+    &:before {
+      color : #753C2D;
+    }
+  }
+}
+
+.burger-rails-icons {
+  .item-element {
+    padding: 10px 0;
+    text-align: center;
+
+    a {
+      display: block;
+      text-align: center;
+
+      font-family: Insanibu;
+      font-size: 18px;
+      letter-spacing: 2px;
+
+      color: white;
+    }
+
+    .item-element-image {
+      display: inline-block;
+      width: 140px;
+      height: 140px;
+
+      text-align: center;
+
+      background-position: center;
+      background-size: 140px 140px;
+
+      transform: scale(1);
+      perspective: 1000;
+    }
+
+    .item-element-title {
+      display: block;
+    }
+  }
+  .burger {
+    background-color: #CF9867;
+    .item-element-image {
+      background-image: url(image_path('icons/burgers.svg'));
+    }
+  }
+  .menu {
+    background-color: #BB1E32;
+    .item-element-image {
+      background-image: url(image_path('icons/menus.svg'));
+    }
+  }
+  .beverage {
+    background-color: #7CADD9;
+    .item-element-image {
+      background-image: url(image_path('icons/cold_drinks.svg'));
+    }
+  }
+  .condiment {
+    background-color: #F79700;
+    .item-element-image {
+      background-image: url(image_path('icons/snacks.svg'));
+    }
+  }
+  .ingredient {
+    background-color: #96C740;
+    .item-element-image {
+      background-image: url(image_path('icons/salads.svg'));
+    }
+  }
+  .category {
+    background-color: #E65068;
+    .item-element-image {
+      background-image: url(image_path('icons/utensils.svg'));
+    }
+  }
+  .size {
+    background-color: #82258A;
+    .item-element-image {
+      background-image: url(image_path('icons/box.svg'));
+    }
+  }
+}

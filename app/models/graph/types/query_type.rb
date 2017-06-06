@@ -1,6 +1,6 @@
 ##
-# @package             Types::QueryType
-# @author              Didier Youn <didier.youn@gmail.com>, Marc Intha-Amnouay <marc.inthaamnouay@gmail.com>, Antoine Renault <antoine.renault.mmi@gmail.com>
+# @package             Models/Graph/Types::QueryType
+# @authors             Didier Youn <didier.youn@gmail.com>, Marc Intha-Amnouay <marc.inthaamnouay@gmail.com>, Antoine Renault <antoine.renault.mmi@gmail.com>
 # @copyright           Copyright (c) 2017 Tinwork
 # @link                https://github.com/Tinwork/WeRailsWithGraphQl
 ##
@@ -10,11 +10,20 @@ module Types
     description 'The root of all queries'
 
     ## Define all the fields allowed for query search
-    # --> menu
-    # --> beverage
+    # --> menu[id]
+    # --> menus
     ##
     field :menu, MenuType, field: Fields::FetchField.build(type: MenuType, model: Menu)
     field :beverage, BeverageType, field: Fields::FetchField.build(type: BeverageType, model: Beverage)
-    #field :burger, BurgerType, field: Fields::FetchField.build(type: BurgerType, model: Burger)
+    field :condiment, CondimentType, field: Fields::FetchField.build(type: CondimentType, model: Condiment)
+    field :size, SizeType, field: Fields::FetchField.build(type: SizeType, model: Size)
+
+    field :kings do
+      type MenuType.to_list_type
+      description "All the dishes from Burger King"
+      resolve -> (obj, args, ctx) do
+          Menu.all
+      end
+    end
   end
 end

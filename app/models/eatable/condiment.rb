@@ -1,3 +1,0 @@
-class Condiment < Eatable
-
-end

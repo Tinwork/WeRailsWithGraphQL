@@ -1,0 +1,29 @@
+@import 'mixins';
+
+body.rails_admin .sidebar-nav {
+  background-color: $sidebarBgColor;
+  color: white;
+
+  .nav {
+    li.dropdown-header {
+      font-family: Insanibc;
+      font-size: 20px;
+      letter-spacing: 2px;
+      color: $fontAdminColor;
+    }
+    li {
+      &.active {
+        background-color: $navbarBgColor;
+        a {
+          background-color: $navbarBgColor;
+        }
+      }
+      a {
+        color: white;
+        &:hover {
+          background-color: $navbarBgColor;
+        }
+      }
+    }
+  }
+}

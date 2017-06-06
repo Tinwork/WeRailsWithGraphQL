@@ -12,14 +12,14 @@ Rails.application.routes.draw do
 
     # Routes defined for devise
     devise_for :users
+  end
 
-    # GraphQL POST queries
-    post "/graphql", to: "frontend/graphql#query"
+  # GraphQL POST queries endpoint
+  post "/graphql", to: "frontend/graphql#query"
 
-    # Development environment
-    if Rails.env.development?
-      mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
-    end
+  # Development environment
+  if Rails.env.development?
+    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   end
 
   # Simulate MOD_REWRITE HTACCESS

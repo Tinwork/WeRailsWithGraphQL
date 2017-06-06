@@ -1,9 +1,11 @@
-# All Administrate controllers inherit from this `Admin::ApplicationController`,
-# making it the ideal place to put authentication logic or other
-# before_actions.
+##
+# Class ApplicationController
 #
-# If you want to add pagination or other controller-level concerns,
-# you're free to overwrite the RESTful controller actions.
+# @package             Controllers/Admin
+# @authors             Didier Youn <didier.youn@gmail.com>, Marc Intha-Amnouay <marc.inthaamnouay@gmail.com>, Antoine Renault <antoine.renault.mmi@gmail.com>
+# @copyright           Copyright (c) 2017 Tinwork
+# @link                https://github.com/Tinwork/WeRailsWithGraphQl
+##
 module Admin
   class ApplicationController < Administrate::ApplicationController
     before_action :authenticate_admin

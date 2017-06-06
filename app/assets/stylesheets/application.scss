@@ -14,10 +14,11 @@
  *= require_self
  */
 
-@import "variable.scss";
+@import "variables.scss";
 @import "header.scss";
 @import "main.scss";
 @import "footer.scss";
+@import "devise.scss";
 
 @font-face {
 	font-family: 'Insaniburger';
@@ -32,6 +33,7 @@
 
 html, body {
   height: 100%;
+  background-color: $bodyBgColor;
 }
 
 p {

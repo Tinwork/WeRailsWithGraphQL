@@ -12,7 +12,7 @@ RailsAdmin.config do |config|
     dashboard
     index
     new
-    export
+    #export
     bulk_delete
     show
     edit
@@ -26,4 +26,10 @@ RailsAdmin.config do |config|
   #       field :password
   #     end
   #   end
+
+  config.included_models = %w(Menu Burger Beverage Condiment Ingredient Category Size)
+
+  config.label_methods.unshift(:label)
+
+  require Rails.root.join('lib', 'rails_admin.rb')
 end
