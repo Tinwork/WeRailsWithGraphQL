@@ -21,15 +21,22 @@
 @import "devise.scss";
 
 @font-face {
-	font-family: 'Insaniburger';
-	src: url('Insaniburger.eot');
-	src: url('Insaniburger.eot?#iefix') format('embedded-opentype'),
-		url('Insaniburger.woff') format('woff'),
-		url('Insaniburger.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
+  font-family: 'Insanibc';
+  src: url(font_path("fonts/Insanibc.eot"));
+  src: url(font_path("fonts/Insanibc.eot")) format('embedded-opentype'),
+       url(font_path("fonts/Insanibc.woff")) format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
+@font-face {
+  font-family: 'Insanibu';
+  src: url(font_path("fonts/Insanibu.eot"));
+  src: url(font_path("fonts/Insanibu.eot")) format('embedded-opentype'),
+       url(font_path("fonts/Insanibu.woff")) format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 html, body {
   height: 100%;
@@ -37,11 +44,10 @@ html, body {
 }
 
 p {
-  font-family: "Insaniburger", "arial";
+  font-family: "Insanibu", "arial";
 }
 
 #overlay {
-
   position: absolute;
   top: 0;
   left: 0;
@@ -83,7 +89,7 @@ p {
 .site-content {
   height: 100%;
   overflow: hidden;
-  background: url('/assets/plate_wood.png'), $menu-bg-color;
+  background: url(image_path('plate_wood.png')), $menu-bg-color;
   background-size: 250px 250px;
   width: 100%;
 }

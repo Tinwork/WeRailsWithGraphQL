@@ -1,11 +1,10 @@
-@import "variable.scss";
+@import "variables.scss";
 
 
-// Menu 
-
+// Menu
 .menu {
   width: 120px;
-  background: url('/assets/plate_wood.png'), $menu-bg-color;
+  background: url(image_path('plate_wood.png')), $menu-bg-color;
   background-size: 250px 250px;
   left: 0;
   height: 100vh;

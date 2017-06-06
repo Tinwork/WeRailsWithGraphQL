@@ -1,4 +1,4 @@
-@import "variable.scss";
+@import "variables.scss";
 
 .content {
   height: 70%;
@@ -6,7 +6,7 @@
 }
 
 .app-container {
-  background: url('/assets/burger-layout.png'), $app-layout-bg;
+  background: url(image_path('burger-layout.png')), $app-layout-bg;
   background-size: 150px 150px;
   width: 93% !important;
   margin-left: 0px;

@@ -40,7 +40,7 @@ const burgerComponent = (() => {
 
     /**
      * Get Burger Parts
-     * @param {Object} props 
+     * @param {Object} props
      */
     const getBurgerParts = (props, id = 1) => {
         return Utils.fetcher({method: 'POST', data: id,endpoint: 'https://marcintha.fr/json/menu.json'})
@@ -87,7 +87,7 @@ const burgerComponent = (() => {
         const {id, name} = props;
 
         return new Promise((resolve, reject) => {
-            d3.xml(`assets/samples/burger_sample_svg.svg`).mimeType('image/svg+xml').get((e, xml) => {
+            d3.xml("<%= asset_path('samples/burger_sample_svg.svg') %>").mimeType('image/svg+xml').get((e, xml) => {
                 if (e)
                     return Promise.reject(e);
 
@@ -97,12 +97,12 @@ const burgerComponent = (() => {
                 D3burger.center();
                 resolve(props);
             })
-        });    
+        });
     };
 
     /**
-     * 
-     * @param {Object} props 
+     *
+     * @param {Object} props
      */
     const buildAnnotation = (props) => {
         const {ingredients, name} = props;
