@@ -2,5 +2,11 @@
   <div class="container-fluid">
     <img src="<%= image_path('crown.png') %>" id="crown"/>
     <img src="<%= image_path('burgerking.png') %>" id="king-logo"/>
+    <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
   </div>
 </header>

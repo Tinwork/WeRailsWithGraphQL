@@ -22,6 +22,9 @@ module BeverageAdmin
         field :label do
           column_width 200
         end
+        field :ice do
+          column_width 50
+        end
         field :calories do
           column_width 200
           pretty_value do
