@@ -11,7 +11,8 @@ module CondimentAdmin
     rails_admin do
       label "Condiment"
       label_plural "Condiments"
-
+      # Icons
+      navigation_icon "custom-icon-condiments"
 
       list do
         field :id do
@@ -22,6 +23,9 @@ module CondimentAdmin
         end
         field :calories do
           column_width 200
+          pretty_value do
+            value.to_s + ' G'
+          end
         end
         field :ingredients do
           column_width 300

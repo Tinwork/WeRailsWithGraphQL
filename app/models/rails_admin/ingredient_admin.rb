@@ -11,6 +11,8 @@ module IngredientAdmin
     rails_admin do
       label "Ingredient"
       label_plural "Ingredients"
+      # Icons
+      navigation_icon "custom-icon-ingredients"
 
       configure :category, :belongs_to_association
 
@@ -23,6 +25,9 @@ module IngredientAdmin
         end
         field :calories do
           column_width 200
+          pretty_value do
+            value.to_s + ' G'
+          end
         end
         field :category do
           column_width 200

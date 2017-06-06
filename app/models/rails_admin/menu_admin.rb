@@ -11,6 +11,8 @@ module MenuAdmin
     rails_admin do
       label "Menu"
       label_plural "Menus"
+      # Icons
+      navigation_icon "custom-icon-menus"
 
       list do
         field :id do

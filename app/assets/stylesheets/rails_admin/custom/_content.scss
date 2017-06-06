@@ -95,4 +95,16 @@
       background-image: url(image_path('icons/salads.svg'));
     }
   }
+  .category {
+    background-color: #E65068;
+    .item-element-image {
+      background-image: url(image_path('icons/utensils.svg'));
+    }
+  }
+  .size {
+    background-color: #82258A;
+    .item-element-image {
+      background-image: url(image_path('icons/box.svg'));
+    }
+  }
 }

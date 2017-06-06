@@ -27,7 +27,7 @@ RailsAdmin.config do |config|
   #     end
   #   end
 
-  config.included_models = %w(Beverage Burger Condiment Ingredient Menu Size Category)
+  config.included_models = %w(Menu Burger Beverage Condiment Ingredient Category Size)
 
   config.label_methods.unshift(:label)
 

@@ -11,6 +11,8 @@ module CategoryAdmin
     rails_admin do
       label "Categorie"
       label_plural "Categories"
+      # Icons
+      navigation_icon "custom-icon-category"
 
       list do
         field :id do

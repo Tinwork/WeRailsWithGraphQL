@@ -9,8 +9,11 @@ module BeverageAdmin
 
   included do
     rails_admin do
+      # Translations
       label "Beverage"
       label_plural "Beverages"
+      # Icons
+      navigation_icon "custom-icon-beverage"
 
       list do
         field :id do
@@ -22,7 +25,7 @@ module BeverageAdmin
         field :calories do
           column_width 200
           pretty_value do
-            value.to_s + 'G'
+            value.to_s + ' G'
           end
         end
         field :category do
@@ -34,6 +37,9 @@ module BeverageAdmin
 
       edit do
         field :label do
+          required true
+        end
+        field :ice do
           required true
         end
         field :calories do
