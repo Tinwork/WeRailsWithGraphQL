@@ -11,11 +11,19 @@ module MenuAdmin
     rails_admin do
       label "Menu"
       label_plural "Menus"
+      # Icons
+      navigation_icon "custom-icon-menus"
 
       list do
-        field :id
-        field :label
-        field :burger
+        field :id do
+          column_width 50
+        end
+        field :label do
+          column_width 200
+        end
+        field :burger do
+          column_width 300
+        end
 
         exclude_fields :updated_at, :created_at
       end

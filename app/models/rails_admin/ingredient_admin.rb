@@ -11,14 +11,27 @@ module IngredientAdmin
     rails_admin do
       label "Ingredient"
       label_plural "Ingredients"
+      # Icons
+      navigation_icon "custom-icon-ingredients"
 
       configure :category, :belongs_to_association
 
       list do
-        field :label
-        # TODO ajouter grammes
-        field :calories
-        field :category
+        field :id do
+          column_width 50
+        end
+        field :label do
+          column_width 200
+        end
+        field :calories do
+          column_width 200
+          pretty_value do
+            value.to_s + ' G'
+          end
+        end
+        field :category do
+          column_width 200
+        end
         exclude_fields :created_at , :updated_at, :burgers, :condiments
       end
 

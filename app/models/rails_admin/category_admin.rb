@@ -11,10 +11,16 @@ module CategoryAdmin
     rails_admin do
       label "Categorie"
       label_plural "Categories"
+      # Icons
+      navigation_icon "custom-icon-category"
 
       list do
-        field :id
-        field :label
+        field :id do
+          column_width 50
+        end
+        field :label do
+          column_width 250
+        end
 
         exclude_fields :updated_at, :created_at, :beverages, :ingredients
       end

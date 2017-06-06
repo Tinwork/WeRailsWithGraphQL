@@ -11,13 +11,25 @@ module CondimentAdmin
     rails_admin do
       label "Condiment"
       label_plural "Condiments"
-
+      # Icons
+      navigation_icon "custom-icon-condiments"
 
       list do
-        field :id
-        field :label
-        field :calories
-        field :ingredients
+        field :id do
+          column_width 50
+        end
+        field :label do
+          column_width 200
+        end
+        field :calories do
+          column_width 200
+          pretty_value do
+            value.to_s + ' G'
+          end
+        end
+        field :ingredients do
+          column_width 300
+        end
 
         exclude_fields :updated_at, :created_at
       end
@@ -30,6 +42,7 @@ module CondimentAdmin
           required true
         end
         field :ingredients do
+
           required true
         end
       end

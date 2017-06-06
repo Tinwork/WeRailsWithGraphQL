@@ -14,7 +14,20 @@
   background-color: $breadcrumbBgColor;
 
   li {
-    color: #6E3C31;
+    color: #753C2D;
+    a {
+      color: #753C2D;
+      .false {
+
+      }
+      .active {
+        font-weight: bold;
+      }
+    }
+
+    &:before {
+      color : #753C2D;
+    }
   }
 }
 
@@ -80,6 +93,18 @@
     background-color: #96C740;
     .item-element-image {
       background-image: url(image_path('icons/salads.svg'));
+    }
+  }
+  .category {
+    background-color: #E65068;
+    .item-element-image {
+      background-image: url(image_path('icons/utensils.svg'));
+    }
+  }
+  .size {
+    background-color: #82258A;
+    .item-element-image {
+      background-image: url(image_path('icons/box.svg'));
     }
   }
 }

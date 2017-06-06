@@ -1,5 +1,43 @@
 @import 'mixins';
 
+[class^="custom-icon-"] {
+  display: inline-block;
+  margin-right: 2px;
+  position: relative;
+  top: 5px;
+  width: 32px;
+  height: 32px;
+  background-position: center center;
+  background-size: 32px 32px;
+}
+
+.custom-icon-beverage {
+  background-image: url(image_path('icons/cold_drinks.svg'));
+}
+.custom-icon-menus {
+  left: -4px;
+  background-image: url(image_path('icons/menus.svg'));
+}
+.custom-icon-burgers {
+  background-image: url(image_path('icons/burgers.svg'));
+}
+.custom-icon-ingredients {
+  left: -4px;
+  background-image: url(image_path('icons/salads.svg'));
+}
+.custom-icon-condiments {
+  background-image: url(image_path('icons/snacks.svg'));
+}
+.custom-icon-category {
+  left: -4px;
+  background-image: url(image_path('icons/utensils.svg'));
+}
+.custom-icon-size {
+  left: -4px;
+  background-image: url(image_path('icons/box.svg'));
+}
+
+
 body.rails_admin {
   background-color: $bodyBgAdminColor;
 }
@@ -9,9 +47,20 @@ body.rails_admin {
   color: white;
 }
 
-.nav.nav-tabs {
+
+body.rails_admin .nav.nav-tabs {
   border-bottom: none;
+  margin-bottom: 0;
   .icon.dashboard_root_link {
     display: none;
   }
+  .icon.index_collection_link {
+
+    &.active {
+    }
+  }
+}
+
+body.rails_admin .form-horizontal.dense {
+  background-color: red;
 }

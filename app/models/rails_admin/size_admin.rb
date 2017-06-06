@@ -11,6 +11,8 @@ module SizeAdmin
     rails_admin do
       label "Size"
       label_plural "Sizes"
+      # Icons
+      navigation_icon "custom-icon-size"
 
       list do
         field :id
