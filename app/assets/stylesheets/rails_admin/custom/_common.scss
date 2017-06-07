@@ -36,7 +36,10 @@
   left: -4px;
   background-image: url(image_path('icons/box.svg'));
 }
-
+.custom-icon-user {
+  left: -4px;
+  background-image: url(image_path('icons/crown.svg'));
+}
 
 body.rails_admin {
   background-color: $bodyBgAdminColor;

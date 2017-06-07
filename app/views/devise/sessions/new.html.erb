@@ -6,12 +6,8 @@
         <img class="logo" src="<%= image_path('burgerking.png') %>" alt="Burger Rails">
         <h2 class="title h2">Log in</h2>
         <div class="field form-group">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, class: "input-field" %>
-        </div>
-        <div class="field form-group">
-          <%= f.label :username %><br />
-          <%= f.text_field :username, autofocus: true, class: "input-field" %>
+          <%= f.label :login %><br />
+          <%= f.text_field :login, autofocus: true, class: "input-field" %>
         </div>
         <div class="field">
           <%= f.label :password %><br />
