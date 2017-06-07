@@ -59,7 +59,6 @@ const burgerComponent = (() => {
      */
     const getMenuIngredients = (datas, id = '1') => {
         let menulist = datas.data.kings;
-        console.log(menulist);
 
         if (Utils.typeOf(menulist) !== 'Array')
             return Promise.reject('Menu is not an array');
@@ -87,7 +86,7 @@ const burgerComponent = (() => {
         const {id, name} = props;
 
         return new Promise((resolve, reject) => {
-            d3.xml(`assets/samples/burger_sample_svg.svg`).mimeType('image/svg+xml').get((e, xml) => {
+            d3.xml(asset_path("samples/burger_sample_svg.svg")).mimeType('image/svg+xml').get((e, xml) => {
                 if (e)
                     return Promise.reject(e);
 

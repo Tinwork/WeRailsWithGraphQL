@@ -42,7 +42,6 @@ module CondimentAdmin
           required true
         end
         field :ingredients do
-
           required true
         end
       end
