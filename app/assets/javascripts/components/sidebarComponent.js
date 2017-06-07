@@ -16,11 +16,11 @@
         datas.kings.map((d, i) => {
             if (i ===  0)
                 template += `<div class="logo" style="background-color: ${Utils.getColorByModulo('burger', 0)}">
-                                <img src="assets/burgers_logo.png"/>
+                                <img src="` + asset_path("burgers_logo.png") + `"/>
                             </div>`;
 
             template += `<div class="items" style="background-color: ${Utils.getColorByModulo('burger', i + 1)}">
-                            <img src="assets/burger_sample.png"/>
+                            <img src="` + asset_path("burger_sample.png") + `"/>
                             <p>${d.label}</p>
                         </div>`;
         });

@@ -1,0 +1,11 @@
+var assetPaths = {};
+assetPaths.root = "<%= "#{Rails.application.config.action_controller.asset_host}/assets/" %>";
+
+window.asset_path = function(asset){
+    if(assetPaths.hasOwnProperty(asset)){
+        var path = assetPaths[asset];
+        return assetPaths.root + path;
+    } else {
+        return assetPaths.root + asset;
+    }
+};

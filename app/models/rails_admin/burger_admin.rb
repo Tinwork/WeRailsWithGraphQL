@@ -32,8 +32,9 @@ module BurgerAdmin
         field :label do
           required true
         end
-        field :ingredients
-
+        field :ingredients do
+          partial 'form/input/field_checkbox'
+        end
         exclude_fields :menus
       end
     end
