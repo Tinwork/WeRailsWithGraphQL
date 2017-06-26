@@ -7,12 +7,16 @@
 # @link                https://github.com/Tinwork/WeRailsWithGraphQl
 ##
 class Category < ApplicationRecord
+  # Rails Admin
+  include CategoryAdmin
+
   # Relations
   has_many :ingredients
   has_many :beverages
 
-  # Rails Admin
-  include CategoryAdmin
+  # Translations
+  translates :label
+  accepts_nested_attributes_for :translations, allow_destroy: true
 
   def display_name
     "Volume #{self.label}"

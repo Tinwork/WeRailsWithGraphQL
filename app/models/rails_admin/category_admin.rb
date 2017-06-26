@@ -14,6 +14,8 @@ module CategoryAdmin
       # Icons
       navigation_icon "custom-icon-category"
 
+      configure :translations, :globalize_tabs
+
       list do
         field :id do
           column_width 50
@@ -21,14 +23,18 @@ module CategoryAdmin
         field :label do
           column_width 250
         end
+        field :translations do
+          column_width 250
+        end
 
         exclude_fields :updated_at, :created_at, :beverages, :ingredients
       end
 
       edit do
-        field :label do
+        field :translations do
           required true
         end
+
         exclude_fields :beverages, :ingredients
       end
     end

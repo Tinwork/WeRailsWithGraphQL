@@ -27,9 +27,25 @@ RailsAdmin.config do |config|
   #     end
   #   end
 
-  config.included_models = %w(Menu Burger Beverage Condiment Ingredient Category Size User)
-
+  config.included_models = %w(Menu Burger Beverage Condiment Ingredient Ingredient::Translation Category Category::Translation Size User)
   config.label_methods.unshift(:label)
 
   require Rails.root.join('lib', 'rails_admin.rb')
+
+  config.model 'Ingredient::Translation' do
+    visible false
+    configure :locale, :hidden do
+      help ''
+    end
+    include_fields :locale, :label
+  end
+
+  config.model 'Category::Translation' do
+    visible false
+    configure :locale, :hidden do
+      help ''
+    end
+    include_fields :locale, :label
+  end
+
 end

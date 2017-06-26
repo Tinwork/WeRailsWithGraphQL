@@ -36,11 +36,11 @@ gem 'devise'
 # GraphQL 
 gem 'graphql'
 gem 'graphiql-rails'
+
 # Globalize
-# git 'https://github.com/globalize/globalize.git' do
-#  gem 'globalize'
-#end
-#gem 'activemodel-serializers-xml'
+gem 'globalize', git: 'https://github.com/globalize/globalize'
+gem 'activemodel-serializers-xml'
+gem 'rails_admin_globalize_field'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

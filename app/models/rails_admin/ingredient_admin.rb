@@ -15,12 +15,13 @@ module IngredientAdmin
       navigation_icon "custom-icon-ingredients"
 
       configure :category, :belongs_to_association
+      configure :translations, :globalize_tabs
 
       list do
         field :id do
           column_width 50
         end
-        field :label do
+        field :translations do
           column_width 200
         end
         field :calories do
@@ -36,7 +37,7 @@ module IngredientAdmin
       end
 
       edit do
-        field :label do
+        field :translations do
           required true
         end
         field :calories do
