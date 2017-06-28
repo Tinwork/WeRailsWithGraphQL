@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606130319) do
+ActiveRecord::Schema.define(version: 20170626170435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,16 @@ ActiveRecord::Schema.define(version: 20170606130319) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "category_translations", force: :cascade do |t|
+    t.integer  "category_id", null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "label"
+    t.index ["category_id"], name: "index_category_translations_on_category_id", using: :btree
+    t.index ["locale"], name: "index_category_translations_on_locale", using: :btree
+  end
+
   create_table "condiment_ingredients", force: :cascade do |t|
     t.integer  "condiment_id"
     t.integer  "ingredient_id"
@@ -60,6 +70,17 @@ ActiveRecord::Schema.define(version: 20170606130319) do
     t.float    "calories"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ingredient_translations", force: :cascade do |t|
+    t.integer  "ingredient_id", null: false
+    t.string   "locale",        null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "label"
+    t.text     "text"
+    t.index ["ingredient_id"], name: "index_ingredient_translations_on_ingredient_id", using: :btree
+    t.index ["locale"], name: "index_ingredient_translations_on_locale", using: :btree
   end
 
   create_table "ingredients", force: :cascade do |t|

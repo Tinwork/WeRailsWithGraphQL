@@ -120,3 +120,17 @@ body.rails_admin > a.pjax {
     color: $breadcrumbBgColor;
   }
 }
+
+.globalize_tabs_type {
+
+  .globalize-errors {
+    float: right;
+    margin-left: 15px;
+    line-height: 36px; // tabs height
+  }
+  .globalize-help {
+    margin-top: 10px;
+    margin-left: 180px; // == .form-horizontal .controls indent
+  }
+
+}

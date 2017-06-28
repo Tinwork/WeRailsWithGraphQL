@@ -7,6 +7,9 @@
 # @link                https://github.com/Tinwork/WeRailsWithGraphQl
 ##
 class Ingredient < ApplicationRecord
+  # Admin
+  include IngredientAdmin
+
   # Relations
   has_many :burger_ingredients
   has_many :burgers, through: :burger_ingredients
@@ -14,6 +17,7 @@ class Ingredient < ApplicationRecord
   has_many :condiments, through: :condiment_ingredients
   belongs_to :category
 
-  # Admin
-  include IngredientAdmin
+  # Translations
+  translates :label
+  accepts_nested_attributes_for :translations, allow_destroy: true
 end
