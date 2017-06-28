@@ -1,4 +1,4 @@
-class TranslateIngredients < ActiveRecord::Migration[5.0]
+class IngredientTranslations < ActiveRecord::Migration[5.0]
   def change
     reversible do |dir|
       dir.up do

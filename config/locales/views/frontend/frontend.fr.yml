@@ -3,6 +3,14 @@
 fr:
   views:
     frontend:
+      title:
+        devise:
+          log_in: Se connecter
+          sign_up: S'enregistrer
+          forgot_password: Mot de passe oublié ?
       index:
         button:
-          admin: Admin ? C'est par ici 
+          admin: Admin ? C'est par ici
+      devise:
+        inputs:
+          login: Pseudo
