@@ -3,6 +3,9 @@
 fr:
   views:
     frontend:
+      locale:
+        fr: Français
+        en: Anglais
       title:
         devise:
           log_in: Se connecter

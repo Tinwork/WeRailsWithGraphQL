@@ -3,6 +3,9 @@
 en:
   views:
     frontend:
+      locale:
+        fr: French
+        en: English
       title:
         devise:
           log_in: Log In

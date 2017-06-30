@@ -1,0 +1,8 @@
+<div class="switch-container">
+  <div class="switch">
+    <ul>
+      <li><%= link_to_unless I18n.locale == :fr, t('views.frontend.locale.fr'), locale: :fr %></li>
+      <li><%= link_to_unless I18n.locale == :en, t('views.frontend.locale.en'), locale: :en %></li>
+    </ul>
+  </div>
+</div>
