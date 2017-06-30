@@ -1,0 +1,27 @@
+{
+  "name": "werailsgraphql",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "webpack.config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tinwork/WeRailsWithGraphQL.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tinwork/WeRailsWithGraphQL/issues"
+  },
+  "homepage": "https://github.com/Tinwork/WeRailsWithGraphQL#readme",
+  "devDependencies": {
+    "ts-loader": "^2.2.1",
+    "typings": "^2.1.1",
+    "webpack": "^3.0.0"
+  }
+}

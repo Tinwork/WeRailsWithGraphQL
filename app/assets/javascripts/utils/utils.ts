@@ -3,7 +3,7 @@
  * 
  * @class Utils
  */
-class Utils {
+export class Utils {
 
 
     /**
@@ -15,7 +15,7 @@ class Utils {
      * @returns 
      * @memberof Utils
      */
-    static fetchSVG(category, element) {
+    static fetchSVG(category: string, element: string): Promise<any> {
         if (!self.fetch) {
             Utils._fetchFallback();
         } 
@@ -34,9 +34,9 @@ class Utils {
      * @returns 
      * @memberof Utils
      */
-    static fetchOtherWS(props) {
+    static fetchOtherWS(props: any): Promise<any> {
         const {method, uri, data} = props;
-        let fetcher;
+        let fetcher: any;
 
         if (!self.fetch) 
             Utils._fetchFallback();
@@ -47,9 +47,11 @@ class Utils {
         else
             fetcher = fetch(uri, {method: 'POST', body: JSON.stringify(data)})
 
-        return fetcher().then(res => res.json())
-                        .then(res => Promise.resolve(res))
-                        .catch(e => Promise.reject(e));
+        return new Promise<any>((resolve, reject) => {
+            fetcher().then((res: any) => res.json())
+                        .then((res: any) => Promise.resolve(res))
+                        .catch((e: string) => Promise.reject(e));
+        });
     }
 
     static _fetchFallback() {
@@ -64,8 +66,8 @@ class Utils {
      * @returns 
      * @memberof Utils
      */
-    static retrieveGraphQLToken() {
-        let tokenHolder = document.getElementsByTagName('meta');
+    static retrieveGraphQLToken(): string {
+        let tokenHolder: any = document.getElementsByTagName('meta');
 
         if (tokenHolder === undefined || tokenHolder === null) 
             throw 'Unable to retrieve the GraphQL Access Token';

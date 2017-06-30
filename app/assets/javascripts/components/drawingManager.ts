@@ -1,11 +1,14 @@
 class DrawingManager {
-    
+
+    document: string;
+    ctx: CanvasRenderingContext2D 
+
     /**
      * Creates an instance of DrawingManager.
      * @param {String} document 
      * @memberof DrawingManager
      */
-    constructor(document) {
+    constructor(document: string) {
         this.document = document;
     }
 
@@ -18,13 +21,13 @@ class DrawingManager {
         if (typeof this.document !== 'string')
             throw 'DOM Element is not a string !';
             
-        let d = document.getElementById(this.document);
+        let d: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById(this.document);
 
         if (d === undefined)
             throw 'Element is not defined';
         
         if (d.getContext)
-            this.ctx = d.getContext('2d');
+            this.ctx = <CanvasRenderingContext2D> d.getContext('2d');
 
         throw 'Canvas is not supported by the Browser / Element';
     }
@@ -37,7 +40,7 @@ class DrawingManager {
      * @returns 
      * @memberof DrawingManager
      */
-    populateBurgers(elementList = []) {
+    populateBurgers(elementList: Array<any>) {
         let SVGMap = [];
         if (elementList.length == 0)
             return Promise.reject('Nothing to draw');
@@ -46,16 +49,16 @@ class DrawingManager {
         elementList.map((d, i) => {
             // fetch the SVG
             let cat = Object.keys(elementList[i]);
-            Utils.fetchSVG(d.label, Object.keys(elementList[i]))
-                 .then(blob => {
-                    if (SVGMap[cat] === undefined)
-                        SVGMap[cat] = [];
+            // Utils.fetchSVG(d.label, Object.keys(cat))
+            //      .then((blob: any) => {
+            //         // if (SVGMap[cat] === undefined)
+            //         //     SVGMap[cat] = [];
 
-                    SVGMap[cat].push({
-                        label: d.label,
-                        svg: blob
-                    });
-                 });
+            //         // SVGMap[cat].push({
+            //         //     label: d.label,
+            //         //     svg: blob
+            //         // });
+            //      });
         });
     }
 

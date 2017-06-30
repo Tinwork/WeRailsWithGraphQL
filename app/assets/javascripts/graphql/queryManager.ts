@@ -3,14 +3,15 @@
  * 
  * @class QueryManager
  */
-class QueryManager {
+export class QueryManager {
     
+    token: string
     /**
      * 
      * 
      * @memberof QueryManager
      */
-    constructor(token) {
+    constructor(token: string) {
         this.token = token;
     }
 
@@ -23,7 +24,7 @@ class QueryManager {
      * @returns 
      * @memberof QueryManager
      */
-    fetchGraph(props, queryProps) {
+    fetchGraph(props: any, queryProps: any): Promise<any> {
         const {method, uri} = props;
         const {query, datas} = queryProps;
 
@@ -48,7 +49,7 @@ class QueryManager {
         })
         .then(res => res.json())
         .then(res => QueryParser.parse)
-        .then(res => Promise.resolve(res))
+        .then(res => res)
         .catch(e => Promise.reject(e));
     }
 

@@ -37,6 +37,8 @@ const QueryRoutes = (() => {
     }
 })();
 
+export {QueryRoutes};
+
 
 
 

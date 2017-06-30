@@ -5,7 +5,7 @@ const QueryParser = (() => {
          * Parse
          * @param {Object} datas
          */
-        parse: (datas) => {
+        parse: (datas: any) => {
             // Create an Object in this order
 
             const opts = Object.assign({}, {
@@ -14,7 +14,7 @@ const QueryParser = (() => {
             });
 
             if (datas.burger.ingredients) 
-                data.burger.ingredients.map(d => {
+                datas.burger.ingredients.map((d: any) => {
                     if (!opts.ingredients[d.category.label])
                         opts.ingredients[d.category.label] = [];
                     

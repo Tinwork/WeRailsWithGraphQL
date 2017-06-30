@@ -1,9 +1,12 @@
+import { QueryManager } from '../graphql/queryManager';
+import { QueryRoutes } from '../graphql/queryRoutes'; 
+import { Utils } from '../utils/utils'; 
+
 /**
  * Menu Components
  * @Revealing Module Pattern
  */
 const MenuComponents = (() => {
-
 
     // Static props
     const graphQLProps = {
@@ -20,8 +23,6 @@ const MenuComponents = (() => {
             query: QueryRoutes.ALL,
             datas: {}
         }
-
-        console.log(graphQLDatas);
         
         try {
             const QueryManagerInstance = new QueryManager(Utils.retrieveGraphQLToken());
@@ -38,3 +39,5 @@ const MenuComponents = (() => {
         init: initMenuComponent
     }
 })();
+
+export {MenuComponents}; 
