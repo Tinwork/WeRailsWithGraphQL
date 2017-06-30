@@ -5,6 +5,7 @@
  */
 export class Utils {
 
+    static ASSETS_PATH: string = './assets/images';
 
     /**
      * Fetch SVG
@@ -73,5 +74,20 @@ export class Utils {
             throw 'Unable to retrieve the GraphQL Access Token';
 
         return tokenHolder[1].getAttribute('content');
+    }
+
+
+    /**
+     * Get Type 
+     * 
+     * @static
+     * @param {*} object 
+     * @returns {string} 
+     * @memberof Utils
+     */
+    static getType(object: any): string {
+        const t = Object.prototype.toString.call(object);
+
+        return t.replace(/[\[\]']+/g, '').split('object')[1].trim();
     }
 }

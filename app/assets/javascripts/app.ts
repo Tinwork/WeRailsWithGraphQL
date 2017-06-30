@@ -1,11 +1,21 @@
-import { LoaderComponentsFactory } from './components/loaderComponentsFactory';
+import { LoaderComponentsManager } from './components/loaderComponentsFactory';
 import { MenuComponents } from './components/menuComponents';
+import { DOMUtils } from './utils/dom';
 
 (() => {
     document.addEventListener('DOMContentLoaded', () => {
-        let loaderInstance = new LoaderComponentsFactory();
-        MenuComponents.init().then(res => console.log(res))
-                      .catch(e => console.log(e));
+        MenuComponents.init().then(res => {
+            LoaderComponentsManager.duration = 50;
+            
+        })
+        .then(() => {
+            DOMUtils.applyStyle('overlay', 'id', 'display', 'none !important')
+                    .applyStyle('overlay', 'id', 'opacity', '0')
+                    .applyClass('overlay', 'id', 'show');
+        })
+        .catch(e => console.log(e));
+
+        LoaderComponentsManager.makeLoader();
     })
     
-})();
+})();  

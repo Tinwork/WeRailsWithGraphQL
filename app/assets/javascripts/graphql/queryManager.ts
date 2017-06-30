@@ -1,3 +1,5 @@
+import {QueryParser} from './queryParser';
+
 /**
  * 
  * 
@@ -27,9 +29,7 @@ export class QueryManager {
     fetchGraph(props: any, queryProps: any): Promise<any> {
         const {method, uri} = props;
         const {query, datas} = queryProps;
-
-        console.log(query);
-
+        
         let HEADERS = new Headers();
         HEADERS.append('content-type', 'application/json');
         HEADERS.append('X-CSRF-Token', this.token);
@@ -48,7 +48,7 @@ export class QueryManager {
             credentials: 'same-origin'
         })
         .then(res => res.json())
-        .then(res => QueryParser.parse)
+        .then(res => Promise.resolve(QueryParser.parseBurgers(res.data.kings)))
         .then(res => res)
         .catch(e => Promise.reject(e));
     }

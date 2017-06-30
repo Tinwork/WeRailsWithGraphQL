@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/Tinwork/WeRailsWithGraphQL#readme",
   "devDependencies": {
+    "@types/d3": "^4.9.0",
+    "d3": "^4.9.1",
     "ts-loader": "^2.2.1",
     "typings": "^2.1.1",
     "webpack": "^3.0.0"
