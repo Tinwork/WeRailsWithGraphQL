@@ -26,8 +26,7 @@ Or by the switch available in the homepage
 GraphQL is a new way to work with data. But how GraphQL work ?
 In order to simplify, GraphQL is an additional layer between the database and the ORM.
 He permit the implementation of a new way to interact with the database by queries which are sent to a only endpoint. <br>
-Example :
- 
+
 **Standard Implementation**
 ```
 We may ask to our backend server a request the details of a user identified by his id. Our endpoint should be like :
@@ -107,6 +106,48 @@ Result :
     "age" : 25
 }
 ```
+
+## Roadmap 
+### Started with empty data
+**Create a admin user** 
+```
+By default, we have deactivate the registrable feature from Devise.
+So, you may need, to reactive it in : /app/models/user.rb 
+And add :registerable in Devise modules.
+If it still doesn't work, contact us.
+```
+**Populate the database** 
+```
+- Connect to the dashboard admin with our credentials to : local.dev/admin
+- From this dashboard, you have to populate the database by creating many resources.
+    1. Category
+    2. Ingredient
+    3. Size
+    4. Beverage
+    5. Condiment
+    6. Burger
+    7. Menu
+    
+⚠⚠⚠ The application takes into account translations with Globalize and I18n so you have to translate every label of the ressource. ⚠⚠⚠
+```
+**Work with GraphQL** 
+```
+If you work in development mode, you can access to the GraphQL development from the endpoint :
+> local.dev/graphiql
+```
+**Chill the burger menus** 
+```
+You can compose burgers and see the informations of what you need.
+```
+### Started with existing data
+```
+That's the same as starting with empty data but without the step 1.
+The default credentials are :
+login : root
+password : root
+```
+## Next step
+### Action Cable
 
 ## Authors
 - [**Marc INTHA-AMNOUAY**](https://github.com/MarcInthaamnouay) 
