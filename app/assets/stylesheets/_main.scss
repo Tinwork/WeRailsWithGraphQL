@@ -1,15 +1,53 @@
 @import "variables.scss";
 
-.content {
-  height: 70%;
-  display: flex;
-}
-
-.app-container {
-  background: url(image_path('burger-layout.png')), $app-layout-bg;
-  background-size: 150px 150px;
-  width: 93% !important;
-  margin-left: 0px;
+.site-content {
   height: 100%;
 }
 
+.content {
+  width: 100%;
+  height: 75%;
+
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+.main {
+  float: left;
+  
+  width: 75%;
+  height: 100%;
+  
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+.app-container {
+  width: 100%;
+  height: 92%;
+
+  background: url(image_path('burger-layout.png')), $app-layout-bg;
+  background-size: 150px 150px;
+
+  margin-left: 0;
+
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+.calories-container {
+  display: flex;
+  height: 8%;
+
+  align-items: center;
+  justify-content: center;
+}

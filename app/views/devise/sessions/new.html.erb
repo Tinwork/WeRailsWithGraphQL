@@ -4,7 +4,7 @@
     <div class="form-login">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <img class="logo" src="<%= image_path('burgerking.png') %>" alt="Burger Rails">
-        <h2 class="title h2">Log in</h2>
+        <h2 class="title h2"><%= t('views.frontend.title.devise.log_in') %></h2>
         <div class="field form-group">
           <%= f.label :login %><br />
           <%= f.text_field :login, autofocus: true, class: "input-field" %>
@@ -21,7 +21,7 @@
         <% end -%>
 
         <div class="actions">
-          <%= f.submit "Log in" %>
+          <%= f.submit t('views.frontend.title.devise.log_in') %>
         </div>
         <%= render "devise/shared/links" %>
     <% end %>

@@ -1,7 +1,8 @@
 <header>
   <div class="container-fluid">
-    <img src="<%= image_path('crown.png') %>" id="crown"/>
-    <img src="<%= image_path('burgerking.png') %>" id="king-logo"/>
+    <%= render 'frontend/header/locale.html.erb' %>
+    <%= render 'frontend/header/crown.html.erb' %>
+    <%= render 'frontend/header/logo.html.erb' %>
     <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
     <% end %>
