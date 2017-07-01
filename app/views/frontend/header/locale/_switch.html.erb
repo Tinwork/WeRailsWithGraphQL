@@ -1,9 +1,11 @@
-<div class="switch-container">
-  <div class="switch">
-
-    <ul>
-      <li><%= link_to_unless I18n.locale == :fr, t('views.frontend.locale.fr'), locale: :fr %></li>
-      <li><%= link_to_unless I18n.locale == :en, t('views.frontend.locale.en'), locale: :en %></li>
-    </ul>
-  </div>
+<div class="onoffswitch">
+  <% if I18n.locale === :fr %>
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+  <% else %>
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
+  <% end %>
+  <label class="onoffswitch-label" for="myonoffswitch">
+    <span class="onoffswitch-inner"></span>
+    <span class="onoffswitch-switch"></span>
+  </label>
 </div>

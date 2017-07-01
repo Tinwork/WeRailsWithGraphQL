@@ -54,6 +54,7 @@
     const fire = () => {
         // init the loader
         SVGHelper.doLoader();
+        localeSwitcher.observe();
 
         setTimeout(() => {
             Promise.all([appendSideBar(), burgerComponent.init('sample')])
