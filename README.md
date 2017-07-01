@@ -4,7 +4,7 @@
 School project develop with the framework Ruby On Rails.<br>
 The theme we've choose is Burger King and the purpose of the project is too use GraphQL
 
-### Prerequisites
+## Prerequisites
 + [Ruby On Rails ~> 5.0.0](http://guides.rubyonrails.org/5_0_release_notes.html)
 + [Ruby ~> 2.3.3](https://www.ruby-lang.org/fr/downloads/) 
 
@@ -13,6 +13,10 @@ The theme we've choose is Burger King and the purpose of the project is too use 
 > $ rake db:migrate
 > $ rake db:seeds
 ```
+## Extra gems
+- Globalize : translate our data in database.
+- 
+
 ## Features
 ### Internationalization
 Burger Rails is available in two language : french and english. <br>
@@ -73,16 +77,7 @@ Result :
 {
     "name" : "Sasha",
     "email" : "sasha@pokemon.com",
-    "age" : 25,
-    "friends" : [{
-        "name" : "Ondine",
-        "email" : "ondine@pokemon.com",
-        "age" : 24
-    }, { 
-        "name" : "Pierre",
-        "email" : "pierre@pokemon.com",
-        "age" : 30
-    }]
+    "age" : 25
 }
 -------------------------------------------
 Request : User details and his friends
@@ -103,11 +98,20 @@ Result :
 {
     "name" : "Sasha",
     "email" : "sasha@pokemon.com",
-    "age" : 25
+    "age" : 25,
+    "friends" : [{
+        "name" : "Ondine",
+        "email" : "ondine@pokemon.com",
+        "age" : 24
+    }, { 
+        "name" : "Pierre",
+        "email" : "pierre@pokemon.com",
+        "age" : 30
+    }]
 }
 ```
 
-## Roadmap 
+## How to use 
 ### Started with empty data
 **Create a admin user** 
 ```

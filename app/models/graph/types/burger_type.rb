@@ -12,5 +12,7 @@ module Types
     field :id, !types.ID
     field :label, !types.String, property: :label
     field :ingredients, IngredientType.to_list_type
+
+    default_relay true
   end
 end
