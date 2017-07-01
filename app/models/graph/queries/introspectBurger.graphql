@@ -1,0 +1,12 @@
+query introspectBurgerType {
+    __type(name: "Menu") {
+        name,
+        fields {
+            name,
+            type {
+                name,
+                ofType { name }
+            }
+        }
+    }
+}

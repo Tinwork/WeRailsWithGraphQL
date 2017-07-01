@@ -3,6 +3,17 @@
 en:
   views:
     frontend:
+      locale:
+        fr: French
+        en: English
+      title:
+        devise:
+          log_in: Log In
+          sign_up: Sign Up
+          forgot_password: Forgot your password ?
       index:
         button:
-          admin: Admin ? It's this way 
+          admin: Admin ? It's this way
+      devise:
+        inputs:
+          login: Pseudo
