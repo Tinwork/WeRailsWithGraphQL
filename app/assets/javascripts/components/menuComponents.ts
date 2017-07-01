@@ -15,7 +15,7 @@ import { DOMUtils } from '../utils/dom';
  */
 const MenuComponents = (() => {
 
-    const asset_path: any = function() {};
+    const asset_path: any = (<any>window).asset_path;
 
     // Static props
     const graphQLProps = {

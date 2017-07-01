@@ -1,3 +1,5 @@
+import { Utils } from './utils';
+
 /**
  * 
  * 
@@ -17,20 +19,23 @@ export class DOMUtils {
      * @returns {void} 
      * @memberof DOMUtils
      */
-    static applyStyle(DOMString: string, DOMType: string, styleKey: string, styleValue: string): any {
+    static applyStyle(DOMString: string, DOMType: string, styleKey: string[], styleValue: string[]): any {
         
         if (DOMType === 'class') {
             let element: any = document.getElementsByClassName(DOMString);
 
             for (let idx: number = 0; idx < element.length; idx++)
-                element[idx].style[styleKey] = styleValue;
+                styleKey.map((key: string, idx: number) => {
+                    element[idx].style[key] = styleValue[idx];
+                })
+                
 
             return DOMUtils;
         }
            
         let element: any = document.getElementById(DOMString)
-        element.style[styleKey] = styleValue;
-
+        styleKey.map((key: string, idx: number) => element.style[key] = styleValue[idx]);
+        
         return DOMUtils;
     }
 
@@ -82,5 +87,46 @@ export class DOMUtils {
         }
 
         document.getElementById(DOMString).classList.toggle(className);
+    }
+
+
+    /**
+     * Hide Element
+     * @todo add timeout
+     * @static
+     * @param {string} DOMString 
+     * @param {string} DOMType 
+     * @memberof DOMUtils
+     */
+    static hideElement(DOMString: string, DOMType: string): void {
+        let element = DOMUtils.getElementFromType(DOMString, DOMType);
+
+        if (Utils.getType(element) === 'Array') 
+            for (let idx: number = 0; idx < element.length; idx++) 
+                element[idx].style.display = 'none';
+
+        element.style.display = 'none';
+    }
+
+
+    /**
+     * Get Element From Type 
+     * 
+     * @static
+     * @param {string} DOMString 
+     * @param {string} DOMType 
+     * @returns {*} 
+     * @memberof DOMUtils
+     */
+    static getElementFromType(DOMString: string, DOMType: string): any {
+
+        if (typeof DOMString !== 'string')
+            throw 'DOMString is not a type of string';
+
+        if (DOMType === 'class') 
+            return document.getElementsByClassName(DOMString);
+
+        
+        return document.getElementById(DOMString);
     }
 }

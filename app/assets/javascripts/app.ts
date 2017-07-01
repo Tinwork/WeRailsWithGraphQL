@@ -9,8 +9,7 @@ import { DOMUtils } from './utils/dom';
             
         })
         .then(() => {
-            DOMUtils.applyStyle('overlay', 'id', 'display', 'none !important')
-                    .applyStyle('overlay', 'id', 'opacity', '0')
+            DOMUtils.applyStyle('overlay', 'id', ['opacity'], ['0'])
                     .applyClass('overlay', 'id', 'show');
         })
         .catch(e => console.log(e));
