@@ -1,12 +1,52 @@
-header {
-  height: 120px;
+@import 'variables.scss';
 
+header {
+  height: 15%;
+
+  background: url(image_path('plate_wood.png')), $menu-bg-color;
+  background-size: 250px 250px;
+
+  .container-fluid {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  .crown {
+    margin: 0 auto;
+
+    img {
+      width: 70px;
+    }
+  }
+
+  .logo {
+    position: absolute;
+    right: 10px;
+
+    img {
+      display: block;
+      width: 58px;
+      height: auto;
+    }
+  }
+
+  .locale-switch {
+
+    .switch-container {
+      position: absolute;
+      left: 50px;
+
+      display: block;
+      width: 100px;
+      height: 30px;
+
+      border-radius: 30px;
+      border: 1px solid $app-layout-bg;
+      background-color: $app-layout-bg;
+    }
+  }
   &::after {
     display: table;
     clear: both;
   }
-}
-
-header h1 {
-
 }

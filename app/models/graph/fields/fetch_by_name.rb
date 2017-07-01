@@ -13,7 +13,6 @@ module Fields
     ##
     def self.build(model:, type:)
       return_type = type
-      abort('yo')
       GraphQL::Field.define do
         type(return_type)
         description("Find a #{model.name} by Name")
