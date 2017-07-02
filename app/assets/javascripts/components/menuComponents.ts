@@ -19,7 +19,6 @@ export class MenuComponents {
         uri: 'http://localhost:8080/graphql'
     }
 
-
     /**
      * Init Menu Component 
      * 
@@ -68,5 +67,20 @@ export class MenuComponents {
             DOMUtils.applyTmpl('menu-items', 'id', tmpl);
         });
     }
+
+    langSwitcher(jQuery: any): void {
+        // @Did
+        jQuery('.carousel-container').slick({
+            autoplay: false,
+            infinite: true,
+            vertical: true,
+            verticalSwiping: true,
+            centerMode: true,
+            arrows: false,
+            speed: 300,
+            slidesToShow: 1,
+            adaptiveHeight: true
+        });
+    } 
 }
 
