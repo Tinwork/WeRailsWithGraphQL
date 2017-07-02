@@ -90,22 +90,27 @@ export class DOMUtils {
     }
 
 
+    
     /**
      * Hide Element
-     * @todo add timeout
+     * 
      * @static
      * @param {string} DOMString 
      * @param {string} DOMType 
+     * @returns {DOMUtils} 
      * @memberof DOMUtils
      */
-    static hideElement(DOMString: string, DOMType: string): void {
+    static hideElement(DOMString: string, DOMType: string, timeout: number): DOMUtils {
         let element = DOMUtils.getElementFromType(DOMString, DOMType);
 
         if (Utils.getType(element) === 'Array') 
-            for (let idx: number = 0; idx < element.length; idx++) 
-                element[idx].style.display = 'none';
+            for (let idx: number = 0; idx < element.length; idx++) {
+                setTimeout(() => element[idx].style.display = 'none', timeout);
+            }
+        else 
+            setTimeout(() => element.style.display = 'none', timeout);
 
-        element.style.display = 'none';
+        return DOMUtils;
     }
 
 
@@ -128,5 +133,29 @@ export class DOMUtils {
 
         
         return document.getElementById(DOMString);
+    }
+
+    /**
+     * Add Event To Element
+     * 
+     * @static
+     * @param {string} DOMString 
+     * @param {string} DOMType 
+     * @param {string} EventType 
+     * @param {*} callback 
+     * @returns {void} 
+     * @memberof DOMUtils
+     */
+    static addEventToElement(DOMString: string, DOMType: string, EventType: string, callback: any): void {
+        let elements = DOMUtils.getElementFromType(DOMString, DOMType);
+
+        if (DOMType === 'class') {
+            for (let idx = 0; idx < elements.length; idx++)
+                elements[idx].addEventListener(EventType, callback);
+            return;    
+        }    
+        
+        // If the element is an ID
+        elements.addEventListener(EventType, callback);
     }
 }

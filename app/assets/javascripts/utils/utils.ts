@@ -6,6 +6,7 @@
 export class Utils {
 
     static ASSETS_PATH: string = './assets/images';
+    static asset_path: any = (<any>window).asset_path;
 
     /**
      * Fetch SVG

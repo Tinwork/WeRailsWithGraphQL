@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = {
     entry: './app/assets/javascripts/app.ts',
+    watch: true,
     output: {
         path: path.resolve(__dirname, 'app/assets/javascripts/'),  
         filename: 'bundle.js',

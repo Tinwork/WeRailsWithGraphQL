@@ -3,7 +3,7 @@
  * 
  * @interface Ingredients
  */
-interface Ingredients {
+export interface Ingredients {
     calories: number;
     category: string;
     name: string;

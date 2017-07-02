@@ -1,6 +1,6 @@
 // Importing GraphQL dependencies
 import { QueryManager } from '../graphql/queryManager';
-import { QueryRoutes } from '../graphql/queryRoutes'; 
+import { GraphQLRoutes,  GraphQLDatas} from '../graphql/queryRoutes'; 
 
 // Importing Factory
 import { Burger } from '../kings/burgerFactory';
@@ -11,61 +11,62 @@ import { DOMUtils } from '../utils/dom';
 
 /**
  * Menu Components
- * @Revealing Module Pattern
  */
-const MenuComponents = (() => {
+export class MenuComponents {
 
-    const asset_path: any = (<any>window).asset_path;
-
-    // Static props
-    const graphQLProps = {
+    private graphQLProps: any = {
         method: 'POST',
-        uri: 'http://localhost:8080/graphql'    
-    };
-    
+        uri: 'http://localhost:8080/graphql'
+    }
+
+
     /**
-     * Init Menu Component
-     * @return {Promise} QueryManager FetchGraph
+     * Init Menu Component 
+     * 
+     * @returns 
+     * @memberof MenuComponents
      */
-    const initMenuComponent = () => {
-        const graphQLDatas = {
-            query: QueryRoutes.ALL,
-            datas: {}
+    initMenuComponent() {
+        // Build a query Object
+        const graphQLDatas: GraphQLDatas = {
+            query: GraphQLRoutes.getAllBurgersQuery(),
+            datas: null
         }
-        
+
         try {
+            // Create a new instance of our query manager
             const QueryManagerInstance = new QueryManager(Utils.retrieveGraphQLToken());
-            return QueryManagerInstance.fetchGraph(graphQLProps, graphQLDatas)
-                    .then(res => buildMenu(res))
+
+            // Retrieve the datas
+            return QueryManagerInstance.fetchGraph(this.graphQLProps, graphQLDatas)
+                    .then(res => this.buildMenu(res))
                     .then(() => Promise.resolve(true))
                     .catch(e => Promise.reject(e));
         } catch(e) {
             return Promise.reject(e);
         }
-    };
+    }
+
 
     /**
-     * Build Menu
-     * @param {Array} burgers 
-     * @void
+     * Build Menu 
+     * 
+     * @param {Array<Burger>} burgers 
+     * @memberof MenuComponents
      */
-    const buildMenu = (burgers: Array<Burger>) => {
-
-        burgers.map(burger => {
+    buildMenu(burgers: Array<Burger>) {
+        // Loop threw the burger
+        burgers.map((burger: Burger, idx: number) => {
+            let classType = idx % 2 ? 'odd' : 'even';
             let tmpl = `
-                <div class="burger">
-                    <img src="`+asset_path("burger_sample.png")+ `"/>
+                <div class="burger ${classType}">
+                    <img src="`+Utils.asset_path("burger_sample.png")+ `"/>
                     <p>${burger.name}</p>
                 </div>
             `
             // Append the template to the menu
             DOMUtils.applyTmpl('menu-items', 'id', tmpl);
-        }); 
-    };
-
-    return {
-        init: initMenuComponent
+        });
     }
-})();
+}
 
-export {MenuComponents}; 

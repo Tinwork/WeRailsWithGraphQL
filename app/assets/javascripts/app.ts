@@ -3,13 +3,16 @@ import { MenuComponents } from './components/menuComponents';
 import { DOMUtils } from './utils/dom';
 
 (() => {
+    let menu: MenuComponents = new MenuComponents();
+
     document.addEventListener('DOMContentLoaded', () => {
-        MenuComponents.init().then(res => {
+        menu.initMenuComponent().then(res => {
             LoaderComponentsManager.duration = 50;
             
         })
         .then(() => {
             DOMUtils.applyStyle('overlay', 'id', ['opacity'], ['0'])
+                    .hideElement('overlay', 'id', 100)
                     .applyClass('overlay', 'id', 'show');
         })
         .catch(e => console.log(e));

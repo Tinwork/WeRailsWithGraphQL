@@ -1,43 +1,51 @@
 /**
- * Build Template
- * @return {Object}
+ * 
+ * 
+ * @export
+ * @interface graphQLDatas
  */
-const QueryRoutes = (() => {
-    // Query Routes
-    const query = Object.assign({}, {
-        ALL: `
-            { 
-                kings {
-                    id 
-                    label
-                        burger {
-                            id
-                            label 
-                            ingredients {
-                                label 
-                                calories
-                                category {
-                                    label
-                                }
-                            }
-                        }
-                }
-            }
-        `,
-        BURGERS: `
-            kings: {
-                
-            }
-        `
+export interface GraphQLDatas {
+    query: string;
+    datas: any
+}
 
-    })
+/**
+ * 
+ * 
+ * @class graphQLRoutes
+ */
+export class GraphQLRoutes {
 
-    return {
-        ALL: query.ALL
+    static endpoint: any = {
+        method: 'POST',
+        uri: 'http://localhost:8080/graphql'
     }
-})();
 
-export {QueryRoutes};
+
+    /**
+     * Get All Burgers Query
+     * 
+     * @static
+     * @returns 
+     * @memberof graphQLRoutes
+     */
+    static getAllBurgersQuery() {
+        return `{kings {id
+                        label
+                            burger {
+                                id
+                                label
+                                ingredients {
+                                    label
+                                    calories
+                                    category {
+                                        label
+                                    }
+                                }
+                            }}}`;
+    }
+}
+
 
 
 
