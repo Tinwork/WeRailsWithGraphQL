@@ -1,8 +1,20 @@
 <div class="footer">
   <div class="container-fluid">
-    <p class="txt-railway">- Copyright © 2017, Develop by Didier YOUN, Marc INTHA-AMNOUAY - Antoine RENAULT-</p>
-    <a href="https://github.com/Tinwork/WeRailsWithGraphQl">
-      <i id="social-tw" class="fa fa-github fa-3x social"></i>
-    </a>
+    <div class="socials">
+      <a class="fb" href="https://github.com/Tinwork/WeRailsWithGraphQl"></a>
+      <a class="twitter" href="https://github.com/Tinwork/WeRailsWithGraphQl"></a>
+      <a class="github" href="https://github.com/Tinwork/WeRailsWithGraphQl"></a>
+    </div>
+    <p class="txt-railway">Copyright © <span id="date"></span>,
+      <%= t('views.frontend.footer.develop_by') %>
+      <a href="https://github.com/Tinwork">Didier YOUN</a>,
+      <a href="https://github.com/Tinwork">Marc INTHA-AMNOUAY</a>,
+      <a href="https://github.com/Tinwork">Antoine RENAULT</a>
+    </p>
   </div>
 </div>
+<script type="text/javascript">
+  let dateContainer = document.getElementById('date'),
+      date = new Date();
+  dateContainer.innerHTML = date.getFullYear();
+</script>

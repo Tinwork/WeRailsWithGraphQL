@@ -12,8 +12,11 @@ en:
           sign_up: Sign Up
           forgot_password: Forgot your password ?
       index:
+        result: Result
         button:
           admin: Admin ? It's this way
+      footer:
+        develop_by: Develop by
       devise:
         inputs:
           login: Pseudo
