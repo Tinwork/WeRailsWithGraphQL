@@ -1,0 +1,89 @@
+<svg id="round_burger" data-name="round burger" xmlns="http://www.w3.org/2000/svg" width="310" height="162" viewBox="0 0 310 162">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f19556;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-8, .cls-9 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #f1d9bb;
+      }
+
+      .cls-3 {
+        fill: #76a159;
+      }
+
+      .cls-4 {
+        fill: #9bce74;
+      }
+
+      .cls-5 {
+        fill: #f11543;
+      }
+
+      .cls-6 {
+        fill: #f2edd6;
+      }
+
+      .cls-7 {
+        fill: #74af47;
+        stroke: #578c33;
+        stroke-width: 0.96px;
+      }
+
+      .cls-8 {
+        fill: #eeeba8;
+      }
+
+      .cls-9 {
+        fill: #7f2d0e;
+      }
+    </style>
+  </defs>
+  <g id="bread">
+    <path id="Forme_1" data-name="Forme 1" class="cls-1" d="M13,75S22.331,1.3,155,0,296,75,296,75H13Z"/>
+    <g id="Groupe_1" data-name="Groupe 1">
+      <path id="sesame_seed" data-name="sesame seed" class="cls-2" d="M62.74,46.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C65.6,52.793,62.74,46.53,62.74,46.53Z"/>
+      <path id="sesame_seed_copie" data-name="sesame seed copie" class="cls-2" d="M112.74,24.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C115.6,30.793,112.74,24.53,112.74,24.53Z"/>
+      <path id="sesame_seed_copie_2" data-name="sesame seed copie 2" class="cls-2" d="M250.74,53.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C253.6,59.793,250.74,53.53,250.74,53.53Z"/>
+      <path id="sesame_seed_copie_3" data-name="sesame seed copie 3" class="cls-2" d="M149.74,52.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C152.6,58.793,149.74,52.53,149.74,52.53Z"/>
+      <path id="sesame_seed_copie_4" data-name="sesame seed copie 4" class="cls-2" d="M215.74,24.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C218.6,30.793,215.74,24.53,215.74,24.53Z"/>
+      <path id="sesame_seed_copie_5" data-name="sesame seed copie 5" class="cls-2" d="M163.74,10.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C166.6,16.793,163.74,10.53,163.74,10.53Z"/>
+    </g>
+  </g>
+  <g id="salad">
+    <path id="big_leaves" data-name="big leaves" class="cls-3" d="M13,74.975v8H296v-8H13Z"/>
+    <path id="Forme_2" data-name="Forme 2" class="cls-4" d="M13,82.977v2.1H296v-2.1S280.086,79,251,79s-42,3.977-42,3.977H180S166.252,78,154.948,78,130,82.977,130,82.977H102s-22.969-3.656-43-3.656S13,82.977,13,82.977Z"/>
+  </g>
+  <g id="tomato">
+    <path id="Forme_3" data-name="Forme 3" class="cls-5" d="M13,86.931H296L298,105H11Z"/>
+  </g>
+  <g id="onion">
+    <rect class="cls-6" x="10" y="105" width="79" height="8"/>
+    <rect id="Rectangle_1_copie" data-name="Rectangle 1 copie" class="cls-6" x="92" y="105" width="79" height="8"/>
+    <rect id="Rectangle_1_copie_2" data-name="Rectangle 1 copie 2" class="cls-6" x="173" y="105" width="79" height="8"/>
+    <rect id="Rectangle_1_copie_3" data-name="Rectangle 1 copie 3" class="cls-6" x="254" y="105" width="45" height="8"/>
+  </g>
+  <g id="cornichon">
+    <rect class="cls-7" x="6" y="113" width="89" height="4"/>
+    <rect id="Rectangle_2_copie" data-name="Rectangle 2 copie" class="cls-7" x="95" y="113" width="89" height="4"/>
+    <rect id="Rectangle_2_copie_2" data-name="Rectangle 2 copie 2" class="cls-7" x="184" y="113" width="89" height="4"/>
+    <rect id="Rectangle_2_copie_3" data-name="Rectangle 2 copie 3" class="cls-7" x="247" y="113" width="55" height="4"/>
+  </g>
+  <g id="bacon">
+    <path id="Forme_4" data-name="Forme 4" class="cls-1" d="M0,117.042H310v3.033H0v-3.033Z"/>
+  </g>
+  <g id="cheese">
+    <path id="Forme_5" data-name="Forme 5" class="cls-8" d="M11,120.075H298V125H11v-4.925ZM136,126l11-11,18,13Z"/>
+  </g>
+  <g id="steak">
+    <path id="Forme_6" data-name="Forme 6" class="cls-9" d="M6,125.043H304A35.3,35.3,0,0,1,305,133a52.63,52.63,0,0,1-1,9H6s-2-2.773-2-8A20.667,20.667,0,0,1,6,125.043Z"/>
+  </g>
+  <g id="bread_bottom" data-name="bread bottom">
+    <path id="Forme_7" data-name="Forme 7" class="cls-1" d="M12.99,142h283v20h-283V142Z"/>
+  </g>
+</svg>

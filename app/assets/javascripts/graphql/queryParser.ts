@@ -34,7 +34,7 @@ export class QueryParser {
                 });
             })
             // Order the datas and create an instance of the burgers
-            let instanceBurger = new BurgerFactory(ingred, d.burger.label);
+            let instanceBurger = new BurgerFactory(ingred, d.burger.label, d.burger.id);
             burger.push(instanceBurger.buildBurger());
         });
         

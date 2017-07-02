@@ -1,0 +1,48 @@
+<svg id="round_burger" data-name="round burger" xmlns="http://www.w3.org/2000/svg" width="293" height="165" viewBox="0 0 293 165">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e9c18e;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-5 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #76a159;
+      }
+
+      .cls-3 {
+        fill: #9bce74;
+      }
+
+      .cls-4 {
+        fill: #c37445;
+      }
+
+      .cls-5 {
+        fill: #eeeba8;
+      }
+    </style>
+  </defs>
+  <g id="bread">
+    <path id="Forme_1" data-name="Forme 1" class="cls-1" d="M5,93S16.306,0,147,0C279.675,0,288,93,288,93H5ZM18,14L71,49l6-60,50-14,19.948,62L167-35l67,18L217,50l51-24L255-39,155-63,66-50,32-33Z"/>
+  </g>
+  <g id="salad">
+    <path id="big_leaves" data-name="big leaves" class="cls-2" d="M5,92.975v8H288v-8H5Z"/>
+    <path id="Forme_2" data-name="Forme 2" class="cls-3" d="M5,100.977v2.1H288v-2.1S272.086,97,243,97s-42,3.977-42,3.977H172S158.252,96,146.948,96,122,100.977,122,100.977H94s-22.969-3.657-43-3.657S5,100.977,5,100.977Z"/>
+  </g>
+  <g id="fish">
+    <rect class="cls-4" y="108" width="293" height="32"/>
+  </g>
+  <g id="cheese">
+    <path id="Forme_5" data-name="Forme 5" class="cls-5" d="M3,103.075H290V108H3v-4.925ZM128,109l11-11,18,13Z"/>
+  </g>
+  <g id="cheese_copie" data-name="cheese copie">
+    <path id="Forme_5-2" data-name="Forme 5" class="cls-5" d="M3,140.075H290V145H3v-4.925ZM157,148l-29-2"/>
+  </g>
+  <g id="bread_bottom" data-name="bread bottom">
+    <path id="Forme_7" data-name="Forme 7" class="cls-1" d="M4.99,145h283v20H4.99V145Z"/>
+  </g>
+</svg>

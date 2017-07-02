@@ -20,9 +20,9 @@ export class DOMUtils {
      * @memberof DOMUtils
      */
     static applyStyle(DOMString: string, DOMType: string, styleKey: string[], styleValue: string[]): any {
-        
+
+        let element: any = DOMUtils.getElementFromType(DOMString, DOMType);
         if (DOMType === 'class') {
-            let element: any = document.getElementsByClassName(DOMString);
 
             for (let idx: number = 0; idx < element.length; idx++)
                 styleKey.map((key: string, idx: number) => {
@@ -33,7 +33,6 @@ export class DOMUtils {
             return DOMUtils;
         }
            
-        let element: any = document.getElementById(DOMString)
         styleKey.map((key: string, idx: number) => element.style[key] = styleValue[idx]);
         
         return DOMUtils;
@@ -52,16 +51,14 @@ export class DOMUtils {
      */
     static applyTmpl(DOMString: string, DOMType: string, tmpl: string): void {
 
+        let element = DOMUtils.getElementFromType(DOMString, DOMType);
         if (DOMType === 'class') {
-            let element: any = document.getElementsByClassName(DOMString);
-
             for (let idx: number = 0; idx < element.length; idx++)
                 element[idx].innerHTML = tmpl;
-
             return;
         }
 
-        document.getElementById(DOMString).insertAdjacentHTML('beforeend', tmpl);
+        element.insertAdjacentHTML('beforeend', tmpl);
     }
 
 
@@ -76,9 +73,9 @@ export class DOMUtils {
      * @memberof DOMUtils
      */
     static applyClass(DOMString: string, DOMType: string, className: string): void {
-        if (DOMType === 'class') {
-            let element: any = document.getElementsByClassName(DOMString);
 
+        let element: any = DOMUtils.getElementFromType(DOMString, DOMType);
+        if (DOMType === 'class') {
             for (let idx: number = 0; idx < element.length; idx++) {
                 element[idx].classList.toggle(className);
             }
@@ -86,7 +83,7 @@ export class DOMUtils {
             return;
         }
 
-        document.getElementById(DOMString).classList.toggle(className);
+        element.classList.toggle(className);
     }
 
 
@@ -146,16 +143,20 @@ export class DOMUtils {
      * @returns {void} 
      * @memberof DOMUtils
      */
-    static addEventToElement(DOMString: string, DOMType: string, EventType: string, callback: any): void {
+    static addEventToElement(DOMString: string, DOMType: string, EventType: string, callback: any, props?: any): void {
         let elements = DOMUtils.getElementFromType(DOMString, DOMType);
 
         if (DOMType === 'class') {
             for (let idx = 0; idx < elements.length; idx++)
-                elements[idx].addEventListener(EventType, callback);
+                elements[idx].addEventListener(EventType, function() {  
+                    callback.call(this, props);
+                });
             return;    
         }    
         
         // If the element is an ID
-        elements.addEventListener(EventType, callback);
+        elements.addEventListener(EventType, function() {
+            callback.call(this, props);
+        });
     }
 }

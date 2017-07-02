@@ -1,3 +1,6 @@
+// Importing other components
+import { PanelComponents } from './panelComponents';
+
 // Importing GraphQL dependencies
 import { QueryManager } from '../graphql/queryManager';
 import { GraphQLRoutes,  GraphQLDatas} from '../graphql/queryRoutes'; 
@@ -19,6 +22,8 @@ export class MenuComponents {
         uri: 'http://localhost:8080/graphql'
     }
 
+    private burgers: Array<Burger>;
+
     /**
      * Init Menu Component 
      * 
@@ -39,13 +44,12 @@ export class MenuComponents {
             // Retrieve the datas
             return QueryManagerInstance.fetchGraph(this.graphQLProps, graphQLDatas)
                     .then(res => this.buildMenu(res))
-                    .then(() => Promise.resolve(true))
+                    .then(() => this.addEventToMenu('burger'))
                     .catch(e => Promise.reject(e));
         } catch(e) {
             return Promise.reject(e);
         }
     }
-
 
     /**
      * Build Menu 
@@ -55,12 +59,15 @@ export class MenuComponents {
      */
     buildMenu(burgers: Array<Burger>) {
         // Loop threw the burger
+        this.burgers = burgers;
         burgers.map((burger: Burger, idx: number) => {
             let classType = idx % 2 ? 'odd' : 'even';
             let tmpl = `
-                <div class="burger ${classType}">
-                    <img src="`+Utils.asset_path("burger_sample.png")+ `"/>
-                    <p>${burger.name}</p>
+                <div class="burger ${classType} items" data-id=${burger.id}>
+                    <div class="item-infos">
+                        <img src="`+Utils.asset_path("burger_sample.png")+ `"/>
+                        <p>${burger.name}</p>
+                    </div>
                 </div>
             `
             // Append the template to the menu
@@ -68,6 +75,39 @@ export class MenuComponents {
         });
     }
 
+
+    /**
+     * Add Event To Menu 
+     *      Clicking on one menu will open the ingredient panel
+     * @param {string} className 
+     * @returns {Promise<boolean>} 
+     * @memberof MenuComponents
+     */
+    addEventToMenu(className: string): Promise<boolean> {   
+        DOMUtils.addEventToElement('burger', 'class', 'click', function(props: any) {
+            const {burger, panel}: any = props;
+
+            // Retrieving an attribute return a string so we need to cast it to a number
+            let id = <number> this.getAttribute('data-id') - 1;
+            if (burger[id] === undefined || burger[id] === null) 
+                throw `Burger does not exist with id ${id}`;
+
+            // Otherwise init the panel
+            let panelComponent = new panel(burger[id]);
+            panelComponent.constructIngredientsPanel();
+
+        }, {burger: this.burgers, panel: PanelComponents});
+
+        return Promise.resolve(true);
+    }
+
+
+    /**
+     * Lang Switcher
+     * 
+     * @param {*} jQuery 
+     * @memberof MenuComponents
+     */
     langSwitcher(jQuery: any): void {
         // @Did
         jQuery('.carousel-container').slick({

@@ -16,6 +16,7 @@ export interface Ingredients {
  * @interface Burger
  */
 export interface Burger {
+    id: number;
     name: string;
     ingredients: Array<Ingredients>;
 }
@@ -29,15 +30,17 @@ export class BurgerFactory {
 
     ingredientList: any
     name: string
+    id: number
 
     /**
      * Creates an instance of BurgerComponents.
      * @param {*} datas 
      * @memberof BurgerComponents
      */
-    constructor(ingredients: any[], name: string) {
+    constructor(ingredients: any[], name: string, id: number) {
         this.ingredientList = ingredients;
         this.name = name;
+        this.id = id;
     }
 
     /**
@@ -74,6 +77,7 @@ export class BurgerFactory {
     buildBurger() {
 
         let burger: Burger = {
+            id: this.id,
             name: this.name,
             ingredients: this.buildIngredients()
         }

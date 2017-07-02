@@ -10,6 +10,7 @@
   color: white;
   z-index: 9;
   background-color: $mainMenuColor;
+  position: relative;
 
   .col {
     transition: all ease .25s;
@@ -18,8 +19,10 @@
       z-index: 99;
     }
 
-    .carousel-container {
+    &.carousel-container {
       height: 100%!important;
+      background-color: $mainMenuColor;
+
 
       .items {
         outline: none;
@@ -68,6 +71,32 @@
         padding-right: 10px;
         padding-left: 10px;
         flex-grow: 1;
+      }
+    }
+
+    &#ingredients-panel {
+      position: absolute;
+      height: 100%;
+      top: 0;
+      transition: all ease .25s;
+      left: 0;
+      z-index: -1;
+      background-color: $ingredient-panel-bg;
+
+      &.show {
+        left: 100%;
+      }
+
+      &.hide {
+        left: 0;
+      }
+
+      .ingredient {
+        padding: 5px;
+
+        p {
+          text-align: center;
+        }
       }
     }
   }

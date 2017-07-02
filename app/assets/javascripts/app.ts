@@ -10,10 +10,8 @@ import { LocaleSwitcher } from './utils/lang';
     let menu: MenuComponents = new MenuComponents();
 
     document.addEventListener('DOMContentLoaded', () => {
-        menu.initMenuComponent().then(res => {
-            LoaderComponentsManager.duration = 50;
-            
-        })
+        menu.initMenuComponent().then(res => LoaderComponentsManager.duration = 50
+        )
         .then(() => {
             DOMUtils.applyStyle('overlay', 'id', ['opacity'], ['0'])
                     .hideElement('overlay', 'id', 100)
