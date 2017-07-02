@@ -12,8 +12,11 @@ fr:
           sign_up: S'enregistrer
           forgot_password: Mot de passe oublié ?
       index:
+        result: Résultat
         button:
           admin: Admin ? C'est par ici
+      footer:
+        develop_by: Developpé par
       devise:
         inputs:
           login: Pseudo
