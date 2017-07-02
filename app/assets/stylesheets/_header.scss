@@ -90,6 +90,24 @@ header {
   }
   .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
     right: 0;
+    width: $menuWidth;
+    background-color: $mainMenuColor;
+    position: relative;
+    height: 100%;
+
+    .switch-container {
+      position: absolute;
+      left: 50px;
+
+      display: block;
+      width: 100px;
+      height: 30px;
+
+      border-radius: 30px;
+      border: 1px solid $app-layout-bg;
+      background-color: $app-layout-bg;
+    }
+    
   }
   &::after {
     display: table;
