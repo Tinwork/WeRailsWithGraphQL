@@ -7,32 +7,100 @@
   width: 100%;
 
   position: relative;
-  text-align: center;
 
   background: url(image_path('plate_wood.png')), $menu-bg-color;
   background-size: 250px 250px;
 
-  &::before {
-    content: '';
-    display: block;
-    background-image: url(image_path('burgers_logo.png'));
-    background-repeat:  repeat-x;
-    background-position: 0 0;
-
-    background-size: 27.5px;
-
-    height: 20px;
-    position: absolute;
-    left: 0;
-    right: 0;
-  }
-
   p {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+
+    transform: translateX(-50%);
+    display: inline-block;
     font-family: 'Calibri';
     font-size: 14px;
+    
+    a {
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &::before, &::after {
+      content: '';
+      display: inline-block;
+      width: 28px; height: 24px;
+      background-image: url(image_path('burgers_logo.png'));
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: relative;
+      top: 7px;
+    }
+
+    &::before {
+      right: 5px;
+    }
+    &::after {
+      right: -5px;
+    }
+  }
+
+  .socials {
+    display: inline-block;
     position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    bottom: 20%;
+    left: 18px;
+
+    width: 120px;
+    height: 32px;
+
+    a {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      background: url(image_path("icons/sprite.png")) no-repeat top left;
+
+      &.fb {
+        background-position: left top;
+        &:hover {
+          background-position: left bottom;
+        }
+      }
+      &.twitter {
+        background-position: 20% top;
+        &:hover {
+          background-position: 20% bottom;
+        }
+      }
+      &.google {
+        background-position: 40% top;
+        &:hover {
+          background-position: 40% bottom;
+        }
+      }
+      &.insta {
+        background-position: 60% top;
+        &:hover {
+          background-position: 60% bottom;
+        }
+      }
+      &.yt {
+        background-position: 80% top;
+        &:hover {
+          background-position: 80% bottom;
+        }
+      }
+      &.github {
+        background-position: 100% top;
+        &:hover {
+          background-position: 100% bottom;
+        }
+      }
+    }
   }
 }

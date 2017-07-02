@@ -3,7 +3,7 @@
 // Menu Left
 .menu {
   float: left;
-  width: 18%;
+  width: 12%;
 
   height: 100%;
   transition: all ease .25s;
@@ -16,6 +16,31 @@
     &.fixed {
       width: 100%;
       z-index: 99;
+    }
+
+    .carousel-container {
+      height: 100%!important;
+
+      .items {
+        outline: none;
+        cursor: move;
+        height: 200px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          display: block;
+
+        }
+
+        p {
+          display: block;
+          text-align: center;
+          padding-top: 10px;
+        }
+      }
     }
   }
 
@@ -30,20 +55,6 @@
       padding-bottom: 15px;
     }
   }
-
-
-  .items {
-    height: 160px;
-
-    img {
-      padding-top: 30px;
-    }
-
-    p {
-      text-align: center;
-      padding-top: 10px;
-    }
-  }
 }
 
 // Menu Right
@@ -53,13 +64,17 @@
   width: 7%;
   height: 100%;
 
-  img {
-    width: 60px;
-    padding-top: 50px;
-  }
-
   .item {
     height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+      display: block;
+      width: 50%;
+    }
   }
 
   #condiments {

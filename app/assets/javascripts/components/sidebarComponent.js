@@ -13,17 +13,29 @@
     const createSideBar = (datas) => {
         let template = ``;
 
+        template += `<div class="logo" style="background-color: ${Utils.getColorByModulo('burger', 0)}">
+                            <img src="` + asset_path("burgers_logo.png") + `"/>
+                        </div>`;
+
+        template += `<div class="carousel-container">`;
+
         datas.kings.map((d, i) => {
             if (i ===  0)
-                template += `<div class="logo" style="background-color: ${Utils.getColorByModulo('burger', 0)}">
-                                <img src="` + asset_path("burgers_logo.png") + `"/>
-                            </div>`;
-
             template += `<div class="items" style="background-color: ${Utils.getColorByModulo('burger', i + 1)}">
-                            <img src="` + asset_path("burger_sample.png") + `"/>
-                            <p>${d.label}</p>
+                            <div class="item-info">
+                                <img src="` + asset_path("burger_sample.png") + `"/>
+                                <p>${d.label}</p>
+                            </div>
+                        </div>`;
+            template += `<div class="items" style="background-color: ${Utils.getColorByModulo('burger', i + 1)}">
+                            <div class="item-info">
+                                <img src="` + asset_path("burger_sample.png") + `"/>
+                                <p>${d.label}</p>
+                            </div>
                         </div>`;
         });
+
+        template += `</div>`;
 
         return Promise.resolve(template);
     };
@@ -40,6 +52,19 @@
         })
         .then(tmpl => {
             sidebar.insertAdjacentHTML('beforeend', tmpl);
+            // @Did
+            jQuery('.carousel-container').slick({
+                autoplay: false,
+                infinite: true,
+                vertical: true,
+                verticalSwiping: true,
+                centerMode: true,
+                arrows: false,
+                speed: 300,
+                slidesToShow: 1,
+                adaptiveHeight: true
+            });
+
             return Promise.resolve('done');
         })
         .catch(e => {
