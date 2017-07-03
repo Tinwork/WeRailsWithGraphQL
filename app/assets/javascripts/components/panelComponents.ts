@@ -7,6 +7,7 @@ import {
 // Import Utils
 import { DOMUtils } from '../utils/dom';
 import { Utils } from '../utils/utils';
+import { burgerHelper } from '../kings/burgerHelper';
 
 export class PanelComponents {
 
@@ -29,7 +30,7 @@ export class PanelComponents {
      * @returns {Promise<string>} 
      * @memberof PanelComponents
      */
-    constructIngredientsPanel(): Promise < string > {
+    constructIngredientsPanel(): Promise <string> {
 
         this.tmpl = ``;
         this.clearPanel()
@@ -39,19 +40,30 @@ export class PanelComponents {
             this.burger.ingredients === undefined)
             return Promise.reject(`Burger ${this.burger.name} does not contains any ingredients`);
 
+        // Add close button
+        this.tmpl += this.addCloseButton();
+
         // Before constructing the panel we need to clean if necessary the ingredient panel
         this.burger.ingredients.map((ingredient: Ingredients) => {
             this.tmpl += `
                         <div class="ingredient">
                             <hr>
-                            <img src="` + Utils.asset_path(`burgers/salad/${ingredient.name.toLocaleLowerCase()}.svg`) + `">
+                            <img src="` + Utils.asset_path(`burgers/${burgerHelper(ingredient.name)}`) + `">
                             <p>${ingredient.name}</p>
                         </div>
                     `;
         });
+
         DOMUtils.applyTmpl('ingredients-panel', 'id', this.tmpl);
         // show ingredient panel
-        this.applyStyle(true);
+        DOMUtils.applyClass('ingredients-panel', 'id', 'showPanel', 'add');
+        DOMUtils.applyClass('ingredients-panel', 'id', 'hidePanel', 'rm');
+
+        // Bind the close button
+        DOMUtils.addEventToElement('close-btn', 'id', 'click', (dom: any) => {
+            dom.applyClass('ingredients-panel', 'id', 'hidePanel', 'add');
+            dom.applyClass('ingredients-panel', 'id', 'showPanel', 'rm');
+        }, DOMUtils)
         return Promise.resolve('added');
     }
 
@@ -62,27 +74,20 @@ export class PanelComponents {
      */
     clearPanel(): void {
         // Hide element
-        this.applyStyle(false);
+        DOMUtils.applyClass('ingredients-panel', 'id', 'hidePanel', 'rm');
         let element: any = DOMUtils.getElementFromType('ingredients-panel', 'id');
 
         if (element.hasChildNodes())
             element.innerHTML = '';
     }
 
-
     /**
-     * Apply Style
      * 
-     * @param {boolean} status 
+     * 
+     * @returns {string} 
      * @memberof PanelComponents
      */
-    applyStyle(status: boolean): void {
-        let element: any = DOMUtils.getElementFromType('ingredients-panel', 'id');
-
-        if (status) 
-            setTimeout(() => element.classList.add('show'), 0);
-        else
-            setTimeout(() => element.classList.remove('show'), 0);
-
+    addCloseButton(): string {
+        return `<i id="close-btn" class="fa fa-times-circle-o" aria-hidden="true"></i>`;
     }
 }

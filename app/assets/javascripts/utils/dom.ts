@@ -72,22 +72,41 @@ export class DOMUtils {
      * @returns {void} 
      * @memberof DOMUtils
      */
-    static applyClass(DOMString: string, DOMType: string, className: string): void {
+    static applyClass(DOMString: string, DOMType: string, className: string, mode: string): void {
 
         let element: any = DOMUtils.getElementFromType(DOMString, DOMType);
         if (DOMType === 'class') {
             for (let idx: number = 0; idx < element.length; idx++) {
-                element[idx].classList.toggle(className);
+                DOMUtils.toggle(element[idx], mode, className);
             }
 
             return;
         }
 
-        element.classList.toggle(className);
+        DOMUtils.toggle(element, mode, className);
     }
 
 
-    
+    /**
+     * 
+     * 
+     * @static
+     * @param {HTMLElement} element 
+     * @param {string} mode 
+     * @param {string} [className] 
+     * @memberof DOMUtils
+     */
+    static toggle(element: HTMLElement, mode: string, className?: string): void {
+
+        if (mode === 'add')
+            element.classList.add(className);
+        else 
+            element.classList.remove(className);
+        
+            
+    }
+
+
     /**
      * Hide Element
      * 

@@ -79,6 +79,7 @@ export class MenuComponents {
     /**
      * Add Event To Menu 
      *      Clicking on one menu will open the ingredient panel
+     * @TODO move the callback into an other method
      * @param {string} className 
      * @returns {Promise<boolean>} 
      * @memberof MenuComponents

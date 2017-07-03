@@ -79,16 +79,16 @@
       height: 100%;
       top: 0;
       transition: all ease .25s;
-      left: 0;
+      left: 0%;
       z-index: -1;
       background-color: $ingredient-panel-bg;
 
-      &.show {
+      &.showPanel {
         left: 100%;
       }
 
-      &.hide {
-        left: 0;
+      &.hidePanel {
+        left: 0%;
       }
 
       .ingredient {

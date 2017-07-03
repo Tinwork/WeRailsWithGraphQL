@@ -15,7 +15,7 @@ import { LocaleSwitcher } from './utils/lang';
         .then(() => {
             DOMUtils.applyStyle('overlay', 'id', ['opacity'], ['0'])
                     .hideElement('overlay', 'id', 100)
-                    .applyClass('overlay', 'id', 'show');
+                    .applyClass('overlay', 'id', 'show', 'rm');
 
             return Promise.resolve(true);
         })
