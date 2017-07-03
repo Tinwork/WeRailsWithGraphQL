@@ -1,0 +1,35 @@
+<svg id="round_burger" data-name="round burger" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="288" height="75" viewBox="0 0 288 75">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+      }
+
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        fill: #f1d9bb;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="144.234" y1="75" x2="144.234" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f5cf91"/>
+      <stop offset="0.178" stop-color="#f19556"/>
+      <stop offset="1" stop-color="#f19556"/>
+    </linearGradient>
+  </defs>
+  <g id="bread">
+    <path id="Forme_1" data-name="Forme 1" class="cls-1" d="M3,75S-30.083-.984,145,0C315.64,0.959,286,75,286,75H3Z"/>
+    <g id="Groupe_1" data-name="Groupe 1">
+      <path id="sesame_seed" data-name="sesame seed" class="cls-2" d="M52.74,46.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C55.6,52.793,52.74,46.53,52.74,46.53Z"/>
+      <path id="sesame_seed_copie" data-name="sesame seed copie" class="cls-2" d="M102.74,24.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C105.6,30.793,102.74,24.53,102.74,24.53Z"/>
+      <path id="sesame_seed_copie_2" data-name="sesame seed copie 2" class="cls-2" d="M240.74,53.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C243.6,59.793,240.74,53.53,240.74,53.53Z"/>
+      <path id="sesame_seed_copie_3" data-name="sesame seed copie 3" class="cls-2" d="M139.74,52.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C142.6,58.793,139.74,52.53,139.74,52.53Z"/>
+      <path id="sesame_seed_copie_4" data-name="sesame seed copie 4" class="cls-2" d="M205.74,24.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C208.6,30.793,205.74,24.53,205.74,24.53Z"/>
+      <path id="sesame_seed_copie_5" data-name="sesame seed copie 5" class="cls-2" d="M153.74,10.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C156.6,16.793,153.74,10.53,153.74,10.53Z"/>
+      <path id="sesame_seed_copie_6" data-name="sesame seed copie 6" class="cls-2" d="M177.74,37.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C180.6,43.793,177.74,37.53,177.74,37.53Z"/>
+      <path id="sesame_seed_copie_7" data-name="sesame seed copie 7" class="cls-2" d="M205.74,55.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C208.6,61.793,205.74,55.53,205.74,55.53Z"/>
+    </g>
+  </g>
+</svg>

@@ -5,12 +5,8 @@ import {
 } from '../kings/burgerFactory';
 
 // Import Utils
-import {
-    DOMUtils
-} from '../utils/dom';
-import {
-    Utils
-} from '../utils/utils';
+import { DOMUtils } from '../utils/dom';
+import { Utils } from '../utils/utils';
 
 export class PanelComponents {
 

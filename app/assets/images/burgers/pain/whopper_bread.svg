@@ -1,0 +1,28 @@
+<svg id="round_burger" data-name="round burger" xmlns="http://www.w3.org/2000/svg" width="283" height="75" viewBox="0 0 283 75">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f19556;
+      }
+
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #f1d9bb;
+      }
+    </style>
+  </defs>
+  <g id="bread">
+    <path id="Forme_1" data-name="Forme 1" class="cls-1" d="M0,75S9.331,1.3,142,0,283,75,283,75H0Z"/>
+    <g id="Groupe_1" data-name="Groupe 1">
+      <path id="sesame_seed" data-name="sesame seed" class="cls-2" d="M49.74,46.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C52.6,52.793,49.74,46.53,49.74,46.53Z"/>
+      <path id="sesame_seed_copie" data-name="sesame seed copie" class="cls-2" d="M99.74,24.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C102.6,30.793,99.74,24.53,99.74,24.53Z"/>
+      <path id="sesame_seed_copie_2" data-name="sesame seed copie 2" class="cls-2" d="M237.74,53.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C240.6,59.793,237.74,53.53,237.74,53.53Z"/>
+      <path id="sesame_seed_copie_3" data-name="sesame seed copie 3" class="cls-2" d="M136.74,52.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C139.6,58.793,136.74,52.53,136.74,52.53Z"/>
+      <path id="sesame_seed_copie_4" data-name="sesame seed copie 4" class="cls-2" d="M202.74,24.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C205.6,30.793,202.74,24.53,202.74,24.53Z"/>
+      <path id="sesame_seed_copie_5" data-name="sesame seed copie 5" class="cls-2" d="M150.74,10.53s-6.227,2.186-8.3,7.486,2.831,6.48,2.831,6.48a4.7,4.7,0,0,0,6.431-2.85C153.6,16.793,150.74,10.53,150.74,10.53Z"/>
+    </g>
+  </g>
+</svg>
