@@ -79,7 +79,6 @@ export class MenuComponents {
     /**
      * Add Event To Menu 
      *      Clicking on one menu will open the ingredient panel
-     * @TODO move the callback into an other method
      * @param {string} className 
      * @returns {Promise<boolean>} 
      * @memberof MenuComponents
@@ -96,12 +95,12 @@ export class MenuComponents {
             // Otherwise init the panel
             let panelComponent = new panel(burger[id]);
             panelComponent.constructIngredientsPanel();
+            panelComponent.constructBurger();
 
         }, {burger: this.burgers, panel: PanelComponents});
 
         return Promise.resolve(true);
     }
-
 
     /**
      * Lang Switcher

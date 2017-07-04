@@ -9,6 +9,9 @@ import { DOMUtils } from '../utils/dom';
 import { Utils } from '../utils/utils';
 import { burgerHelper } from '../kings/burgerHelper';
 
+// Import the drawing manager
+import { controlDrawingManager } from '../components/drawingManager';
+
 export class PanelComponents {
 
     private burger: Burger;
@@ -62,7 +65,24 @@ export class PanelComponents {
         // Bind the close button
         DOMUtils.addEventToElement('close-btn', 'id', 'click', this.closeCallback, DOMUtils);
 
+        // Add event to elements 
+        this.addEventToIngredients();
+
         return Promise.resolve('added');
+    }
+
+
+    /**
+     * 
+     * @TODO when it's ok remove the loader
+     * @returns {*} 
+     * @memberof PanelComponents
+     */
+    constructBurger(): any {
+        return controlDrawingManager(this.burger.ingredients)
+                .then(controlDrawingManager)
+                .then(() => console.log('done'))
+                .catch((e) => console.log(e));
     }
 
 
@@ -77,9 +97,16 @@ export class PanelComponents {
     }
 
 
+    /**
+     * 
+     * 
+     * @param {Array<Ingredients>} ingredients 
+     * @memberof PanelComponents
+     */
     addEventToIngredients(): void {
         DOMUtils.addEventToElement('ingredient', 'class', 'click', function() {
             // Create an instance of the canvas element
+
         });
     }
 

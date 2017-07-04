@@ -4,7 +4,7 @@ import { CanvasObject } from '../components/drawingManager';
 // Import 
 import { Utils } from '../utils/utils';
 
-class IngredientsFactory {
+export class IngredientsFactory {
 
     ingredients: Array<CanvasObject>
     ctx: CanvasRenderingContext2D
@@ -18,19 +18,28 @@ class IngredientsFactory {
         this.ingredients = ingredients;
     }
 
-
     /**
      * 
      * 
+     * @returns {*} 
      * @memberof IngredientsFactory
      */
-    getSVGElement() {
+    drawSVGElement(): any {
         // get the path and the datas of each svg
-        this.ingredients.map((ingredient: CanvasObject) => {
-            Utils.fetchSVG(ingredient.path)
-                 .then(this.createSVGCanvasObject)
-                 .then(this.storeCanvasObj)
-        });
+        try {
+            this.ingredients.map((ingredient: CanvasObject) => {
+                Utils.fetchSVG(ingredient.path)
+                    .then(this.createSVGCanvasObject)
+                    .then(this.storeCanvasObj)
+                    .catch(e => {
+                        throw e;
+                    });
+            });
+
+            return Promise.resolve();
+        } catch (e) {
+            return Promise.reject(e);
+        }
     }
 
 
@@ -48,7 +57,6 @@ class IngredientsFactory {
         img.onload = () => {
             drawDatas = this.ctx.drawImage(img, 0, 0);
             self.URL.revokeObjectURL(url);
-
             return Promise.resolve(drawDatas);
         }
     }
