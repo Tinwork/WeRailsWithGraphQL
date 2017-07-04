@@ -17,12 +17,12 @@ export class Utils {
      * @returns 
      * @memberof Utils
      */
-    static fetchSVG(category: string, element: string): Promise<any> {
+    static fetchSVG(path: string): Promise<any> {
         if (!self.fetch) {
             Utils._fetchFallback();
         } 
 
-        return fetch(`/images/${category}/${element}.svg`)
+        return fetch(path)
                 .then(res => res.blob())
                 .catch(e => Promise.reject(e));
     }

@@ -1,7 +1,30 @@
+// import our interface
+import { Ingredients } from '../kings/burgerFactory';
+import { burgerHelper } from '../kings/burgerHelper';
+import { Utils } from '../utils/utils';
+
+
+/**
+ * Canvas Object
+ * 
+ * @interface CanvasObject
+ */
+export interface CanvasObject {
+    name: string,
+    path: string,
+    canvasObject: any
+}
+
+/**
+ * 
+ * 
+ * @class DrawingManager
+ */
 class DrawingManager {
 
     document: string;
-    ctx: CanvasRenderingContext2D 
+    ctx: CanvasRenderingContext2D;
+    canvasObj: Array<CanvasObject>;
 
     /**
      * Creates an instance of DrawingManager.
@@ -32,34 +55,28 @@ class DrawingManager {
         throw 'Canvas is not supported by the Browser / Element';
     }
 
-    
-    /**
-     * Populate Burgers
+
+     /**
      * 
-     * @param {any} [elementList=[]] 
-     * @returns 
+     * 
+     * @param {boolean} [useHelper=true] 
+     * @param {Array<Ingredients>} ingredients 
+     * @returns {Promise<string>} 
      * @memberof DrawingManager
      */
-    populateBurgers(elementList: Array<any>) {
-        let SVGMap = [];
-        if (elementList.length == 0)
-            return Promise.reject('Nothing to draw');
-
-        // Assuming that the Object contains the following properties
-        elementList.map((d, i) => {
-            // fetch the SVG
-            let cat = Object.keys(elementList[i]);
-            // Utils.fetchSVG(d.label, Object.keys(cat))
-            //      .then((blob: any) => {
-            //         // if (SVGMap[cat] === undefined)
-            //         //     SVGMap[cat] = [];
-
-            //         // SVGMap[cat].push({
-            //         //     label: d.label,
-            //         //     svg: blob
-            //         // });
-            //      });
+    retrieveSVGFromIngredients(useHelper: boolean = true, ingredients: Array<Ingredients>): Promise<string> {
+        // burger ingredient should have a path for the time being we're going to use the helper
+        
+        if (Utils.getType(ingredients) !== 'Array')
+            return Promise.reject('Ingredients is not an array of Ingredients');
+        
+        // loop threw the ingredients and create an array of Object
+        ingredients.map((ingredient: Ingredients) => {
+            let ingredientObj: CanvasObject = {
+                name: ingredient.name,
+                path: useHelper ? burgerHelper(name) : ``,
+                canvasObject: Object.create({})
+            }
         });
     }
-
 }

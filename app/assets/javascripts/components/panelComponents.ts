@@ -46,7 +46,7 @@ export class PanelComponents {
         // Before constructing the panel we need to clean if necessary the ingredient panel
         this.burger.ingredients.map((ingredient: Ingredients) => {
             this.tmpl += `
-                        <div class="ingredient">
+                        <div class="ingredient" data-name="${ingredient.name}">
                             <hr>
                             <img src="` + Utils.asset_path(`burgers/${burgerHelper(ingredient.name)}`) + `">
                             <p>${ingredient.name}</p>
@@ -60,11 +60,27 @@ export class PanelComponents {
         DOMUtils.applyClass('ingredients-panel', 'id', 'hidePanel', 'rm');
 
         // Bind the close button
-        DOMUtils.addEventToElement('close-btn', 'id', 'click', (dom: any) => {
-            dom.applyClass('ingredients-panel', 'id', 'hidePanel', 'add');
-            dom.applyClass('ingredients-panel', 'id', 'showPanel', 'rm');
-        }, DOMUtils)
+        DOMUtils.addEventToElement('close-btn', 'id', 'click', this.closeCallback, DOMUtils);
+
         return Promise.resolve('added');
+    }
+
+
+    /**
+     * Close Callback 
+     * 
+     * @memberof PanelComponents
+     */
+    closeCallback(dom: any): void {
+        dom.applyClass('ingredients-panel', 'id', 'hidePanel', 'add');
+        dom.applyClass('ingredients-panel', 'id', 'showPanel', 'rm');
+    }
+
+
+    addEventToIngredients(): void {
+        DOMUtils.addEventToElement('ingredient', 'class', 'click', function() {
+            // Create an instance of the canvas element
+        });
     }
 
     /**
