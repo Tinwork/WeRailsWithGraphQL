@@ -4,6 +4,7 @@
     <div class="form-login">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <img class="logo" src="<%= image_path('burgerking.png') %>" alt="Burger Rails">
+        <%= render 'layouts/alert.html.erb' %>
         <h2 class="title h2"><%= t('views.frontend.title.devise.log_in') %></h2>
         <div class="field form-group">
           <%= f.label :login %><br />
@@ -14,8 +15,8 @@
           <%= f.password_field :password, autocomplete: "off" %>
         </div>
         <% if devise_mapping.rememberable? -%>
-          <div class="field">
-            <%= f.check_box :remember_me %>
+          <div class="field checkbox">
+            <%= f.check_box :remember_me, :class => 'regular-checkbox' %>
             <%= f.label :remember_me %>
           </div>
         <% end -%>
