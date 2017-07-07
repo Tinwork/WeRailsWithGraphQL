@@ -51,25 +51,32 @@ export class IngredientsCanvasManager {
 
     /**
      * 
-     * 
+     * /!\ Async issue we need to reorder the datas
+     * This code might need some refactoring
      * @returns {*} 
      * @memberof IngredientsCanvasManager
      */
     drawSVGElement(): any {
         // first order the ingredients
         this.orderIngredients();
-        console.log(this.ingredients);
+        let promises: any = [];
         // get the path and the datas of each svg
         try {
             this.ingredients.map((ingredient: CanvasObject) => {
-                Utils.fetchSVG(ingredient.path)
-                    .then(res => this.createSVGCanvasObject(res))
-                    .then(this.storeCanvasObj)
-                    .catch(e => {
-                        throw e;
-                    });
+                promises.push(Utils.fetchSVG(ingredient.path, ingredient.name));
             });
 
+            Promise.all(promises)
+                   .then(res => {
+                       if (Utils.getType(res) !== 'Array')
+                           return Promise.reject('results is not a type of array');
+
+                       let copyRes = IngredientsCanvasDecorator.dataQuickSort(res);
+                       copyRes.map((image: any) => this.createSVGCanvasObject(image));
+                   })
+                   .catch(e => {throw e});
+
+            // pushing promises
             return Promise.resolve();
         } catch (e) {
             return Promise.reject(e);
@@ -79,7 +86,7 @@ export class IngredientsCanvasManager {
 
     /**
      * 
-     * 
+     *
      * @param {Blob} svgData 
      * @memberof IngredientsCanvasManager
      */
@@ -88,12 +95,8 @@ export class IngredientsCanvasManager {
             url: any = self.URL.createObjectURL(svgData),
             drawDatas: any;
         
-        try {
-            img.onload = () => this.drawImage(img, url)
-
-        } catch (e) {
-
-        }
+        // as data returns async we need to order it again..
+        img.onload = () => this.drawImage(img, url);
         // set the source of the file
         img.src = url;
     }
@@ -103,18 +106,22 @@ export class IngredientsCanvasManager {
      * @param {Object} img
      */
     drawImage(img: any, url: any): Promise<string> {
+        const ratio = burgerHelper.getRatio();
         let elementSize: any = burgerHelper.getSize(img);
         let panel = DOMUtils.getElementFromType('ingredients-panel', 'id');
 
         try {
             this.ctx.drawImage(img, 
-                               (this.ctx.canvas.clientWidth / 2) - (panel.clientWidth * 0.5), 
-                               this.imgHeight === undefined ? 10 : this.imgHeight,  
-                               elementSize.width, 
-                               elementSize.height);
+                (this.ctx.canvas.clientWidth / 2) - (panel.clientWidth * ratio), 
+                this.imgHeight === undefined ? this.ctx.canvas.clientHeight / 3 : this.imgHeight,  
+                elementSize.width, 
+                elementSize.height);
             // set the height of the props
-            this.imgHeight = elementSize.height + 50;
-            console.log(this.imgHeight);
+            if (this.imgHeight === undefined) 
+                this.imgHeight = (this.ctx.canvas.clientHeight / 3) + 65;
+            else 
+                this.imgHeight += elementSize.height + 10;
+
             self.URL.revokeObjectURL(url);
             return Promise.resolve('done');
         } catch (e) {

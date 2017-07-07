@@ -85,4 +85,35 @@ export class IngredientsCanvasDecorator {
 
         return filterIngredient;
     }
+
+    /**
+     * 
+     * 
+     * @static
+     * @param {Array<Blob>} blobby 
+     * @memberof IngredientsCanvasDecorator
+     */
+    static dataQuickSort(blobby: Array<any>): any {
+        let indexes: number[] = [];
+        let canvasObjectArray: Array<Blob> = [];
+        let breadArray: Array<Blob> = blobby.filter((blob: any, idx: number) => {
+            if (blob.name.includes('bread') ||
+                blob.name.includes('pain')) {
+                    indexes.push(idx);
+                    return blob;
+                }
+            
+            canvasObjectArray.push(blob);
+        });
+
+        if (canvasObjectArray.length === 0)
+            throw 'Quick sort has failed';
+
+        canvasObjectArray.splice(0, 0, breadArray[0]);
+        canvasObjectArray.splice(canvasObjectArray.length, 0, breadArray[1]);
+        
+        console.log(canvasObjectArray);
+
+        return canvasObjectArray;
+    }
 }

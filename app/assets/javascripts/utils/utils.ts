@@ -17,14 +17,18 @@ export class Utils {
      * @returns 
      * @memberof Utils
      */
-    static fetchSVG(path: string): Promise<any> {
-        console.log(path);
+    static fetchSVG(path: string, name: string): Promise<any> {
         if (!self.fetch) {
             Utils._fetchFallback();
         } 
 
         return fetch(path)
                 .then(res => res.blob())
+                .then((blob: any) => {
+                    blob['name'] = name;
+
+                    return blob;
+                })
                 .catch(e => Promise.reject(e));
     }
 

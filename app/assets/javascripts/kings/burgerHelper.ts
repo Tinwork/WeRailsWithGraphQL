@@ -1,6 +1,6 @@
 // Define the generic burger size
 const BURGER_SIZE_OPTS = {
-    IMG_SIZE   : {ratio: 0.5},
+    IMG_SIZE   : {ratio: 0.8},
     CANVAS_SIZE: {
         WIDTH : 1000,
         HEIGHT: 500
@@ -100,11 +100,19 @@ export const burgerHelper = ((OPTIONS) => {
 
             return path || `/pain/bottom_whopper_bread.svg`;
         },
+
         /**
          * Get Size
          * @param {Object} ratio
          */
-        getSize: calculateSize
+        getSize: calculateSize,
+
+        /**
+         * Get Ratio
+         *      Get the ratio
+         * @return {Number} ratio
+         */
+        getRatio: () => OPTIONS.IMG_SIZE.ratio
     };
 
 })(BURGER_SIZE_OPTS);
