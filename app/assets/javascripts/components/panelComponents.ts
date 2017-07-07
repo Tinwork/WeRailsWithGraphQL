@@ -51,7 +51,7 @@ export class PanelComponents {
             this.tmpl += `
                         <div class="ingredient" data-name="${ingredient.name}">
                             <hr>
-                            <img src="` + Utils.asset_path(`burgers/${burgerHelper(ingredient.name)}`) + `">
+                            <img src="` + Utils.asset_path(`burgers/${burgerHelper.getPathForName(ingredient.name)}`) + `">
                             <p>${ingredient.name}</p>
                         </div>
                     `;
@@ -75,12 +75,12 @@ export class PanelComponents {
     /**
      * 
      * @TODO when it's ok remove the loader
+     * /!\ Though it has not place to be here... 
      * @returns {*} 
      * @memberof PanelComponents
      */
     constructBurger(): any {
         return controlDrawingManager(this.burger.ingredients)
-                .then(controlDrawingManager)
                 .then(() => console.log('done'))
                 .catch((e) => console.log(e));
     }

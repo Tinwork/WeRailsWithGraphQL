@@ -18,6 +18,7 @@ export class Utils {
      * @memberof Utils
      */
     static fetchSVG(path: string): Promise<any> {
+        console.log(path);
         if (!self.fetch) {
             Utils._fetchFallback();
         } 

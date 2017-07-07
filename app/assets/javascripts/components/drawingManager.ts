@@ -4,9 +4,10 @@ import { burgerHelper } from '../kings/burgerHelper';
 
 // Import Utils
 import { Utils } from '../utils/utils';
+import { DOMUtils } from '../utils/dom';
 
 // Import Ingredients Factory
-import { IngredientsFactory } from '../canvas/ingredientsFactory';
+import { IngredientsCanvasManager } from '../canvas/ingredientsCanvasManager';
 
 /**
  * Canvas Object
@@ -27,7 +28,9 @@ export const controlDrawingManager = (ingredients: Array<Ingredients>, document:
 
     try {
         manager.initCanvas();
-        manager.retrieveSVGFromIngredients()
+
+
+        return manager.retrieveSVGFromIngredients()
                .then(() => manager.draw())
                .then(() => Promise.resolve('done'))
                .catch((e: string) => console.log(e));
@@ -48,6 +51,8 @@ class DrawingManager {
     ctx: CanvasRenderingContext2D;
     canvasObj: Array<CanvasObject> = [];
     ingredients: Array<Ingredients>;
+    canvas: HTMLCanvasElement;
+    platform: string;
 
     /**
      * Creates an instance of DrawingManager.
@@ -57,6 +62,7 @@ class DrawingManager {
     constructor(document: string, ingredients: Array<Ingredients>) {
         this.document = document;
         this.ingredients = ingredients;
+        this.platform = navigator.platform.toLowerCase();
     }
 
     /**
@@ -68,18 +74,50 @@ class DrawingManager {
         if (typeof this.document !== 'string')
             throw 'DOM Element is not a string !';
             
-        let d: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById(this.document);
+        this.canvas = <HTMLCanvasElement> document.getElementById(this.document);
 
-        if (d === undefined)
+        if (this.canvas === undefined)
             throw 'Element is not defined';
         
-        if (!d.getContext)
+        if (!this.canvas.getContext)
             throw 'Canvas is not supported by the Browser / Element';
-            
-        this.ctx = <CanvasRenderingContext2D> d.getContext('2d');
+
+        // set size props
+        this.ctx = <CanvasRenderingContext2D> this.canvas.getContext('2d');
+        this.setSize();
+
+        
+        if (this.platform === 'macintel')
+            this.ctx.scale(2,2);
         
     }
 
+    /**
+     * Set Size
+     * 
+     * @returns 
+     * @memberof DrawingManager
+     */
+    setSize() {
+        // clear the canvas
+        let container = DOMUtils.getElementFromType('interact-layout', 'id');
+        this.ctx.clearRect(0, 0, 100, 100);
+        // set the dimension of the canvas
+
+        if (this.platform === 'macintel') {
+            this.canvas.width  = 2 * container.offsetWidth;
+            this.canvas.height = 2 * container.offsetHeight;
+        
+            return;
+        }
+
+        this.canvas.width  = container.offsetWidth;
+        this.canvas.height = container.offsetHeight;
+        
+        // set style size to canvas
+        this.canvas.style.width  = container.offsetWidth;
+        this.canvas.style.height = container.offsetHeight;
+    }
 
      /**
      * 
@@ -99,7 +137,7 @@ class DrawingManager {
         this.ingredients.map((ingredient: Ingredients) => {
             let ingredientObj: CanvasObject = {
                 name: ingredient.name,
-                path: useHelper ? burgerHelper(name) : ``,
+                path: useHelper ? Utils.asset_path(`burgers/${burgerHelper.getPathForName(ingredient.name)}`) : ``,
                 canvasObject: Object.create({})
             }
 
@@ -115,7 +153,7 @@ class DrawingManager {
      * @memberof DrawingManager
      */
     draw(): any {
-        let ingredientCanvasFactory = new IngredientsFactory(this.canvasObj, this.ctx);
+        let ingredientCanvasFactory = new IngredientsCanvasManager(this.canvasObj, this.ctx);
         return ingredientCanvasFactory.drawSVGElement();
     }
 }
