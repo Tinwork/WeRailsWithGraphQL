@@ -30,7 +30,9 @@ export class GraphQLRoutes {
      * @memberof graphQLRoutes
      */
     static getAllBurgersQuery() {
-        return `{kings {id
+        return `{kings 
+                    {
+                        id
                         label
                             burger {
                                 id
@@ -42,7 +44,34 @@ export class GraphQLRoutes {
                                         label
                                     }
                                 }
-                            }}}`;
+                            }
+                        }
+                    }`;
+    }
+
+    /**
+     * Get Ingredients
+     * 
+     * @static
+     * @returns 
+     * @memberof GraphQLRoutes
+     */
+    static getIngredients() {
+        return `
+            query IngredientMenu($id: Int!) {
+                menu(id: $id) {
+                    burger {
+                        ingredients {
+                            label
+                            calories
+                            category {
+                            label
+                            }
+                        }
+                    }
+                }
+            }
+        `;
     }
 }
 

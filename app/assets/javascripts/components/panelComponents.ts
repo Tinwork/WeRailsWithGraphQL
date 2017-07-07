@@ -10,7 +10,10 @@ import { Utils } from '../utils/utils';
 import { burgerHelper } from '../kings/burgerHelper';
 
 // Import the drawing manager
-import { controlDrawingManager } from '../components/drawingManager';
+import { controlDrawingManager } from './drawingManager';
+
+// Import the component ingredient
+import { ingredientCallback } from './ingredientManager'; 
 
 export class PanelComponents {
 
@@ -99,15 +102,13 @@ export class PanelComponents {
 
     /**
      * 
-     * 
+     * @TODO replace by the ID
      * @param {Array<Ingredients>} ingredients 
      * @memberof PanelComponents
      */
     addEventToIngredients(): void {
-        DOMUtils.addEventToElement('ingredient', 'class', 'click', function() {
-            // Create an instance of the canvas element
-
-        });
+        DOMUtils.addEventToElement('ingredient', 'class', 'click', 
+                                   ingredientCallback, parseInt(this.burger.id.toString()));
     }
 
     /**

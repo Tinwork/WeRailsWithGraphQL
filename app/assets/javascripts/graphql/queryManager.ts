@@ -7,7 +7,11 @@ import {QueryParser} from './queryParser';
  */
 export class QueryManager {
     
-    token: string
+    token: string;
+    props: any = {
+        method: 'POST',
+        uri: 'http://localhost:8080/graphql'
+    }
     /**
      * 
      * 
@@ -26,30 +30,28 @@ export class QueryManager {
      * @returns 
      * @memberof QueryManager
      */
-    fetchGraph(props: any, queryProps: any): Promise<any> {
-        const {method, uri} = props;
-        const {query, datas} = queryProps;
+    fetchGraph(queryProps: any): Promise<any> {
+        const {method, uri} = this.props;
+        const {route, datas} = queryProps;
         
         let HEADERS = new Headers();
         HEADERS.append('content-type', 'application/json');
         HEADERS.append('X-CSRF-Token', this.token);
 
-        if (typeof query !== 'string')
+        if (typeof route !== 'string')
             return Promise.reject('query is not a string');
 
         return fetch(uri , {
             method: method,
             headers: HEADERS,
             body: JSON.stringify({
-                query: query,
+                query: route,
                 variables: datas,
                 authenticity_token: this.token
             }),
             credentials: 'same-origin'
         })
         .then(res => res.json())
-        .then(res => Promise.resolve(QueryParser.parseBurgers(res.data.kings)))
-        .then(res => res)
         .catch(e => Promise.reject(e));
     }
 

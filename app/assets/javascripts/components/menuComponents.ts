@@ -4,6 +4,7 @@ import { PanelComponents } from './panelComponents';
 // Importing GraphQL dependencies
 import { QueryManager } from '../graphql/queryManager';
 import { GraphQLRoutes,  GraphQLDatas} from '../graphql/queryRoutes'; 
+import { QueryParser } from '../graphql/queryParser';
 
 // Importing Factory
 import { Burger } from '../kings/burgerFactory';
@@ -17,11 +18,6 @@ import { DOMUtils } from '../utils/dom';
  */
 export class MenuComponents {
 
-    private graphQLProps: any = {
-        method: 'POST',
-        uri: 'http://localhost:8080/graphql'
-    }
-
     private burgers: Array<Burger>;
 
     /**
@@ -32,8 +28,8 @@ export class MenuComponents {
      */
     initMenuComponent() {
         // Build a query Object
-        const graphQLDatas: GraphQLDatas = {
-            query: GraphQLRoutes.getAllBurgersQuery(),
+        const graphQLDatas: any = {
+            route: GraphQLRoutes.getAllBurgersQuery(),
             datas: null
         }
 
@@ -42,7 +38,9 @@ export class MenuComponents {
             const QueryManagerInstance = new QueryManager(Utils.retrieveGraphQLToken());
 
             // Retrieve the datas
-            return QueryManagerInstance.fetchGraph(this.graphQLProps, graphQLDatas)
+            return QueryManagerInstance.fetchGraph(graphQLDatas)
+                    .then(res => Promise.resolve(QueryParser.parseBurgers(res.data.kings)))
+                    .then(res => res)
                     .then(res => this.buildMenu(res))
                     .then(() => this.addEventToMenu('burger'))
                     .catch(e => Promise.reject(e));

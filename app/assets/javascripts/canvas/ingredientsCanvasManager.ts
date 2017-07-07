@@ -9,6 +9,17 @@ import { DOMUtils } from '../utils/dom';
 import { burgerHelper } from '../kings/burgerHelper'; 
 import { IngredientsCanvasDecorator } from './ingredientsCanvasDecorator';
 
+/**
+ * 
+ * 
+ * @interface CanvasIMGProps
+ */
+interface CanvasIMGProps {
+    height: number,
+    width : number,
+    top   : number,
+    left  : number,
+}
 
 export class IngredientsCanvasManager {
 
@@ -72,7 +83,7 @@ export class IngredientsCanvasManager {
                            return Promise.reject('results is not a type of array');
 
                        let copyRes = IngredientsCanvasDecorator.dataQuickSort(res);
-                       copyRes.map((image: any) => this.createSVGCanvasObject(image));
+                       copyRes.map((image: any, idx: number) => this.createSVGCanvasObject(image, idx));
                    })
                    .catch(e => {throw e});
 
@@ -90,13 +101,14 @@ export class IngredientsCanvasManager {
      * @param {Blob} svgData 
      * @memberof IngredientsCanvasManager
      */
-    createSVGCanvasObject(svgData: Blob): any {
+    createSVGCanvasObject(svgData: Blob, idx: number): any {
         let img: HTMLImageElement = new Image(),
             url: any = self.URL.createObjectURL(svgData),
             drawDatas: any;
         
         // as data returns async we need to order it again..
-        img.onload = () => this.drawImage(img, url);
+        img.onload = () => this.drawImage(img, url)
+                               .then(res => this.storeCanvasObj(res, idx));
         // set the source of the file
         img.src = url;
     }
@@ -105,25 +117,35 @@ export class IngredientsCanvasManager {
      * 
      * @param {Object} img
      */
-    drawImage(img: any, url: any): Promise<string> {
+    drawImage(img: any, url: any): Promise<any> {
         const ratio = burgerHelper.getRatio();
         let elementSize: any = burgerHelper.getSize(img);
         let panel = DOMUtils.getElementFromType('ingredients-panel', 'id');
 
+        // Calculating width
+        let left  :number = (this.ctx.canvas.clientWidth / 2) - (panel.clientWidth * ratio);
+
         try {
             this.ctx.drawImage(img, 
-                (this.ctx.canvas.clientWidth / 2) - (panel.clientWidth * ratio), 
+                left, 
                 this.imgHeight === undefined ? this.ctx.canvas.clientHeight / 3 : this.imgHeight,  
                 elementSize.width, 
                 elementSize.height);
             // set the height of the props
+
             if (this.imgHeight === undefined) 
                 this.imgHeight = (this.ctx.canvas.clientHeight / 3) + 65;
             else 
                 this.imgHeight += elementSize.height + 10;
 
             self.URL.revokeObjectURL(url);
-            return Promise.resolve('done');
+
+            return Promise.resolve({
+                width : elementSize.width,
+                height: elementSize.height,
+                top   : this.imgHeight,
+                left  : left
+            });
         } catch (e) {
             return Promise.reject(e);
         }
@@ -135,7 +157,16 @@ export class IngredientsCanvasManager {
      * @param {*} d 
      * @memberof IngredientsCanvasManager
      */
-    storeCanvasObj(d: any) {
-        // push the ingredient in canvas element in there
+    storeCanvasObj(d: any, idx: number) {
+        // Create an Object of CanvasIMGProps
+        let canvasImgProps: CanvasIMGProps = {
+            height: d.height,
+            width : d.width,
+            top   : d.top,
+            left  : d.left
+        };
+
+        // Saving the props into the canvas object
+        this.ingredients[idx].canvasObject = canvasImgProps;
     }
 }
