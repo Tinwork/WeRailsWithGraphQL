@@ -54,6 +54,23 @@ body.rails_admin {
 body.rails_admin .nav.nav-tabs {
   border-bottom: none;
   margin-bottom: 0;
+
+  li > a {
+    color : black;
+  }
+  li > a:hover {
+    background-color: $variantThemeColor;
+    border: 1px solid $variantThemeColorDarken;
+  }
+  li.active a {
+    background-color: $variantThemeColor;
+    border: 1px solid $variantThemeColorDarken;
+  }
+  li.active a {
+    background-color: $variantThemeColor;
+    border: 1px solid $variantThemeColorDarken;
+  }
+
   .icon > a:hover {
     background-color: $variantThemeColor;
     border: 1px solid $variantThemeColorDarken;

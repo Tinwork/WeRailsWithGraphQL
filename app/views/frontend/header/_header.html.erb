@@ -3,11 +3,6 @@
     <%= render 'frontend/header/locale.html.erb' %>
     <%= render 'frontend/header/crown.html.erb' %>
     <%= render 'frontend/header/logo.html.erb' %>
-    <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
+    <%= render 'frontend/index/alert.html.erb' %>
   </div>
 </header>
