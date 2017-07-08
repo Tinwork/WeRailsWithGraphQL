@@ -68,9 +68,6 @@ export class PanelComponents {
         // Bind the close button
         DOMUtils.addEventToElement('close-btn', 'id', 'click', this.closeCallback, DOMUtils);
 
-        // Add event to elements 
-        this.addEventToIngredients();
-
         return Promise.resolve('added');
     }
 
@@ -84,6 +81,7 @@ export class PanelComponents {
      */
     constructBurger(): any {
         return controlDrawingManager(this.burger.ingredients)
+                .then((res: any) => this.addEventToIngredients(res))
                 .then(() => console.log('done'))
                 .catch((e) => console.log(e));
     }
@@ -106,9 +104,19 @@ export class PanelComponents {
      * @param {Array<Ingredients>} ingredients 
      * @memberof PanelComponents
      */
-    addEventToIngredients(): void {
-        DOMUtils.addEventToElement('ingredient', 'class', 'click', 
-                                   ingredientCallback, parseInt(this.burger.id.toString()));
+    addEventToIngredients(canvasObject: any): void {
+        DOMUtils
+            .addEventToElement(
+                'ingredient', 
+                'class', 
+                'click', 
+                ingredientCallback, 
+                {
+                    id : parseInt(this.burger.id.toString()), 
+                    obj: canvasObject[0],
+                    ctx: canvasObject[1]
+                }
+            );
     }
 
     /**

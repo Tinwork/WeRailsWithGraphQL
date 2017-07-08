@@ -29,15 +29,14 @@ export const controlDrawingManager = (ingredients: Array<Ingredients>, document:
     try {
         manager.initCanvas();
 
-
         return manager.retrieveSVGFromIngredients()
                .then(() => manager.draw())
-               .then(() => Promise.resolve('done'))
+               .then((res: Array<CanvasObject>) => Promise.resolve([res, manager.getCtx()]))
                .catch((e: string) => console.log(e));
     } catch(e) {
         return Promise.reject(e);
     }
-}
+};
 
 
 /**
@@ -155,5 +154,15 @@ class DrawingManager {
     draw(): any {
         let ingredientCanvasFactory = new IngredientsCanvasManager(this.canvasObj, this.ctx);
         return ingredientCanvasFactory.drawSVGElement();
+    }
+
+    /**
+     * 
+     * 
+     * @returns 
+     * @memberof DrawingManager
+     */
+    getCtx() {
+        return this.ctx;
     }
 }

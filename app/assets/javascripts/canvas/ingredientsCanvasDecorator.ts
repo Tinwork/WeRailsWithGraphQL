@@ -112,8 +112,6 @@ export class IngredientsCanvasDecorator {
         canvasObjectArray.splice(0, 0, breadArray[0]);
         canvasObjectArray.splice(canvasObjectArray.length, 0, breadArray[1]);
         
-        console.log(canvasObjectArray);
-
         return canvasObjectArray;
     }
 }

@@ -5,19 +5,29 @@ import { GraphQLRoutes } from '../graphql/queryRoutes';
 // Import Utils
 import { Utils } from '../utils/utils';
 
+// Import the main drawing manager
+import { CanvasObject } from '../components/drawingManager';
+
+// Import the annotations manager
+import { AnnotationsCanvasFactory } from '../canvas/annotationsCanvasFactory';
+
 /**
  * Ingredient Callback
  * 
  * @param {Number} id
  * @return {Promise: <any>}
  */
-export const ingredientCallback = (id: number) => {
+export const ingredientCallback = (props: any) => {
+    const { id, obj, ctx } = props;
     let token: string = Utils.retrieveGraphQLToken();
     
     // Create an instance of our component that we're going to return
     let _ingredientInstance = new IngredientManager(id, token);
 
-    return _ingredientInstance.retrieveIngredients();
+    return _ingredientInstance.retrieveIngredients()
+                       .then((res: JSON) => _ingredientInstance.setProps(obj, res, ctx))
+                       .then(() => _ingredientInstance.buildAnnotation())
+                       .catch((e: string) => Promise.reject(e));
 }
 
 /**
@@ -27,8 +37,11 @@ export const ingredientCallback = (id: number) => {
  */
 class IngredientManager {
     
-    menuID: number;
-    token : string;
+    menuID     : number;
+    token      : string;
+    canvasProps: Array<CanvasObject>; 
+    jsonIng    : JSON;
+    ctx        : CanvasRenderingContext2D;
 
     /**
      * Creates an instance of IngredientComponent.
@@ -47,17 +60,44 @@ class IngredientManager {
      * @returns {*} 
      * @memberof IngredientComponent
      */
-    retrieveIngredients(): any {
+    retrieveIngredients(): Promise<any> {
         let queryInstance = new QueryManager(this.token);
         // Execute a query to retrieve the information for a menu
     
-        queryInstance.fetchGraph({
+        return queryInstance.fetchGraph({
             route: GraphQLRoutes.getIngredients(),
             datas: {
                 'id': this.menuID
             }
         })
-        .then((res: JSON) => console.log(res))
+        .then((res: JSON) => Promise.resolve(res))
         .catch((e: string)  => Promise.reject(e));    
+    }
+
+    
+    /**
+     * 
+     * 
+     * @param {Array<CanvasObject>} obj 
+     * @memberof IngredientManager
+     */
+    buildAnnotation() {
+        let _instanceAnnot = new AnnotationsCanvasFactory(this.ctx, this.canvasProps);
+        _instanceAnnot.buildAnnotation(this.jsonIng);
+    }
+
+
+    /**
+     * 
+     * 
+     * @param {Array<CanvasObject>} CanvasObjProps 
+     * @memberof IngredientManager
+     */
+    setProps(canvasObjProps: Array<CanvasObject>, res: JSON, ctx: CanvasRenderingContext2D) {
+        this.canvasProps = canvasObjProps;
+        this.jsonIng = res;
+        this.ctx = ctx;
+
+        return Promise.resolve();
     }
 }
