@@ -1,0 +1,17 @@
+<svg id="round_burger" data-name="round burger" xmlns="http://www.w3.org/2000/svg" width="296" height="4" viewBox="0 0 296 4">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #74af47;
+        stroke: #578c33;
+        stroke-width: 0.96px;
+      }
+    </style>
+  </defs>
+  <g id="cornichon">
+    <rect class="cls-1" width="89" height="4"/>
+    <rect id="Rectangle_2_copie" data-name="Rectangle 2 copie" class="cls-1" x="89" width="89" height="4"/>
+    <rect id="Rectangle_2_copie_2" data-name="Rectangle 2 copie 2" class="cls-1" x="178" width="89" height="4"/>
+    <rect id="Rectangle_2_copie_3" data-name="Rectangle 2 copie 3" class="cls-1" x="241" width="55" height="4"/>
+  </g>
+</svg>

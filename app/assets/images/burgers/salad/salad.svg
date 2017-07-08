@@ -1,0 +1,21 @@
+<svg id="round_burger" data-name="round burger" xmlns="http://www.w3.org/2000/svg" width="283" height="11" viewBox="0 0 283 11">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76a159;
+      }
+
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #9bce74;
+      }
+    </style>
+  </defs>
+  <g id="salad">
+    <path id="big_leaves" data-name="big leaves" class="cls-1" d="M0-.026v8H283v-8H0Z"/>
+    <path id="Forme_2" data-name="Forme 2" class="cls-2" d="M0,7.977v2.1H283v-2.1S267.086,4,238,4s-42,3.977-42,3.977H167S153.252,3,141.948,3,117,7.977,117,7.977H89S66.031,4.32,46,4.32,0,7.977,0,7.977Z"/>
+  </g>
+</svg>

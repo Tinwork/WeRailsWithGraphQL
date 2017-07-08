@@ -2,7 +2,6 @@
 
 .footer {
   display: block;
-
   height: 10%;
   width: 100%;
 
@@ -10,6 +9,7 @@
 
   background: url(image_path('plate_wood.png')), $menu-bg-color;
   background-size: 250px 250px;
+  
 
   p {
     position: absolute;

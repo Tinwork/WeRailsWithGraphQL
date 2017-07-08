@@ -1,15 +1,22 @@
 $bodyBgColor : #E4A770;
 // Define every variable here
 $menu-bg-color: #DD9453;
+$menu-bg-loader: #BD0034;
 $menu-shadow-color: #845546;
 
 // Items category color
 $app-layout-bg : #713B30;
 $condiments-layout : #f79700;
 $drink-layout: #7cadd9;
-
+ 
 // Footer
 $calories: #ee2d24;
 
 $variantThemeColor : #CA9463;
-$variantThemeColorDarken : #B08156;
+$variantThemeColorDarken : rgba(176, 129, 86, 1);
+
+// Menu colors
+$mainMenuColor: #CF9867;
+$ingredient-panel-bg: #e3a064;
+$menuWidth: 18%;
+
