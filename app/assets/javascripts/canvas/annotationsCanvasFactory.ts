@@ -4,7 +4,13 @@ import { DOMUtils } from '../utils/dom';
 
 // Import the drawing manager
 import { CanvasObject } from '../components/drawingManager';
+import { CanvasHelper } from './canvasHelper';
 
+const OPTIONS = {
+    RADIUS: 6,
+    COLOR : '#FFFFFF', 
+    WIDTH : 2
+};
 
 /**
  * 
@@ -24,8 +30,19 @@ export class AnnotationsCanvasFactory {
     constructor(ctx: CanvasRenderingContext2D, ingredients: Array<CanvasObject>) {
         this.ctx = ctx;
         this.ingredients = ingredients;
+
+        // Init our canvas helper
+        CanvasHelper.setProps(this.ctx);
     }
 
+
+    /**
+     * 
+     * 
+     * @param {*} res 
+     * @returns {Promise<any>} 
+     * @memberof AnnotationsCanvasFactory
+     */
     buildAnnotation(res: any): Promise<any> {
         /* 
          *  The process is to create an array based on the ingredients JSON and the CanvasObject array
@@ -48,7 +65,96 @@ export class AnnotationsCanvasFactory {
                 return filterData;
         });
 
-        console.log(filterIngredients);
+        this.appendBulletToCanvas(filterIngredients, data);        
+    }
+
+    
+    /**
+     * 
+     * 
+     * @param {Array<CanvasObject>} filterDatas 
+     * @memberof AnnotationsCanvasFactory
+     */
+    appendBulletToCanvas(filterDatas: Array<CanvasObject>, data: any): void {
+        filterDatas.map((d: CanvasObject, idx: number) => {
+                    console.log('appendbulet');
+
+            let props = this.calculateCenter(d.canvasObject);
         
+            // Getting the props for drawing a cirlce
+            CanvasHelper.generateCircle(this.createRadiusOpts(props));
+            CanvasHelper.drawLine(this.createLineOpts(props, idx));
+            CanvasHelper.renderText(this.createTextPos(props, idx, data[idx]))
+        });
+    }
+
+
+    /**
+     * 
+     * 
+     * @param {*} position 
+     * @returns {*} 
+     * @memberof AnnotationsCanvasFactory
+     */
+    calculateCenter(position: any): any {
+        let topCenter  = position.top  - (position.height / 0.75);
+        let leftCenter = position.left + (position.width / 2);
+
+        return {
+            x: leftCenter,
+            y: topCenter
+        };
+    }
+
+    /**
+     * 
+     * 
+     * @param {*} positionsProps 
+     * @returns {*} 
+     * @memberof AnnotationsCanvasFactory
+     */
+    createRadiusOpts(positionsProps: any): any {
+        return Object.assign(positionsProps, {
+            radius: OPTIONS.RADIUS,
+            color : OPTIONS.COLOR,
+            width : OPTIONS.WIDTH
+        });
+    }
+
+
+    /**
+     * 
+     * 
+     * @param {*} positionsProps 
+     * @param {number} idx 
+     * @returns {*} 
+     * @memberof AnnotationsCanvasFactory
+     */
+    createLineOpts(positionsProps: any, idx: number): any {
+        return Object.assign({}, {
+            sX: positionsProps.x,
+            sY: positionsProps.y,
+            tX: idx % 2 === 0 ? (CanvasHelper.getCanvasWidth() / 2 - 200)
+                              : 200,
+            tY: positionsProps.y
+        });
+    }
+
+    /**
+     * 
+     * 
+     * @param {*} positionProps 
+     * @param {number} idx 
+     * @returns {*} 
+     * @memberof AnnotationsCanvasFactory
+     */
+    createTextPos(positionProps: any, idx: number, ingOpts: any): any {
+        return Object.assign({}, {
+            x   : idx % 2 === 0 ? (CanvasHelper.getCanvasWidth() / 2 - 170)
+                                : 120,
+            y   : positionProps.y,
+            text: `${ingOpts.label} of type ${ingOpts.category.label} | give you ${ingOpts.calories}`,
+            font: '14px sans-serif'
+        });
     }
 }
