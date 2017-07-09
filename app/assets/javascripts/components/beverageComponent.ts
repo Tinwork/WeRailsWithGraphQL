@@ -52,12 +52,13 @@ class BeverageComponents {
         let token: string = Utils.retrieveGraphQLToken();
         // Create an instance of the QueryManager
         let _instance = new QueryManager(token);
+        console.log(`this menu id `+this.menuID);
         // Get the beverage
         return _instance.fetchGraph({
             route: GraphQLRoutes.getBeverage(),
-            variable: {id: this.menuID}
+            datas: {id: this.menuID}
         })
-        .then((res: JSON) => Promise.resolve(res))
+        .then((res: any) => Promise.resolve(res.data))
         .catch((e: string) => Promise.reject(e));
     }
 
@@ -69,8 +70,8 @@ class BeverageComponents {
      * @returns 
      * @memberof BeverageComponents
      */
-    triggerDrawing(res: JSON) {
+    triggerDrawing(res: any) {
         let _instance = new BeverageCanvasManager('beverage', 'drink');
-        return _instance.createBeverage(res);
+        return _instance.createBeverage(res.beverage);
     }
 }

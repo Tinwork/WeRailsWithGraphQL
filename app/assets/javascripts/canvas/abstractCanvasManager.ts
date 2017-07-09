@@ -11,6 +11,7 @@ export class AbstractCanvasManager {
     canvasID: string;
     ctx     : CanvasRenderingContext2D;
     contID  : string;
+    canvas  : HTMLCanvasElement;
 
 
     /**
@@ -34,15 +35,15 @@ export class AbstractCanvasManager {
      * @memberof AbstractCanvasManager
      */
     initCanvas(): Promise<any> {
-        let canvas = <HTMLCanvasElement> DOMUtils.getElementFromType(this.canvasID, 'id');
+        this.canvas = <HTMLCanvasElement> DOMUtils.getElementFromType(this.canvasID, 'id');
 
         // get the canvas
-        if (canvas === undefined || canvas === null)
+        if (this.canvas === undefined || this.canvas === null)
             return Promise.reject('canvas does not exist');
         
         // Get the context
-        this.ctx = canvas.getContext('2d');
-        return Promise.resolve(canvas);
+        this.ctx = this.canvas.getContext('2d');
+        return Promise.resolve();
     }
 
      /**
@@ -50,20 +51,23 @@ export class AbstractCanvasManager {
      * 
      * @memberof BeverageCanvasManager
      */
-    setSize(canvas: HTMLCanvasElement): Promise<any> {
+    setSize(): Promise<any> {
         // retrieve the container
         let container = DOMUtils.getElementFromType(this.contID, 'id');
         // retrieve the factor of the canvas
         let factor: number = this.sizing();
-        
+
         // set the size
-        canvas.width  = factor * container.offsetWidth;
-        canvas.height = factor * container.offsetHeight;
+        this.canvas.width  = factor * container.offsetWidth;
+        this.canvas.height = factor * container.offsetHeight;
 
         // set the style to the canvas
-        canvas.style.width  = container.offsetWidth;
-        canvas.style.height = container.offsetHeight;
+        this.canvas.style.width  = `${container.offsetWidth}px`;
+        this.canvas.style.height = `${container.offsetHeight}px`;
 
+        if (factor === 2) 
+            this.ctx.scale(2,2);
+            
         return Promise.resolve();
     }
 
@@ -109,5 +113,18 @@ export class AbstractCanvasManager {
         } catch (e) {
             return Promise.reject(e);
         };
+    }
+
+    /**
+     * 
+     * 
+     * @returns 
+     * @memberof AbstractCanvasManager
+     */
+    initFacade() {
+        return this.initCanvas()
+                   .then(() => this.setSize())
+                   .then(() => Promise.resolve())
+                   .catch((e: string) => Promise.reject(e));
     }
 }

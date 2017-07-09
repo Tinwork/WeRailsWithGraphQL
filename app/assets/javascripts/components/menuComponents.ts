@@ -98,7 +98,7 @@ export class MenuComponents {
             panelComponent.constructBurger();
 
             // Execute the beverage based on the id
-            beverageCallback(burger[id]);
+            beverageCallback(id + 1);
 
         }, {burger: this.burgers, panel: PanelComponents});
 

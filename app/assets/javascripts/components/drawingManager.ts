@@ -104,6 +104,7 @@ class DrawingManager {
         // set the dimension of the canvas
 
         if (this.platform === 'macintel') {
+            console.log('pass here');
             this.canvas.width  = 2 * container.offsetWidth;
             this.canvas.height = 2 * container.offsetHeight;
         
@@ -114,8 +115,8 @@ class DrawingManager {
         this.canvas.height = container.offsetHeight;
         
         // set style size to canvas
-        this.canvas.style.width  = container.offsetWidth;
-        this.canvas.style.height = container.offsetHeight;
+        this.canvas.style.width  = `${container.offsetWidth}px`;
+        this.canvas.style.height = `${container.offsetHeight}px`;
     }
 
      /**

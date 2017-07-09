@@ -127,7 +127,7 @@ export class IngredientsCanvasManager {
 
         try {
             this.ctx.drawImage(img, 
-                left, 
+                left + 50, 
                 this.imgHeight === undefined ? this.ctx.canvas.clientHeight / 3 : this.imgHeight,  
                 elementSize.width, 
                 elementSize.height);
@@ -163,7 +163,7 @@ export class IngredientsCanvasManager {
             height: d.height,
             width : d.width,
             top   : d.top,
-            left  : d.left
+            left  : d.left + 50
         };
 
         // Saving the props into the canvas object

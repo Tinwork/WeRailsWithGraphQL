@@ -88,11 +88,12 @@ export class CanvasHelper {
         // if we founded a break into the text loop and create text
         texts.map((t: string, idx: number) => {
             CanvasHelper.ctx.font = font;
+            CanvasHelper.ctx.textAlign = 'center';
+            CanvasHelper.ctx.fillStyle = 'white';
             CanvasHelper.ctx.fillText(
                t, 
                x, 
-               idx === 0 ? y : y + (idx * 10));
-            CanvasHelper.ctx.textAlign = 'center';
+               idx === 0 ? y : y + (idx * 11));
             CanvasHelper.ctx.stroke();
         });
     }

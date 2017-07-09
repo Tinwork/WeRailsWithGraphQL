@@ -132,15 +132,16 @@ export const burgerHelper = ((OPTIONS) => {
          * @return {string}
          */
         getBeveragePath: (name: string) => {
-            let bv = BEVERAGE_TYPE.map((beverage: string) => {
+            let bv = BEVERAGE_TYPE.filter((beverage: string) => {
                 if (beverage.includes(name))
                     return beverage;
             });
 
+            console.log(bv);
             if (bv.length === 0)
-                return 'beverage_water.png';
+                return 'beverages/beverage_water.png';
             
-            return `beverage_${bv[0]}.png`;
+            return `beverages/beverage_${bv[0]}.png`;
         } 
     };
 
