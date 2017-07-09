@@ -15,6 +15,18 @@ const TYPE_AVAILABLE = [
     ['fish_bread', 'whopper_bread', 'crispy_bread']
 ]
 
+// Define beverage type
+const BEVERAGE_TYPE = [
+    'coke_light',
+    'coke_zero',
+    'coke_life',
+    'coke',
+    'fanta',
+    'nestea',
+    'sprite',
+    'water'
+]
+
 /**
  * Burger Helper
  * @param {Object: <any>} OPTIONS
@@ -112,7 +124,24 @@ export const burgerHelper = ((OPTIONS) => {
          *      Get the ratio
          * @return {Number} ratio
          */
-        getRatio: () => OPTIONS.IMG_SIZE.ratio
+        getRatio: () => OPTIONS.IMG_SIZE.ratio,
+
+        /**
+         * Get Beverage Path
+         * @param {string} name
+         * @return {string}
+         */
+        getBeveragePath: (name: string) => {
+            let bv = BEVERAGE_TYPE.map((beverage: string) => {
+                if (beverage.includes(name))
+                    return beverage;
+            });
+
+            if (bv.length === 0)
+                return 'beverage_water.png';
+            
+            return `beverage_${bv[0]}.png`;
+        } 
     };
 
 })(BURGER_SIZE_OPTS);

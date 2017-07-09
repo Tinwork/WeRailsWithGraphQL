@@ -1,5 +1,6 @@
 // Importing other components
 import { PanelComponents } from './panelComponents';
+import { beverageCallback } from './beverageComponent';
 
 // Importing GraphQL dependencies
 import { QueryManager } from '../graphql/queryManager';
@@ -77,6 +78,7 @@ export class MenuComponents {
     /**
      * Add Event To Menu 
      *      Clicking on one menu will open the ingredient panel
+     * /!\ The callback should have been done in an other Method for visibility purposes
      * @param {string} className 
      * @returns {Promise<boolean>} 
      * @memberof MenuComponents
@@ -94,6 +96,9 @@ export class MenuComponents {
             let panelComponent = new panel(burger[id]);
             panelComponent.constructIngredientsPanel();
             panelComponent.constructBurger();
+
+            // Execute the beverage based on the id
+            beverageCallback(burger[id]);
 
         }, {burger: this.burgers, panel: PanelComponents});
 

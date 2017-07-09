@@ -73,6 +73,29 @@ export class GraphQLRoutes {
             }
         `;
     }
+
+
+    /**
+     * 
+     * 
+     * @static
+     * @returns 
+     * @memberof GraphQLRoutes
+     */
+    static getBeverage() {
+        return `
+            query Beverage($id: Int!) {
+                beverage(id: $id) {
+                    label
+                    calories
+                    ice
+                    category {
+                        label
+                    }
+                }
+            }
+        `;
+    }
 }
 
 
