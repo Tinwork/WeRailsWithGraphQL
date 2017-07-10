@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="992" height="600" viewBox="0 0 992 600">
+  <defs>
+    <style>
+      .cls-1 {
+        filter: url(#filter);
+      }
+
+      .cls-2 {
+        fill: #e3a33f;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-3 {
+        fill: #f7b346;
+      }
+
+      .cls-4 {
+        fill: none;
+        stroke: #f4c478;
+        stroke-linecap: round;
+        stroke-width: 20.167px;
+      }
+    </style>
+    <filter id="filter" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dx="0.419" dy="5.985" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="2.828"/>
+      <feFlood result="flood" flood-opacity="0.39"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="nuggets_copie" data-name="nuggets copie" class="cls-1">
+    <path id="Forme_2" data-name="Forme 2" class="cls-2" d="M425,186s-19.849,113.325-2,140,77.172,44.219,97,51,100.244,40.017,207-22,97.395-57.72,165-69,97.2-50.163,92-92-16-97-16-97Z"/>
+    <path id="Forme_1" data-name="Forme 1" class="cls-3" d="M967,129S989.324,30.567,898,7,629,37,629,37,424.805,94.285,423,202s189.6,105,228,87,133.681-87.084,159-93S944.833,189.34,967,129Z"/>
+    <g id="Groupe_1" data-name="Groupe 1">
+      <path id="Forme_3" data-name="Forme 3" class="cls-4" d="M501,148s19.649-15.125,25-26,32.425-2.756,42-4"/>
+      <path id="Forme_3_copie" data-name="Forme 3 copie" class="cls-4" d="M633,182s19.649-15.125,25-26,32.425-2.756,42-4"/>
+      <path id="Forme_3_copie_2" data-name="Forme 3 copie 2" class="cls-4" d="M667,82s19.649-15.125,25-26,32.425-2.757,42-4"/>
+      <path id="Forme_3_copie_3" data-name="Forme 3 copie 3" class="cls-4" d="M815,166s19.649-15.125,25-26,32.425-2.756,42-4"/>
+      <path id="Forme_3_copie_4" data-name="Forme 3 copie 4" class="cls-4" d="M520,260s19.649-15.125,25-26,32.425-2.756,42-4"/>
+      <path id="Forme_3_copie_5" data-name="Forme 3 copie 5" class="cls-4" d="M848,50s19.649-15.125,25-26,32.425-2.756,42-4"/>
+    </g>
+  </g>
+  <g id="nuggets_copie_2" data-name="nuggets copie 2" class="cls-1">
+    <path id="Forme_2-2" data-name="Forme 2" class="cls-2" d="M17,235S-2.849,348.325,15,375s77.172,44.219,97,51,100.244,40.017,207-22,97.395-57.72,165-69,97.2-50.163,92-92-16-97-16-97Z"/>
+    <path id="Forme_1-2" data-name="Forme 1" class="cls-3" d="M559,178s22.324-98.433-69-122S221,86,221,86,16.805,143.285,15,251s189.6,105,228,87,133.681-87.084,159-93S536.833,238.34,559,178Z"/>
+    <g id="Groupe_1-2" data-name="Groupe 1">
+      <path id="Forme_3-2" data-name="Forme 3" class="cls-4" d="M93,197s19.649-15.125,25-26,32.425-2.756,42-4"/>
+      <path id="Forme_3_copie-2" data-name="Forme 3 copie" class="cls-4" d="M225,231s19.649-15.125,25-26,32.425-2.756,42-4"/>
+      <path id="Forme_3_copie_2-2" data-name="Forme 3 copie 2" class="cls-4" d="M259,131s19.649-15.125,25-26,32.425-2.756,42-4"/>
+      <path id="Forme_3_copie_3-2" data-name="Forme 3 copie 3" class="cls-4" d="M407,215s19.649-15.125,25-26,32.425-2.756,42-4"/>
+      <path id="Forme_3_copie_4-2" data-name="Forme 3 copie 4" class="cls-4" d="M112,309s19.649-15.125,25-26,32.425-2.756,42-4"/>
+      <path id="Forme_3_copie_5-2" data-name="Forme 3 copie 5" class="cls-4" d="M440,99s19.649-15.125,25-26,32.425-2.757,42-4"/>
+    </g>
+  </g>
+  <g id="nuggets" class="cls-1">
+    <path id="Forme_2-3" data-name="Forme 2" class="cls-2" d="M226,381s-19.849,113.325-2,140,77.172,44.219,97,51,100.244,40.017,207-22,97.395-57.72,165-69,97.2-50.163,92-92-16-97-16-97Z"/>
+    <path id="Forme_1-3" data-name="Forme 1" class="cls-3" d="M768,324s22.324-98.433-69-122-269,30-269,30S225.805,289.285,224,397s189.6,105,228,87,133.681-87.084,159-93S745.833,384.34,768,324Z"/>
+    <g id="Groupe_1-3" data-name="Groupe 1">
+      <path id="Forme_3-3" data-name="Forme 3" class="cls-4" d="M302,343s19.649-15.125,25-26,32.425-2.756,42-4"/>
+      <path id="Forme_3_copie-3" data-name="Forme 3 copie" class="cls-4" d="M434,377s19.649-15.125,25-26,32.425-2.756,42-4"/>
+      <path id="Forme_3_copie_2-3" data-name="Forme 3 copie 2" class="cls-4" d="M468,277s19.649-15.125,25-26,32.425-2.756,42-4"/>
+      <path id="Forme_3_copie_3-3" data-name="Forme 3 copie 3" class="cls-4" d="M616,361s19.649-15.125,25-26,32.425-2.756,42-4"/>
+      <path id="Forme_3_copie_4-3" data-name="Forme 3 copie 4" class="cls-4" d="M321,455s19.649-15.125,25-26,32.425-2.756,42-4"/>
+      <path id="Forme_3_copie_5-3" data-name="Forme 3 copie 5" class="cls-4" d="M649,245s19.649-15.125,25-26,32.425-2.756,42-4"/>
+    </g>
+  </g>
+</svg>
