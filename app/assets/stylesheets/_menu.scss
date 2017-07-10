@@ -74,6 +74,17 @@
       }
     }
 
+    .beverage {
+
+      &.odd {
+        background-color: $beverage-odd;
+      }
+
+      &.even {
+        background-color: $beverage-even;
+      }
+    }
+
     &#ingredients-panel {
       position: absolute;
       height: 100%;

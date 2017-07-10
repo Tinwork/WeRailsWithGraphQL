@@ -37,6 +37,7 @@ import { LocaleSwitcher } from './utils/lang';
         DOMUtils.addEventToElement('selAction', 'class', 'click', function() {
             // get id
             let id = parseInt(this.getAttribute('data-id'));
+            let domID = this.id;
 
             let name: string = SwitcherMenuComponents.switchType(id);
             // Get the menu by the id
@@ -48,10 +49,10 @@ import { LocaleSwitcher } from './utils/lang';
                 .catch((e: string) => console.log(e));
 
             // Update the switches
-            SwitcherMenuComponents.updateButton(id);
+            SwitcherMenuComponents.updateButton(id, domID);
 
             // Update the name of the cat
-            textTitle.inenrHTML = name;
+            textTitle.innerHTML = name;
         })
     };
 

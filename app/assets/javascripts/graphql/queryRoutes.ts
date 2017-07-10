@@ -86,6 +86,7 @@ export class GraphQLRoutes {
         return `
             query Beverage($id: Int!) {
                 beverage(id: $id) {
+                    id
                     label
                     calories
                     ice
@@ -96,6 +97,29 @@ export class GraphQLRoutes {
             }
         `;
     }
+
+    /**
+     * 
+     * 
+     * @static
+     * @returns 
+     * @memberof GraphQLRoutes
+     */
+    static getCondiments() {
+        return `
+            query Condiment($id: Int!) {
+                condiment(id: $id) {
+                    label
+                    calories
+                    ingredients {
+                    label
+                    }
+                }
+            }
+        `
+    }
+
+
 }
 
 

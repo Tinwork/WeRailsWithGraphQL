@@ -7,16 +7,16 @@ const BURGER_SIZE_OPTS = {
     }
 };
 
-// Define Type Available constant
-const TYPE_AVAILABLE = [
+// Define Types Available constant
+const TYPES_AVAILABLE = [
     ['steak', 'chicken', 'bacon', 'fish'],
     ['salad', 'onion', 'pickle', 'tomato'],
     ['cheese_one', 'cheese_two'],
     ['fish_bread', 'whopper_bread', 'crispy_bread']
 ]
 
-// Define beverage type
-const BEVERAGE_TYPE = [
+// Define beverages type
+const BEVERAGES_TYPE = [
     'coke_light',
     'coke_zero',
     'coke_life',
@@ -25,6 +25,17 @@ const BEVERAGE_TYPE = [
     'nestea',
     'sprite',
     'water'
+];
+
+// Define condiments type
+const CONDIMENTS_TYPE = [
+    'frie',
+    'frites',
+    'nuggets',
+    'strips',
+    'onion',
+    'cheese',
+    'snackbox'
 ]
 
 /**
@@ -103,7 +114,7 @@ export const burgerHelper = ((OPTIONS) => {
         getPathForName: (ingredientName: string) => {
             let path = ``;
 
-            TYPE_AVAILABLE.map((ingredient: string[], idx: number) => {
+            TYPES_AVAILABLE.map((ingredient: string[], idx: number) => {
                 ingredient.map((name: string): void => {
                     if (ingredientName.toLowerCase().indexOf(name) !== -1)
                         path = getPath(idx, name)
@@ -132,17 +143,34 @@ export const burgerHelper = ((OPTIONS) => {
          * @return {string}
          */
         getBeveragePath: (name: string) => {
-            let bv = BEVERAGE_TYPE.filter((beverage: string) => {
+            let bv = BEVERAGES_TYPE.filter((beverage: string) => {
                 if (beverage.includes(name))
                     return beverage;
             });
 
-            console.log(bv);
             if (bv.length === 0)
                 return 'beverages/beverage_water.png';
             
             return `beverages/beverage_${bv[0]}.png`;
-        } 
+        },
+        
+        /**
+         * Get Condiment Path
+         *      Get the path for a given condiment
+         * @param {string} name
+         * @return {string} path
+         */
+        getCondimentPath: (name: string) => {
+            let condiment = CONDIMENTS_TYPE.filter((condiment: string) => {
+                if (condiment.includes(name))
+                    return condiment;
+            });
+
+            if (condiment.length === 0)
+                return `condiments/nuggets.svg`;
+
+            return `condiments/${condiment[0]}.svg`
+        }
     };
 
 })(BURGER_SIZE_OPTS);

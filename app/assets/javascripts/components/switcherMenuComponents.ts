@@ -86,22 +86,19 @@ export class SwitcherMenuComponents {
      * @param {number} id 
      * @memberof SwitcherMenuComponents
      */
-    static updateButton(id: number): void{
+    static updateButton(id: number, idDOM: string): void{
 
         let lengthCat: number = SwitcherMenuComponents.category.length; 
 
         let switchBtn: any = DOMUtils.getElementFromType('selAction', 'class');
 
         for (let idx = 0; idx < switchBtn.length; idx++) {
-            let previousID: number = id === 0 ? 0 : id - 1;
-            let nextID: number = id === lengthCat ? id : id + 1;
-
-            console.log(`previous ${previousID} next : ${nextID}`);
-
-            if (idx === 0)
-                switchBtn[idx].setAttribute('data-id', previousID);
-            else 
-                switchBtn[idx].setAttribute('data-id', nextID);
+            let currentID = switchBtn[idx].getAttribute('data-id');
+            
+            if (idDOM === 'prev' && id !== 0)
+                switchBtn[idx].setAttribute('data-id', parseInt(currentID) - 1);
+            else if (idDOM === 'next' && id < 2)
+                switchBtn[idx].setAttribute('data-id', parseInt(currentID) + 1);    
         }
     }
         

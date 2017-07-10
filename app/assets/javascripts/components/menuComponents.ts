@@ -1,6 +1,5 @@
 // Importing other components
 import { PanelComponents } from './panelComponents';
-import { beverageCallback } from './beverageComponent';
 
 // Importing GraphQL dependencies
 import { QueryManager } from '../graphql/queryManager';
@@ -57,6 +56,10 @@ export class MenuComponents {
      * @memberof MenuComponents
      */
     buildMenu(burgers: Array<Burger>) {
+        // clean the menu in case something is already here
+        DOMUtils.getElementFromType('menu-items', 'id').innerHTML = '';
+        DOMUtils.applyStyle('menu-items', 'id', ['backgroundColor'], ['#CF9867']);
+
         // Loop threw the burger
         this.burgers = burgers;
         burgers.map((burger: Burger, idx: number) => {
@@ -96,10 +99,6 @@ export class MenuComponents {
             let panelComponent = new panel(burger[id]);
             panelComponent.constructIngredientsPanel();
             panelComponent.constructBurger();
-
-            // Execute the beverage based on the id
-            beverageCallback(id + 1);
-
         }, {burger: this.burgers, panel: PanelComponents});
 
         return Promise.resolve(true);
