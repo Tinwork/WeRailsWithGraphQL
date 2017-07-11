@@ -98,6 +98,26 @@ export class GraphQLRoutes {
         `;
     }
 
+    
+    /**
+     * 
+     * 
+     * @static
+     * @memberof GraphQLRoutes
+     */
+    static getAllBeverage() {
+        return `
+            {
+                beverages {
+                    id
+                    label
+                    calories
+                    ice
+                }
+            }
+        `;
+    }
+
     /**
      * 
      * 
@@ -105,10 +125,10 @@ export class GraphQLRoutes {
      * @returns 
      * @memberof GraphQLRoutes
      */
-    static getCondiments() {
+    static getAllCondiments() {
         return `
-            query Condiment($id: Int!) {
-                condiment(id: $id) {
+            {
+                condiments {
                     id
                     label
                     calories
@@ -117,9 +137,9 @@ export class GraphQLRoutes {
                     }
                 }
             }
+
         `
     }
-
 
     /**
      * 
@@ -135,7 +155,7 @@ export class GraphQLRoutes {
                     label
                     calories
                     ingredients {
-                    label
+                        label
                     }
                 }
             }

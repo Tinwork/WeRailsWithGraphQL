@@ -86,19 +86,19 @@ export class CondimentsCanvasManager extends AbstractCanvasManager{
      */
     _drawCondiment(blob: Blob): Promise<any> {
         let img: HTMLImageElement = new Image(),
-            url: any = self.URL.createObjectURL(blob);
+            url: any = self.URL.createObjectURL(blob),
+            ratio: number = burgerHelper.getRatio();
 
         img.src = url;
         
 
         return new Promise((resolve, reject) => {
-            console.log(this);
             img.onload = function() {
                 this.drawImg(img, {
-                    left  : (this.ctx.canvas.width / 2) - (img.width / 2) + 25, 
-                    top   : (this.ctx.canvas.height / 2) - (img.height * 0.35 * 2) ,
-                    width : img.width * 0.35,
-                    height: img.height * 0.35
+                    left  : (this.ctx.canvas.width / 2) - (img.width / 2 * ratio), 
+                    top   : (this.ctx.canvas.height / 2) - (img.height / 2 * (ratio + 0.45)) ,
+                    width : img.width * (ratio - 0.45),
+                    height: img.height * (ratio - 0.45)
                 })
                 .then(() => {
                     self.URL.revokeObjectURL(url);

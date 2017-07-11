@@ -125,10 +125,10 @@ export class CondimentsMenuComponents {
         
         // Retrieve the condiments
         return _instance.fetchGraph({
-            route: GraphQLRoutes.getCondiments(),
+            route: GraphQLRoutes.getAllCondiments(),
             datas: {id: 1}
         })
-        .then((res: any) => Promise.resolve([res.data.condiment]))
+        .then((res: any) => Promise.resolve(res.data.condiments))
         .catch((e: string) => Promise.reject(e));
     }
 }

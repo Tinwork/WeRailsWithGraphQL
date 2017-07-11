@@ -120,14 +120,13 @@ export class IngredientsCanvasManager {
     drawImage(img: any, url: any): Promise<any> {
         const ratio = burgerHelper.getRatio();
         let elementSize: any = burgerHelper.getSize(img);
-        let panel = DOMUtils.getElementFromType('ingredients-panel', 'id');
 
         // Calculating width
-        let left  :number = (this.ctx.canvas.clientWidth / 2) - (panel.clientWidth * ratio);
+        let left  :number = (this.ctx.canvas.clientWidth / 2) - (img.width / 2 * ratio);
 
         try {
             this.ctx.drawImage(img, 
-                left + 50, 
+                left, 
                 this.imgHeight === undefined ? this.ctx.canvas.clientHeight / 3 : this.imgHeight,  
                 elementSize.width, 
                 elementSize.height);
@@ -163,7 +162,7 @@ export class IngredientsCanvasManager {
             height: d.height,
             width : d.width,
             top   : d.top,
-            left  : d.left + 50
+            left  : d.left
         };
 
         // Saving the props into the canvas object

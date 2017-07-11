@@ -66,14 +66,15 @@ export class BeverageCanvasManager extends AbstractCanvasManager {
     _drawFacade(blob: Blob): any {
 
         let img: HTMLImageElement = new Image(),
-            url: any = self.URL.createObjectURL(blob);
+            url: any = self.URL.createObjectURL(blob),
+            ratio: number = burgerHelper.getRatio();
         
         img.src = url;
 
         return new Promise((resolve, reject) => {
             img.onload = function() {
-                this.imgW = img.width * 0.35,
-                this.imgH = img.height * 0.35
+                this.imgW = img.width * (ratio - 0.45),
+                this.imgH = img.height * (ratio - 0.45)
 
                 this.drawImg(img, {
                     left  : (this.ctx.canvas.width / 2) - (this.imgW + 25),

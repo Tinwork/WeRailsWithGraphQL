@@ -1,6 +1,10 @@
 // Define the generic burger size
+// Ratio = 1280 = 0.8
+// 1 = 1600
+import { Utils } from '../utils/utils';
+         
 const BURGER_SIZE_OPTS = {
-    IMG_SIZE   : {ratio: 0.8},
+    IMG_SIZE   : {ratio: Utils.calculateMainCanvasRatio()},
     CANVAS_SIZE: {
         WIDTH : 1000,
         HEIGHT: 500

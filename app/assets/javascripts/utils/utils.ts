@@ -1,3 +1,4 @@
+const RATIO_BASE: number = 1600;
 /**
  * 
  * 
@@ -126,5 +127,19 @@ export class Utils {
      */
     static getCalories() {
         return Utils.calories;
+    }
+
+    
+    
+    /**
+     * 
+     * 
+     * @static
+     * @returns 
+     * @memberof Utils
+     */
+    static calculateMainCanvasRatio() {
+        // Assuming that 1600 = ratio of 1
+        return window.innerWidth / RATIO_BASE;
     }
 }

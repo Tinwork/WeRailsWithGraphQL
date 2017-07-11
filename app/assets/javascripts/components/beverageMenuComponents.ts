@@ -50,7 +50,7 @@ export class BeverageMenuComponents {
     initMenuComponent(): Promise<any> {
         console.log('laaa');
         return this.fetchAllBeverage()
-            .then(res => this.populateSidebar([res.data.beverage]))
+            .then(res => this.populateSidebar(res.data.beverages))
             .then(this.addClickEvent)
             .catch(e => console.log(e));
     }
@@ -122,8 +122,8 @@ export class BeverageMenuComponents {
         let _queryInstance = new QueryManager(Utils.retrieveGraphQLToken());
 
         return _queryInstance.fetchGraph({
-            route: GraphQLRoutes.getBeverage(),
-            datas: {id: 1}
+            route: GraphQLRoutes.getAllBeverage(),
+            datas: null
         })
         .then((res: any) => Promise.resolve(res))
         .catch((e: string) => Promise.reject(e));
