@@ -45,13 +45,16 @@ export class CondimentsCanvasManager extends AbstractCanvasManager{
      */
     loadCondimentPicture(): Promise<any> {
 
-        return this._retrieveCondimentByID()
-                   .then((res: any) => this.condiment = res)
+        return  this.initFacade()
+                   .then(() => this._retrieveCondimentByID())
+                   .then((res: any) => {
+                       this.condiment = res
+                   })
                    .then(() => Utils.fetchSVG(
-                       burgerHelper.getCondimentPath(this.condiment.label), 
+                       Utils.asset_path(burgerHelper.getCondimentPath(this.condiment.label)), 
                        this.condiment.label
                     ))
-                   .then(this._drawCondiment)
+                   .then((b: Blob) => this._drawCondiment(b))
                    .then(() => Promise.resolve('draw condiments'))
                    .catch((e: string) => Promise.reject(e));
     }
@@ -69,7 +72,7 @@ export class CondimentsCanvasManager extends AbstractCanvasManager{
             route   : GraphQLRoutes.getCondimentsById(),
             datas   : {id: this.condimentID} 
         })
-        .then((res: Condiments) => Promise.resolve(res));
+        .then((res: any) => Promise.resolve(res.data.condiment));
     }
     
     /**
@@ -85,8 +88,11 @@ export class CondimentsCanvasManager extends AbstractCanvasManager{
 
         img.src = url;
         
+
         return new Promise((resolve, reject) => {
+            console.log(this);
             img.onload = function() {
+                console.log(this);
                 this.drawImg(img, {
                     left  : (this.ctx.canvas.width / 2) - img.width * 0.35, 
                     top   : (this.ctx.canvas.height / 2) - img.height * 0.35,

@@ -109,10 +109,11 @@ export class GraphQLRoutes {
         return `
             query Condiment($id: Int!) {
                 condiment(id: $id) {
+                    id
                     label
                     calories
                     ingredients {
-                    label
+                        label
                     }
                 }
             }
