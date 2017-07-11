@@ -74,6 +74,28 @@
       }
     }
 
+    .beverage {
+
+      &.odd {
+        background-color: $beverage-odd;
+      }
+
+      &.even {
+        background-color: $beverage-even;
+      }
+    }
+
+    .condiment {
+
+      &.odd {
+        background-color: $condiment-odd;
+      }
+
+      &.even {
+        background-color: $condiment-even;
+      }
+    }
+
     &#ingredients-panel {
       position: absolute;
       height: 100%;
@@ -117,11 +139,13 @@
 // Menu Right
 .menu_right {
   float: left;
-  width: 7%;
+  width: 30%;
   height: 100%;
+  display: flex;
 
   .item {
-    height: 50%;
+    height: 100%;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;

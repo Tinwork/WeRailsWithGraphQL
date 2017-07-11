@@ -9,7 +9,8 @@ module Types
   CondimentType = GraphQL::ObjectType.define do
     name "Condiment"
     description "Dished served with the burger and beverage"
-
+    
+    field :id, !types.ID
     field :label, !types.String, property: :label
     field :calories, !types.Float, property: :calories
     field :ingredients, IngredientType.to_list_type

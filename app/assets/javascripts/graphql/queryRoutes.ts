@@ -73,6 +73,76 @@ export class GraphQLRoutes {
             }
         `;
     }
+
+
+    /**
+     * 
+     * 
+     * @static
+     * @returns 
+     * @memberof GraphQLRoutes
+     */
+    static getBeverage() {
+        return `
+            query Beverage($id: Int!) {
+                beverage(id: $id) {
+                    id
+                    label
+                    calories
+                    ice
+                    category {
+                        label
+                    }
+                }
+            }
+        `;
+    }
+
+    /**
+     * 
+     * 
+     * @static
+     * @returns 
+     * @memberof GraphQLRoutes
+     */
+    static getCondiments() {
+        return `
+            query Condiment($id: Int!) {
+                condiment(id: $id) {
+                    id
+                    label
+                    calories
+                    ingredients {
+                        label
+                    }
+                }
+            }
+        `
+    }
+
+
+    /**
+     * 
+     * 
+     * @static
+     * @returns 
+     * @memberof GraphQLRoutes
+     */
+    static getCondimentsById() {
+        return `
+            query Condiment($id: Int!) {
+                condiment(id: $id) {
+                    label
+                    calories
+                    ingredients {
+                    label
+                    }
+                }
+            }
+        `
+    }
+
+
 }
 
 

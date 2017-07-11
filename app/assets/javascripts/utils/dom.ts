@@ -63,6 +63,28 @@ export class DOMUtils {
 
 
     /**
+     * 
+     * 
+     * @static
+     * @param {string} DOMString 
+     * @param {string} DOMType 
+     * @returns {void} 
+     * @memberof DOMUtils
+     */
+    static cleanElement(DOMString: string, DOMType: string): void {
+        let element = DOMUtils.getElementFromType(DOMString, DOMType);
+
+        if (DOMType === 'class') {
+            for (let idx = 0; idx < element.length; idx++) 
+                element[idx].innerHTML = '';
+
+            return;
+        }
+            
+        element.innerHTML = '';
+    }
+
+    /**
      * Apply Class
      * 
      * @static

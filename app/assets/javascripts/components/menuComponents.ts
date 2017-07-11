@@ -56,6 +56,10 @@ export class MenuComponents {
      * @memberof MenuComponents
      */
     buildMenu(burgers: Array<Burger>) {
+        // clean the menu in case something is already here
+        DOMUtils.getElementFromType('menu-items', 'id').innerHTML = '';
+        DOMUtils.applyStyle('menu-items', 'id', ['backgroundColor'], ['#CF9867']);
+
         // Loop threw the burger
         this.burgers = burgers;
         burgers.map((burger: Burger, idx: number) => {
@@ -77,6 +81,7 @@ export class MenuComponents {
     /**
      * Add Event To Menu 
      *      Clicking on one menu will open the ingredient panel
+     * /!\ The callback should have been done in an other Method for visibility purposes
      * @param {string} className 
      * @returns {Promise<boolean>} 
      * @memberof MenuComponents
@@ -94,7 +99,6 @@ export class MenuComponents {
             let panelComponent = new panel(burger[id]);
             panelComponent.constructIngredientsPanel();
             panelComponent.constructBurger();
-
         }, {burger: this.burgers, panel: PanelComponents});
 
         return Promise.resolve(true);

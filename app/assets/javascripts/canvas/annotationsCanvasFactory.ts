@@ -77,7 +77,7 @@ export class AnnotationsCanvasFactory {
      */
     appendBulletToCanvas(filterDatas: Array<CanvasObject>, data: any): void {
         filterDatas.map((d: CanvasObject, idx: number) => {
-                    console.log('appendbulet');
+
 
             let props = this.calculateCenter(d.canvasObject);
         
@@ -154,7 +154,7 @@ export class AnnotationsCanvasFactory {
                                 : 120,
             y   : positionProps.y,
             text: `${ingOpts.label} of type ${ingOpts.category.label} | give you ${ingOpts.calories}`,
-            font: '14px sans-serif'
+            font: '14px Insanibu'
         });
     }
 }
