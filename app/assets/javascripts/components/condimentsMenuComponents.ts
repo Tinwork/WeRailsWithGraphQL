@@ -7,13 +7,15 @@ import { Utils } from '../utils/utils';
 import { DOMUtils } from '../utils/dom';
 import { burgerHelper } from '../kings/burgerHelper';
 
+// Import the condimentCanvasManager
+import { CondimentsCanvasManager } from '../canvas/condimentsCanvasManager';
 
 /**
  * Condiments interface
  * 
  * @interface Condiments
  */
-interface Condiments {
+export interface Condiments {
     id          : number;
     calories    : number;
     ingredients : Array<any>;
@@ -73,12 +75,14 @@ export class CondimentsMenuComponents {
             tmpl += `<div class="condiment ${classType} items" data-id="${condiment.id}">
                 <div class="item-infos">
                     <img src="${Utils.asset_path(burgerHelper.getCondimentPath(condiment.label))}">
+                    <p>${condiment.label}<p>
                 </div>
             </div>`
         });
 
         // Append the template to the dom
         DOMUtils.applyTmpl('menu-items', 'id', tmpl);
+        DOMUtils.applyStyle('menu-items', 'id', ['backgroundColor'], ['#F79700']);
         return Promise.resolve();
     }
 
@@ -98,6 +102,10 @@ export class CondimentsMenuComponents {
                 throw 'id is not a type of number';
 
             // Make a callback to the condiments drawing facade class
+            let canvasCondiments = new CondimentsCanvasManager(id, 'sidedish', 'condiments');
+            canvasCondiments.loadCondimentPicture()
+                            .then((res: string) => console.log(res))
+                            .catch((e: string) => console.log(e));
         };
 
         DOMUtils.addEventToElement('condiment', 'class', 'click', callback);
@@ -114,9 +122,9 @@ export class CondimentsMenuComponents {
         // Retrieve the condiments
         return _instance.fetchGraph({
             route: GraphQLRoutes.getCondiments(),
-            variable: {id: 1}
+            datas: {id: 1}
         })
-        .then((res: any) => Promise.resolve(res))
+        .then((res: any) => Promise.resolve([res.data.condiment]))
         .catch((e: string) => Promise.reject(e));
     }
 }

@@ -94,7 +94,7 @@ export class BeverageCanvasManager extends AbstractCanvasManager {
      * @param {*} res 
      * @memberof BeverageCanvasManager
      */
-    _drawText(res: any) {
+    _drawText(res: any): void {
         CanvasHelper.setProps(this.ctx);
         CanvasHelper.renderText({
             x: (this.ctx.canvas.width / 2) - 90,

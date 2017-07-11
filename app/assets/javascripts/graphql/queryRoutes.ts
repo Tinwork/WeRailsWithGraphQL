@@ -120,6 +120,28 @@ export class GraphQLRoutes {
     }
 
 
+    /**
+     * 
+     * 
+     * @static
+     * @returns 
+     * @memberof GraphQLRoutes
+     */
+    static getCondimentsById() {
+        return `
+            query Condiment($id: Int!) {
+                condiment(id: $id) {
+                    label
+                    calories
+                    ingredients {
+                    label
+                    }
+                }
+            }
+        `
+    }
+
+
 }
 
 

@@ -34,7 +34,7 @@ const CONDIMENTS_TYPE = [
     'nuggets',
     'strips',
     'onion',
-    'cheese',
+    'cheesy',
     'snackbox'
 ]
 
@@ -162,14 +162,15 @@ export const burgerHelper = ((OPTIONS) => {
          */
         getCondimentPath: (name: string) => {
             let condiment = CONDIMENTS_TYPE.filter((condiment: string) => {
-                if (condiment.includes(name))
+                if (condiment.indexOf(name.toLowerCase()) !== -1)
                     return condiment;
             });
 
+            console.log(condiment);
             if (condiment.length === 0)
-                return `condiments/nuggets.svg`;
+                return `condiments/nuggets.png`;
 
-            return `condiments/${condiment[0]}.svg`
+            return `condiments/${condiment[0]}.png`
         }
     };
 
