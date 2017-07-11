@@ -69,6 +69,7 @@ export class BeverageMenuComponents {
             return Promise.reject('data is not an array')
 
         DOMUtils.applyStyle('menu-items', 'id', ['backgroundColor'], ['#93C0E9']);
+        DOMUtils.applyStyle('menu-parent', 'id', ['backgroundColor'], ['#93C0E9']);
 
         // Clean the sidebar
         DOMUtils.cleanElement('menu-items', 'id');
@@ -103,6 +104,7 @@ export class BeverageMenuComponents {
             if (id === NaN)
                 throw 'ID is not a type of number';
 
+            DOMUtils.setOddEven(id, 'drink');
             beverageCallback(id);
         };
 

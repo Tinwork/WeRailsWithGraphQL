@@ -82,6 +82,24 @@ export class PanelComponents {
     constructBurger(): any {
         return controlDrawingManager(this.burger.ingredients)
                 .then((res: any) => this.addEventToIngredients(res))
+                .then(() => {
+                    // set the calories
+                    // yes we shouldn't added here but because it's the rush...
+                    // may you forbid us :pray:
+                    let cal = this.burger.ingredients.reduce((a: any, b: any) => {
+                        if (typeof a === 'number')
+                            return a;
+                        
+                        if (typeof b === 'number')
+                            return b;
+
+                        return a.calories + b.calories;
+                    });
+
+                    let o = Utils.getCalories();
+                    o.burger = cal;
+                })
+                .then(() => DOMUtils.updateCalories())
                 .then(() => console.log('done'))
                 .catch((e) => console.log(e));
     }

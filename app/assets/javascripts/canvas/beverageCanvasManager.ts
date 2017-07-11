@@ -51,6 +51,7 @@ export class BeverageCanvasManager extends AbstractCanvasManager {
              .then(() =>  Utils.fetchSVG(path, res.label))
              .then((b: Blob) => this._drawFacade(b))
              .then(() => this._drawText(res))
+             .then(() => this._calculateCalories(res))
              .catch((e: string) => console.log(e));
     }
 
@@ -75,8 +76,8 @@ export class BeverageCanvasManager extends AbstractCanvasManager {
                 this.imgH = img.height * 0.35
 
                 this.drawImg(img, {
-                    left: (this.ctx.canvas.width / 2) - (this.imgW + 25),
-                    top: (this.ctx.canvas.height / 2) - (this.imgH + 140),
+                    left  : (this.ctx.canvas.width / 2) - (this.imgW + 25),
+                    top   : (this.ctx.canvas.height / 2) - (this.imgH + 140),
                     width : this.imgW,
                     height: this.imgH
                 })
@@ -99,8 +100,20 @@ export class BeverageCanvasManager extends AbstractCanvasManager {
         CanvasHelper.renderText({
             x: (this.ctx.canvas.width / 2) - 90,
             y: (this.ctx.canvas.height / 2) - 50,
-            text: `You have choose ${res.label} | which give you ${res.calories}`,
+            text: `You have choose ${res.label} | which give you | ${res.calories} calories`,
             font: '14px Insanibu'
         })
+    }
+
+
+    /**
+     * 
+     * 
+     * @param {*} res 
+     * @memberof BeverageCanvasManager
+     */
+    _calculateCalories(res: any) {
+        let cal = Utils.getCalories();
+        cal.beverage = res.calories;
     }
 }

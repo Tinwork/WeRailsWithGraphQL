@@ -200,4 +200,38 @@ export class DOMUtils {
             callback.call(this, props);
         });
     }
+
+    
+    
+    /**
+     * 
+     * 
+     * @param {number} idx 
+     * @param {string} componentName 
+     * @memberof DOMUtils
+     */
+    static setOddEven(idx: number, componentName: string) {
+        let e = DOMUtils.getElementFromType(componentName, 'id');
+
+        if ((idx % 2) == 0) {
+            e.classList.add('even');
+            e.classList.remove('odd');
+        } else {
+            e.classList.add('odd');
+            e.classList.remove('even');
+        }
+    }
+
+    
+    /**
+     * 
+     * 
+     * @static
+     * @memberof DOMUtils
+     */
+    static updateCalories() {
+        let calories = Utils.calculateCalories();
+        let el = DOMUtils.getElementFromType('fat', 'id');
+        el.innerHTML = `${calories } cal`;
+    }
 }

@@ -59,6 +59,8 @@ export class MenuComponents {
         // clean the menu in case something is already here
         DOMUtils.getElementFromType('menu-items', 'id').innerHTML = '';
         DOMUtils.applyStyle('menu-items', 'id', ['backgroundColor'], ['#CF9867']);
+        DOMUtils.applyStyle('menu-parent', 'id', ['backgroundColor'], ['#CF9867']);
+
 
         // Loop threw the burger
         this.burgers = burgers;
@@ -95,6 +97,7 @@ export class MenuComponents {
             if (burger[id] === undefined || burger[id] === null) 
                 throw `Burger does not exist with id ${id}`;
 
+            DOMUtils.setOddEven(id, 'interact-layout');
             // Otherwise init the panel
             let panelComponent = new panel(burger[id]);
             panelComponent.constructIngredientsPanel();

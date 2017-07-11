@@ -83,6 +83,8 @@ export class CondimentsMenuComponents {
         // Append the template to the dom
         DOMUtils.applyTmpl('menu-items', 'id', tmpl);
         DOMUtils.applyStyle('menu-items', 'id', ['backgroundColor'], ['#F79700']);
+        DOMUtils.applyStyle('menu-parent', 'id', ['backgroundColor'], ['#F79700']);
+
         return Promise.resolve();
     }
 
@@ -101,10 +103,12 @@ export class CondimentsMenuComponents {
             if (id === NaN)
                 throw 'id is not a type of number';
 
+            DOMUtils.setOddEven(id, 'condiments');
             // Make a callback to the condiments drawing facade class
             let canvasCondiments = new CondimentsCanvasManager(id, 'sidedish', 'condiments');
             canvasCondiments.loadCondimentPicture()
                             .then((res: string) => console.log(res))
+                            .then(() => DOMUtils.updateCalories())
                             .catch((e: string) => console.log(e));
         };
 

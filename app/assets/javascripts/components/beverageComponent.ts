@@ -18,6 +18,7 @@ export const beverageCallback = (menuID: number) => {
     
     return _instance.getBeverage()
              .then((res: JSON) => _instance.triggerDrawing(res))
+             .then(() => DOMUtils.updateCalories())
              .then(() => console.log('done beverage'))
              .catch((e: string) => console.log(e));
 }

@@ -10,7 +10,8 @@
   color: white;
   z-index: 9;
   background-color: $mainMenuColor;
-  position: relative;
+  position: absolute;
+  top: 0;
 
   .col {
     transition: all ease .25s;
@@ -20,7 +21,7 @@
     }
 
     &.carousel-container {
-      height: 100%!important;
+      height: 90%!important;
       background-color: $mainMenuColor;
 
 
@@ -104,13 +105,16 @@
       left: 0%;
       z-index: -1;
       background-color: $ingredient-panel-bg;
+      opacity: 0;
 
       &.showPanel {
         left: 100%;
+        opacity: 1;
       }
 
       &.hidePanel {
         left: 0%;
+        opacity: 0;
       }
 
       .ingredient {
@@ -133,6 +137,91 @@
       padding-top: 15px;
       padding-bottom: 15px;
     }
+  }
+
+  .locale-switch {
+    z-index: 10;
+    position: relative;
+    margin: 10px auto;
+  }
+
+  .onoffswitch {
+    position: relative; width: 90px;
+    margin: 0 auto;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+  }
+  .onoffswitch-checkbox {
+    display: none;
+  }
+  .onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
+  }
+  .onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+  }
+  .onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+  }
+  .onoffswitch-inner:before {
+    content: '';
+    background-image: url(image_path('icons/flag_fr.png'));
+    background-repeat: no-repeat;
+    background-position: 25% center;
+    background-color: #EEEEEE;
+    color: #999999;
+    padding-left: 10px;
+  }
+  .onoffswitch-inner:after {
+    content: '';
+    padding-right: 10px;
+    background-image: url(image_path('icons/flag_en.png'));
+    background-repeat: no-repeat;
+    background-position: 70% center;
+    background-color: #EEEEEE;
+    color: #999999;
+    text-align: right;
+  }
+  .onoffswitch-switch {
+    display: block; width: 40px;
+    position: absolute; top: 0; bottom: 0;
+    right: 56px;
+    border-radius: 20px;
+    background-image: url(image_path('burger.png'));
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: all 0.3s ease-in 0s;
+  }
+  .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+  }
+  .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0;
+    width: $menuWidth;
+    background-color: $mainMenuColor;
+    position: relative;
+    height: 100%;
+
+    .switch-container {
+      position: absolute;
+      left: 50px;
+
+      display: block;
+      width: 100px;
+      height: 30px;
+
+      border-radius: 30px;
+      border: 1px solid $app-layout-bg;
+      background-color: $app-layout-bg;
+    }
+    
+  }
+  &::after {
+    display: table;
+    clear: both;
   }
 }
 
@@ -159,9 +248,28 @@
 
   #condiments {
     background-color: $condiments-layout;
+    transition: all ease .25s;
+
+    &.even {
+      background-color: $condiment-odd;
+    }
+
+    &.odd {
+      background-color: $condiment-even;
+    }
   }
 
   #drink{
     background-color: $drink-layout;
+    transition: all ease .25s;
+
+    &.even {
+      background-color: $beverage-odd;
+    }
+
+    &.odd {
+      background-color: $beverage-even;
+    }
   }
 }
+

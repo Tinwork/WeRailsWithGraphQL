@@ -55,6 +55,8 @@ export class CondimentsCanvasManager extends AbstractCanvasManager{
                        this.condiment.label
                     ))
                    .then((b: Blob) => this._drawCondiment(b))
+                   .then(() => this._drawText())
+                   .then(() => this._calculateCalories())
                    .then(() => Promise.resolve('draw condiments'))
                    .catch((e: string) => Promise.reject(e));
     }
@@ -92,10 +94,9 @@ export class CondimentsCanvasManager extends AbstractCanvasManager{
         return new Promise((resolve, reject) => {
             console.log(this);
             img.onload = function() {
-                console.log(this);
                 this.drawImg(img, {
-                    left  : (this.ctx.canvas.width / 2) - img.width * 0.35, 
-                    top   : (this.ctx.canvas.height / 2) - img.height * 0.35,
+                    left  : (this.ctx.canvas.width / 2) - (img.width / 2) + 25, 
+                    top   : (this.ctx.canvas.height / 2) - (img.height * 0.35 * 2) ,
                     width : img.width * 0.35,
                     height: img.height * 0.35
                 })
@@ -115,12 +116,24 @@ export class CondimentsCanvasManager extends AbstractCanvasManager{
      * @memberof CondimentsCanvasManager
      */
     _drawText(): void {
+
         CanvasHelper.setProps(this.ctx);
         CanvasHelper.renderText({
             x    : (this.ctx.canvas.width / 2) - 90,
             y    : (this.ctx.canvas.height / 2) - 50,
-            text : `You will love our ${this.condiment.label} | which give you a total of ${this.condiment.calories}`,
+            text : `You will love our ${this.condiment.label} | which give you | ${this.condiment.calories} calories`,
             font : '14px Insanibu'
         })
     } 
+
+    
+    /**
+     * 
+     * 
+     * @memberof CondimentsCanvasManager
+     */
+    _calculateCalories() {
+        let cal = Utils.getCalories();
+        cal.condiments = this.condiment.calories;
+    }
 }
