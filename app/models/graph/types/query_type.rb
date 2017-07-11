@@ -25,5 +25,21 @@ module Types
           Menu.all
       end
     end
+
+    field :beverages do
+      type BeverageType.to_list_type
+      description "All the dishes from Burger King"
+      resolve -> (obj, args, ctx) do
+        Beverage.all
+      end
+    end
+
+    field :condiments do
+      type CondimentType.to_list_type
+      description "All the dishes from Burger King"
+      resolve -> (obj, args, ctx) do
+        Beverage.all
+      end
+    end
   end
 end
