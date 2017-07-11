@@ -38,7 +38,7 @@ module Types
       type CondimentType.to_list_type
       description "All the dishes from Burger King"
       resolve -> (obj, args, ctx) do
-        Beverage.all
+        Condiment.all
       end
     end
   end
