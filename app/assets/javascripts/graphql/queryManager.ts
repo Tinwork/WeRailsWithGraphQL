@@ -1,5 +1,8 @@
 import {QueryParser} from './queryParser';
 
+// import config
+import * as config from '../config.json';
+
 /**
  * 
  * 
@@ -10,7 +13,7 @@ export class QueryManager {
     token: string;
     props: any = {
         method: 'POST',
-        uri: 'http://localhost:8080/graphql'
+        uri: `${(<any>config).graphQL_address}/graphql`
     }
     /**
      * 

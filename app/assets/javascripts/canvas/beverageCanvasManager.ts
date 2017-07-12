@@ -77,8 +77,8 @@ export class BeverageCanvasManager extends AbstractCanvasManager {
                 this.imgH = img.height * (ratio - 0.45)
 
                 this.drawImg(img, {
-                    left  : (this.ctx.canvas.width / 2) - (this.imgW + 25),
-                    top   : (this.ctx.canvas.height / 2) - (this.imgH + 140),
+                    left  : (this.ctx.canvas.width / (2 * this.sizing())) - (this.imgW * 0.45) ,
+                    top   : (this.ctx.canvas.height / (2 * this.sizing())) - (this.imgH * 0.45),
                     width : this.imgW,
                     height: this.imgH
                 })

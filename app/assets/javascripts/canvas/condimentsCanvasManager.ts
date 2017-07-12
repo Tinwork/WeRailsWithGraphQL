@@ -94,11 +94,16 @@ export class CondimentsCanvasManager extends AbstractCanvasManager{
 
         return new Promise((resolve, reject) => {
             img.onload = function() {
+
+                this.imgW = img.width * (ratio - 0.45),
+                this.imgH = img.height * (ratio - 0.45)
+
+            
                 this.drawImg(img, {
-                    left  : (this.ctx.canvas.width / 2) - (img.width / 2 * ratio), 
-                    top   : (this.ctx.canvas.height / 2) - (img.height / 2 * (ratio + 0.45)) ,
-                    width : img.width * (ratio - 0.45),
-                    height: img.height * (ratio - 0.45)
+                    left  : (this.ctx.canvas.width / (2 * this.sizing())) - (this.imgW * 0.45), 
+                    top   : (this.ctx.canvas.height / (2 * this.sizing())) -  (this.imgH * 0.45),
+                    width : this.imgW,
+                    height: this.imgH
                 })
                 .then(() => {
                     self.URL.revokeObjectURL(url);
