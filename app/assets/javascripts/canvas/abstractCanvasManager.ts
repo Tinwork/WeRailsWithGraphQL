@@ -1,5 +1,5 @@
 import { DOMUtils } from '../utils/dom';
-
+import { LocaleSwitcher } from '../utils/lang';
 
 /**
  * 
@@ -12,6 +12,7 @@ export class AbstractCanvasManager {
     ctx     : CanvasRenderingContext2D;
     contID  : string;
     canvas  : HTMLCanvasElement;
+    Locale  = LocaleSwitcher;
 
 
     /**

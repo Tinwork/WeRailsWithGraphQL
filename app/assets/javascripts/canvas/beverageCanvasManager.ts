@@ -101,7 +101,10 @@ export class BeverageCanvasManager extends AbstractCanvasManager {
         CanvasHelper.renderText({
             x: (this.ctx.canvas.width / 2) - 90,
             y: (this.ctx.canvas.height / 2) - 50,
-            text: `You have choose ${res.label} | which give you | ${res.calories} calories`,
+            text: this.Locale.ilnHelper('beverage', [
+               res.label,
+               res.calories 
+            ]),
             font: '14px Insanibu'
         })
     }

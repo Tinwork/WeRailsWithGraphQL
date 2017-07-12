@@ -121,7 +121,10 @@ export class CondimentsCanvasManager extends AbstractCanvasManager{
         CanvasHelper.renderText({
             x    : (this.ctx.canvas.width / 2) - 90,
             y    : (this.ctx.canvas.height / 2) - 50,
-            text : `You will love our ${this.condiment.label} | which give you | ${this.condiment.calories} calories`,
+            text : this.Locale.ilnHelper('condiment', [
+                this.condiment.label,
+                this.condiment.calories
+            ]), 
             font : '14px Insanibu'
         })
     } 

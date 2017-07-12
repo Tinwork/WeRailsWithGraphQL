@@ -52,7 +52,7 @@ import { LocaleSwitcher } from './utils/lang';
             SwitcherMenuComponents.updateButton(id, domID);
 
             // Update the name of the cat
-            textTitle.innerHTML = name;
+            textTitle.innerHTML = LocaleSwitcher.ilnHelper('', [], true, id);
         })
     };
 

@@ -1,6 +1,7 @@
 // Import utils
 import { Utils } from '../utils/utils';
 import { DOMUtils } from '../utils/dom';
+import { LocaleSwitcher } from '../utils/lang'; 
 
 // Import the drawing manager
 import { CanvasObject } from '../components/drawingManager';
@@ -153,7 +154,11 @@ export class AnnotationsCanvasFactory {
             x   : idx % 2 === 0 ? (CanvasHelper.getCanvasWidth() / 2 - 170)
                                 : 120,
             y   : positionProps.y,
-            text: `${ingOpts.label} of type ${ingOpts.category.label} | give you ${ingOpts.calories}`,
+            text: LocaleSwitcher.ilnHelper('burger', [
+                ingOpts.label, 
+                ingOpts.category.label, 
+                ingOpts.calories
+            ]),
             font: '14px Insanibu'
         });
     }
