@@ -7,12 +7,31 @@ The theme we've choose is Burger King and the purpose of the project is too use 
 ## Prerequisites
 + [Ruby On Rails ~> 5.0.0](http://guides.rubyonrails.org/5_0_release_notes.html)
 + [Ruby ~> 2.3.3](https://www.ruby-lang.org/fr/downloads/) 
++ Npm 
++ Typescript ~> 2.4.1
++ Webpack
+
+### At the root of the project 
+
+```shell
+// Install typescript globally 
+> npm install -g typescript
+
+// Install the dependencies
+> npm install 
+
+// Compile the bundleJS which use the front
+> ./node_modules/.bin/webpack
+```
+
+### In the ruby on rails container
 
 ```shell
 > $ rake db:create
 > $ rake db:migrate
 > $ rake db:seeds
 ```
+
 ## Extra gems
 - Globalize : translate our data in database.
 - 
