@@ -22,6 +22,8 @@ export class AnnotationsCanvasFactory {
 
     ctx: CanvasRenderingContext2D;
     ingredients: Array<CanvasObject>;
+    size: number = navigator.platform.toLowerCase() === 'macintel' ? 2 : 1
+
 
     /**
      * Creates an instance of AnnotationsCanvasFactory.
@@ -135,8 +137,8 @@ export class AnnotationsCanvasFactory {
         return Object.assign({}, {
             sX: positionsProps.x,
             sY: positionsProps.y,
-            tX: idx % 2 === 0 ? (CanvasHelper.getCanvasWidth() / 2 - 200)
-                              : 200,
+            tX: idx % 2 === 0 ? (CanvasHelper.getCanvasWidth() / (2 * this.size) + 100)
+                              : (CanvasHelper.getCanvasWidth() / (2 * this.size) - 100),
             tY: positionsProps.y
         });
     }
@@ -151,8 +153,8 @@ export class AnnotationsCanvasFactory {
      */
     createTextPos(positionProps: any, idx: number, ingOpts: any): any {
         return Object.assign({}, {
-            x   : idx % 2 === 0 ? (CanvasHelper.getCanvasWidth() / 2 - 170)
-                                : 120,
+            x   : idx % 2 === 0 ? (CanvasHelper.getCanvasWidth() / (2 * this.size) + 200)
+                                : (CanvasHelper.getCanvasWidth() / (2 * this.size) - 200),
             y   : positionProps.y,
             text: LocaleSwitcher.ilnHelper('burger', [
                 ingOpts.label, 

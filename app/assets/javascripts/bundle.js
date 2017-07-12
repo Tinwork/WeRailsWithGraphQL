@@ -136,6 +136,9 @@ Utils.calories = {};
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
+
 
 class DOMUtils {
     static applyStyle(DOMString, DOMType, styleKey, styleValue) {
@@ -229,6 +232,19 @@ class DOMUtils {
         let calories = __WEBPACK_IMPORTED_MODULE_0__utils__["a" /* Utils */].calculateCalories();
         let el = DOMUtils.getElementFromType('fat', 'id');
         el.innerHTML = `${calories} cal`;
+    }
+    static addSlick() {
+        __WEBPACK_IMPORTED_MODULE_1_jquery__('.carousel-container').slick({
+            autoplay: false,
+            infinite: true,
+            vertical: true,
+            verticalSwiping: true,
+            centerMode: false,
+            arrows: false,
+            speed: 300,
+            slidesToShow: 3,
+            adaptiveHeight: false
+        });
     }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = DOMUtils;
@@ -702,6 +718,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 .applyClass('overlay', 'id', 'show', 'rm');
             return Promise.resolve(true);
         })
+            .then(() => __WEBPACK_IMPORTED_MODULE_2__utils_dom__["a" /* DOMUtils */].addSlick())
             .then(() => Promise.resolve(__WEBPACK_IMPORTED_MODULE_3__utils_lang__["a" /* LocaleSwitcher */].initObserver()))
             .catch((e) => console.log(e));
     };
@@ -17653,9 +17670,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_dom__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__menuComponents__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__beverageMenuComponents__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__condimentsMenuComponents__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__menuComponents__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__beverageMenuComponents__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__condimentsMenuComponents__ = __webpack_require__(27);
 
 
 
@@ -17686,6 +17703,7 @@ class SwitcherMenuComponents {
     }
     static initMenu(menuInstance) {
         return menuInstance.initMenuComponent()
+            .then(() => __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* DOMUtils */].addSlick())
             .then(() => Promise.resolve())
             .catch((e) => Promise.reject(e));
     }
@@ -17708,13 +17726,19 @@ SwitcherMenuComponents.category = ['burgers', 'beverages', 'condiments'];
 
 /***/ }),
 /* 13 */
+/***/ (function(module, exports) {
+
+module.exports = jQuery;
+
+/***/ }),
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__panelComponents__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__panelComponents__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__graphql_queryManager__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__graphql_queryRoutes__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__graphql_queryParser__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__graphql_queryParser__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_utils__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_dom__ = __webpack_require__(1);
 
@@ -17773,34 +17797,21 @@ class MenuComponents {
         }, { burger: this.burgers, panel: __WEBPACK_IMPORTED_MODULE_0__panelComponents__["a" /* PanelComponents */] });
         return Promise.resolve(true);
     }
-    langSwitcher(jQuery) {
-        jQuery('.carousel-container').slick({
-            autoplay: false,
-            infinite: true,
-            vertical: true,
-            verticalSwiping: true,
-            centerMode: true,
-            arrows: false,
-            speed: 300,
-            slidesToShow: 1,
-            adaptiveHeight: true
-        });
-    }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = MenuComponents;
 
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_dom__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_utils__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__kings_burgerHelper__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__drawingManager__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ingredientManager__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__drawingManager__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ingredientManager__ = __webpack_require__(19);
 
 
 
@@ -17877,14 +17888,14 @@ class PanelComponents {
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__kings_burgerHelper__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_utils__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_dom__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__canvas_ingredientsCanvasManager__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__canvas_ingredientsCanvasManager__ = __webpack_require__(17);
 
 
 
@@ -17962,13 +17973,13 @@ class DrawingManager {
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_utils__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__kings_burgerHelper__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ingredientsCanvasDecorator__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ingredientsCanvasDecorator__ = __webpack_require__(18);
 
 
 
@@ -18055,7 +18066,7 @@ class IngredientsCanvasManager {
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18123,14 +18134,14 @@ IngredientsCanvasDecorator.bottomBread = {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__graphql_QueryManager__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__graphql_QueryManager__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__graphql_queryRoutes__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_utils__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__canvas_annotationsCanvasFactory__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__canvas_annotationsCanvasFactory__ = __webpack_require__(21);
 
 
 
@@ -18176,7 +18187,7 @@ class IngredientManager {
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18220,7 +18231,7 @@ class QueryManager {
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18235,6 +18246,7 @@ const OPTIONS = {
 };
 class AnnotationsCanvasFactory {
     constructor(ctx, ingredients) {
+        this.size = navigator.platform.toLowerCase() === 'macintel' ? 2 : 1;
         this.ctx = ctx;
         this.ingredients = ingredients;
         __WEBPACK_IMPORTED_MODULE_1__canvasHelper__["a" /* CanvasHelper */].setProps(this.ctx);
@@ -18280,15 +18292,15 @@ class AnnotationsCanvasFactory {
         return Object.assign({}, {
             sX: positionsProps.x,
             sY: positionsProps.y,
-            tX: idx % 2 === 0 ? (__WEBPACK_IMPORTED_MODULE_1__canvasHelper__["a" /* CanvasHelper */].getCanvasWidth() / 2 - 200)
-                : 200,
+            tX: idx % 2 === 0 ? (__WEBPACK_IMPORTED_MODULE_1__canvasHelper__["a" /* CanvasHelper */].getCanvasWidth() / (2 * this.size) + 100)
+                : (__WEBPACK_IMPORTED_MODULE_1__canvasHelper__["a" /* CanvasHelper */].getCanvasWidth() / (2 * this.size) - 100),
             tY: positionsProps.y
         });
     }
     createTextPos(positionProps, idx, ingOpts) {
         return Object.assign({}, {
-            x: idx % 2 === 0 ? (__WEBPACK_IMPORTED_MODULE_1__canvasHelper__["a" /* CanvasHelper */].getCanvasWidth() / 2 - 170)
-                : 120,
+            x: idx % 2 === 0 ? (__WEBPACK_IMPORTED_MODULE_1__canvasHelper__["a" /* CanvasHelper */].getCanvasWidth() / (2 * this.size) + 200)
+                : (__WEBPACK_IMPORTED_MODULE_1__canvasHelper__["a" /* CanvasHelper */].getCanvasWidth() / (2 * this.size) - 200),
             y: positionProps.y,
             text: __WEBPACK_IMPORTED_MODULE_0__utils_lang__["a" /* LocaleSwitcher */].ilnHelper('burger', [
                 ingOpts.label,
@@ -18304,12 +18316,12 @@ class AnnotationsCanvasFactory {
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_utils__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__kings_burgerFactory__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__kings_burgerFactory__ = __webpack_require__(23);
 
 
 class QueryParser {
@@ -18339,7 +18351,7 @@ class QueryParser {
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18375,7 +18387,7 @@ class BurgerFactory {
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18384,7 +18396,7 @@ class BurgerFactory {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_utils__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_dom__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__kings_burgerHelper__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__beverageComponent__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__beverageComponent__ = __webpack_require__(25);
 
 
 
@@ -18446,7 +18458,7 @@ class BeverageMenuComponents {
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18454,7 +18466,7 @@ class BeverageMenuComponents {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__graphql_queryRoutes__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_utils__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_dom__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__canvas_beverageCanvasManager__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__canvas_beverageCanvasManager__ = __webpack_require__(26);
 
 
 
@@ -18493,7 +18505,7 @@ class BeverageComponents {
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18542,8 +18554,8 @@ class BeverageCanvasManager extends __WEBPACK_IMPORTED_MODULE_0__abstractCanvasM
     _drawText(res) {
         __WEBPACK_IMPORTED_MODULE_3__canvasHelper__["a" /* CanvasHelper */].setProps(this.ctx);
         __WEBPACK_IMPORTED_MODULE_3__canvasHelper__["a" /* CanvasHelper */].renderText({
-            x: (this.ctx.canvas.width / 2) - 90,
-            y: (this.ctx.canvas.height / 2) - 50,
+            x: (this.ctx.canvas.width / (2 * this.sizing())),
+            y: (this.ctx.canvas.height / (1 * this.sizing())) - 50,
             text: this.Locale.ilnHelper('beverage', [
                 res.label,
                 res.calories
@@ -18561,7 +18573,7 @@ class BeverageCanvasManager extends __WEBPACK_IMPORTED_MODULE_0__abstractCanvasM
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18570,7 +18582,7 @@ class BeverageCanvasManager extends __WEBPACK_IMPORTED_MODULE_0__abstractCanvasM
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_utils__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_dom__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__kings_burgerHelper__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__canvas_condimentsCanvasManager__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__canvas_condimentsCanvasManager__ = __webpack_require__(28);
 
 
 
@@ -18634,7 +18646,7 @@ class CondimentsMenuComponents {
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18700,8 +18712,8 @@ class CondimentsCanvasManager extends __WEBPACK_IMPORTED_MODULE_0__abstractCanva
     _drawText() {
         __WEBPACK_IMPORTED_MODULE_3__canvasHelper__["a" /* CanvasHelper */].setProps(this.ctx);
         __WEBPACK_IMPORTED_MODULE_3__canvasHelper__["a" /* CanvasHelper */].renderText({
-            x: (this.ctx.canvas.width / 2) - 90,
-            y: (this.ctx.canvas.height / 2) - 50,
+            x: (this.ctx.canvas.width / (2 * this.sizing())),
+            y: (this.ctx.canvas.height / (1 * this.sizing())) - 50,
             text: this.Locale.ilnHelper('condiment', [
                 this.condiment.label,
                 this.condiment.calories

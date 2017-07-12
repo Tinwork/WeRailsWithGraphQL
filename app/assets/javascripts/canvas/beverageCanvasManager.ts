@@ -99,8 +99,8 @@ export class BeverageCanvasManager extends AbstractCanvasManager {
     _drawText(res: any): void {
         CanvasHelper.setProps(this.ctx);
         CanvasHelper.renderText({
-            x: (this.ctx.canvas.width / 2) - 90,
-            y: (this.ctx.canvas.height / 2) - 50,
+            x: (this.ctx.canvas.width / (2 * this.sizing())),
+            y: (this.ctx.canvas.height / (1 * this.sizing())) - 50,
             text: this.Locale.ilnHelper('beverage', [
                res.label,
                res.calories 

@@ -24,6 +24,7 @@ import { LocaleSwitcher } from './utils/lang';
 
             return Promise.resolve(true);
         })
+        .then(() => DOMUtils.addSlick())
         .then(() => Promise.resolve(LocaleSwitcher.initObserver()))
         .catch((e: string) => console.log(e));
     };
@@ -55,7 +56,6 @@ import { LocaleSwitcher } from './utils/lang';
             textTitle.innerHTML = LocaleSwitcher.ilnHelper('', [], true, id);
         })
     };
-
 
     // Start when the dom is loaded
     document.addEventListener('DOMContentLoaded', () => {

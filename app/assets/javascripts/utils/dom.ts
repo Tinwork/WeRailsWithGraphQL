@@ -1,5 +1,13 @@
 import { Utils } from './utils';
 
+import * as $ from "jquery";
+
+declare global {
+    interface JQuery {
+        slick(props: any): void
+    }
+}
+
 /**
  * 
  * 
@@ -233,5 +241,26 @@ export class DOMUtils {
         let calories = Utils.calculateCalories();
         let el = DOMUtils.getElementFromType('fat', 'id');
         el.innerHTML = `${calories } cal`;
+    }
+
+
+    /**
+     * Add Slick
+     * ....
+     * @static
+     * @memberof DOMUtils
+     */
+    static addSlick() {
+        $('.carousel-container').slick({
+                    autoplay: false,
+                    infinite: true,
+                    vertical: true,
+                    verticalSwiping: true,
+                    centerMode: false,
+                    arrows: false,
+                    speed: 300,
+                    slidesToShow: 3,
+                    adaptiveHeight: false
+        });
     }
 }

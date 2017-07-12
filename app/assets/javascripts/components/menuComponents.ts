@@ -106,26 +106,5 @@ export class MenuComponents {
 
         return Promise.resolve(true);
     }
-
-    /**
-     * Lang Switcher
-     * 
-     * @param {*} jQuery 
-     * @memberof MenuComponents
-     */
-    langSwitcher(jQuery: any): void {
-        // @Did
-        jQuery('.carousel-container').slick({
-            autoplay: false,
-            infinite: true,
-            vertical: true,
-            verticalSwiping: true,
-            centerMode: true,
-            arrows: false,
-            speed: 300,
-            slidesToShow: 1,
-            adaptiveHeight: true
-        });
-    } 
 }
 
