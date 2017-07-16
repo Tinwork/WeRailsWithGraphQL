@@ -24,17 +24,19 @@ The theme we've choose is Burger King and the purpose of the project is too use 
 > ./node_modules/.bin/webpack
 ```
 
-### In the ruby on rails container
+### Init database and migration
 
 ```shell
 > $ rake db:create
 > $ rake db:migrate
-> $ rake db:seeds
+> $ rake db:seed
 ```
 
 ## Extra gems
 - Globalize : translate our data in database.
-- 
+- GraphiQL and GraphQL 
+- Devise
+- RailsAdmin
 
 ## Features
 ### Internationalization
@@ -137,6 +139,7 @@ Result :
 By default, we have deactivate the registrable feature from Devise.
 So, you may need, to reactive it in : /app/models/user.rb 
 And add :registerable in Devise modules.
+Otherwise you may seed the database with 1 current admin default creds.
 If it still doesn't work, contact us.
 ```
 **Populate the database** 
@@ -167,10 +170,27 @@ You can compose burgers and see the informations of what you need.
 That's the same as starting with empty data but without the step 1.
 The default credentials are :
 login : root
-password : root
+password : root123
 ```
 ## Next step
+### Make everything more coordinate
+```
+We didn't have time to associate SVGs to resources.
+Like : 
+- SVG Salad to Salad ingredient.
+- SVG Steak to Steak ingredient etc ...
+And by extension to make possible for the admin to create his own burgers :
+Like : 
+- Whopper Burger = Bread / Tomato / Steak / Cheese etc ...
+Those points have been partially corrected by Javascript but not optimize for scability.
+We have to correct those points in a future version of Burger Rails
+```
 ### Action Cable
+```
+Action Cable was one of the newest feature of Rails 5.
+This feature don't have a real impact on our projet but we thinked to add it in order to try the feature.
+For curiosity, we would like to add a kind of "chat room" system in the homepage with Action Cable.
+```
 
 ## Authors
 - [**Marc INTHA-AMNOUAY**](https://github.com/MarcInthaamnouay) 

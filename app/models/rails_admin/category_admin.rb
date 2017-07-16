@@ -20,9 +20,6 @@ module CategoryAdmin
         field :id do
           column_width 50
         end
-        field :label do
-          column_width 250
-        end
         field :translations do
           column_width 250
         end
