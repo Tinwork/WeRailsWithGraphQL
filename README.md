@@ -12,6 +12,7 @@ The theme we've choose is Burger King and the purpose of the project is too use 
 + Webpack
 
 ### At the root of the project 
+##  Note: You can skip this part if you don't want to build your own bundle.js. We added one for your convenience. 
 
 ```shell
 // Install typescript globally 
