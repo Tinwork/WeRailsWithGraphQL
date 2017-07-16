@@ -13,6 +13,9 @@ import { Burger } from '../kings/burgerFactory';
 import { Utils } from '../utils/utils'; 
 import { DOMUtils } from '../utils/dom';
 
+// Import lang 
+import { LocaleSwitcher } from '../utils/lang'; 
+
 /**
  * Menu Components
  */
@@ -59,7 +62,7 @@ export class MenuComponents {
         if (burgers.length === 0) {
             DOMUtils.getElementFromType('menu-items', 'id').innerHTML = `
             <p stlye="text-align: center; padding-top: 20px;">
-                Currently no burger in the menu
+                ${LocaleSwitcher.ilnHelper('', '', true, 3)}
             </p>`;
             return;
         }

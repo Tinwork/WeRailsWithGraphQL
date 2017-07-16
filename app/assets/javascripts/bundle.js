@@ -543,6 +543,15 @@ const FRONT_TEXT = {
         }, {
             fr: 'Accompagnements',
             en: 'Condiments'
+        }, {
+            fr: `Aucun menu burger n'existe actuellement`,
+            en: 'Currently no burger in the menu'
+        }, {
+            fr: `Aucune boisson n'existe actuellement`,
+            en: 'Currently no beverages in the menu'
+        }, {
+            fr: `Aucun condiments n'existe actuellement`,
+            en: 'Currently no condiments in the menu'
         }]
 };
 class LocaleSwitcher {
@@ -17741,6 +17750,8 @@ module.exports = jQuery;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__graphql_queryParser__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_utils__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_dom__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_lang__ = __webpack_require__(5);
+
 
 
 
@@ -17770,7 +17781,7 @@ class MenuComponents {
         if (burgers.length === 0) {
             __WEBPACK_IMPORTED_MODULE_5__utils_dom__["a" /* DOMUtils */].getElementFromType('menu-items', 'id').innerHTML = `
             <p stlye="text-align: center; padding-top: 20px;">
-                Currently no burger in the menu
+                ${__WEBPACK_IMPORTED_MODULE_6__utils_lang__["a" /* LocaleSwitcher */].ilnHelper('', '', true, 3)}
             </p>`;
             return;
         }
@@ -18404,6 +18415,8 @@ class BurgerFactory {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_dom__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__kings_burgerHelper__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__beverageComponent__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_lang__ = __webpack_require__(5);
+
 
 
 
@@ -18430,7 +18443,7 @@ class BeverageMenuComponents {
         if (res.length === 0) {
             __WEBPACK_IMPORTED_MODULE_3__utils_dom__["a" /* DOMUtils */].getElementFromType('menu-items', 'id').innerHTML = `
             <p stlye="text-align: center; padding-top: 20px;">
-                Currently no beverages in the menu
+                ${__WEBPACK_IMPORTED_MODULE_6__utils_lang__["a" /* LocaleSwitcher */].ilnHelper('', '', true, 4)}
             </p>`;
             return;
         }
@@ -18597,6 +18610,8 @@ class BeverageCanvasManager extends __WEBPACK_IMPORTED_MODULE_0__abstractCanvasM
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_dom__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__kings_burgerHelper__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__canvas_condimentsCanvasManager__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_lang__ = __webpack_require__(5);
+
 
 
 
@@ -18622,7 +18637,7 @@ class CondimentsMenuComponents {
         if (res.length === 0) {
             __WEBPACK_IMPORTED_MODULE_3__utils_dom__["a" /* DOMUtils */].getElementFromType('menu-items', 'id').innerHTML = `
             <p stlye="text-align: center; padding-top: 20px;">
-                Currently no condiments in the menu
+                ${__WEBPACK_IMPORTED_MODULE_6__utils_lang__["a" /* LocaleSwitcher */].ilnHelper('', '', true, 5)}
             </p>`;
             return;
         }

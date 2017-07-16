@@ -9,7 +9,7 @@ import { burgerHelper } from '../kings/burgerHelper';
 
 // Import beverage
 import { beverageCallback } from './beverageComponent';
-
+import { LocaleSwitcher } from '../utils/lang';
 
 
 /**
@@ -78,7 +78,7 @@ export class BeverageMenuComponents {
         if (res.length === 0) {
             DOMUtils.getElementFromType('menu-items', 'id').innerHTML = `
             <p stlye="text-align: center; padding-top: 20px;">
-                Currently no beverages in the menu
+                ${LocaleSwitcher.ilnHelper('', '', true, 4)}
             </p>`;
             return;
         }

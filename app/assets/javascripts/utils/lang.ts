@@ -23,6 +23,15 @@ const FRONT_TEXT: any = {
     }, {
         fr: 'Accompagnements',
         en: 'Condiments'
+    }, {
+        fr: `Aucun menu burger n'existe actuellement`,
+        en: 'Currently no burger in the menu'
+    }, {
+        fr: `Aucune boisson n'existe actuellement`,
+        en: 'Currently no beverages in the menu'
+    }, {
+        fr: `Aucun condiments n'existe actuellement`,
+        en: 'Currently no condiments in the menu'
     }]
 };
 

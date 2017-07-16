@@ -9,6 +9,7 @@ import { burgerHelper } from '../kings/burgerHelper';
 
 // Import the condimentCanvasManager
 import { CondimentsCanvasManager } from '../canvas/condimentsCanvasManager';
+import { LocaleSwitcher } from '../utils/lang';
 
 /**
  * Condiments interface
@@ -76,7 +77,7 @@ export class CondimentsMenuComponents {
          if (res.length === 0) {
             DOMUtils.getElementFromType('menu-items', 'id').innerHTML = `
             <p stlye="text-align: center; padding-top: 20px;">
-                Currently no condiments in the menu
+                ${LocaleSwitcher.ilnHelper('', '', true, 5)}
             </p>`;
             return;
         }
