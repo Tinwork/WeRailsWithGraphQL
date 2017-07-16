@@ -173,6 +173,12 @@ login : root
 password : root123
 ```
 ## Next step
+### More data !
+```
+For the moment, there is only one field which are translate : label or resource.
+We use Globalize and GraphQL so we will add more field like description, tag etc... in the resource entity in order
+to fetch them in FO
+```
 ### Make everything more coordinate
 ```
 We didn't have time to associate SVGs to resources.
