@@ -68,11 +68,20 @@ export class BeverageMenuComponents {
         if (Utils.getType(res) !== 'Array')
             return Promise.reject('data is not an array')
 
+
         DOMUtils.applyStyle('menu-items', 'id', ['backgroundColor'], ['#93C0E9']);
         DOMUtils.applyStyle('menu-parent', 'id', ['backgroundColor'], ['#93C0E9']);
 
         // Clean the sidebar
         DOMUtils.cleanElement('menu-items', 'id');
+
+        if (res.length === 0) {
+            DOMUtils.getElementFromType('menu-items', 'id').innerHTML = `
+            <p stlye="text-align: center; padding-top: 20px;">
+                Currently no beverages in the menu
+            </p>`;
+            return;
+        }
 
         // loop threw each data and append the datas to the sidebar     
         res.map((beverage: Beverage, idx: number) => {

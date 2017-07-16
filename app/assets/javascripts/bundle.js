@@ -17767,6 +17767,13 @@ class MenuComponents {
         }
     }
     buildMenu(burgers) {
+        if (burgers.length === 0) {
+            __WEBPACK_IMPORTED_MODULE_5__utils_dom__["a" /* DOMUtils */].getElementFromType('menu-items', 'id').innerHTML = `
+            <p stlye="text-align: center; padding-top: 20px;">
+                Currently no burger in the menu
+            </p>`;
+            return;
+        }
         __WEBPACK_IMPORTED_MODULE_5__utils_dom__["a" /* DOMUtils */].getElementFromType('menu-items', 'id').innerHTML = '';
         __WEBPACK_IMPORTED_MODULE_5__utils_dom__["a" /* DOMUtils */].applyStyle('menu-items', 'id', ['backgroundColor'], ['#CF9867']);
         __WEBPACK_IMPORTED_MODULE_5__utils_dom__["a" /* DOMUtils */].applyStyle('menu-parent', 'id', ['backgroundColor'], ['#CF9867']);
@@ -18420,6 +18427,13 @@ class BeverageMenuComponents {
         __WEBPACK_IMPORTED_MODULE_3__utils_dom__["a" /* DOMUtils */].applyStyle('menu-items', 'id', ['backgroundColor'], ['#93C0E9']);
         __WEBPACK_IMPORTED_MODULE_3__utils_dom__["a" /* DOMUtils */].applyStyle('menu-parent', 'id', ['backgroundColor'], ['#93C0E9']);
         __WEBPACK_IMPORTED_MODULE_3__utils_dom__["a" /* DOMUtils */].cleanElement('menu-items', 'id');
+        if (res.length === 0) {
+            __WEBPACK_IMPORTED_MODULE_3__utils_dom__["a" /* DOMUtils */].getElementFromType('menu-items', 'id').innerHTML = `
+            <p stlye="text-align: center; padding-top: 20px;">
+                Currently no beverages in the menu
+            </p>`;
+            return;
+        }
         res.map((beverage, idx) => {
             let classType = idx % 2 ? 'odd' : 'even';
             tmpl += `<div class="beverage ${classType} items" data-id="${beverage.id}">
@@ -18603,6 +18617,15 @@ class CondimentsMenuComponents {
         let tmpl = ``;
         if (__WEBPACK_IMPORTED_MODULE_2__utils_utils__["a" /* Utils */].getType(res) !== 'Array')
             return Promise.reject('res is not a type of Array');
+        __WEBPACK_IMPORTED_MODULE_3__utils_dom__["a" /* DOMUtils */].applyStyle('menu-items', 'id', ['backgroundColor'], ['#F79700']);
+        __WEBPACK_IMPORTED_MODULE_3__utils_dom__["a" /* DOMUtils */].applyStyle('menu-parent', 'id', ['backgroundColor'], ['#F79700']);
+        if (res.length === 0) {
+            __WEBPACK_IMPORTED_MODULE_3__utils_dom__["a" /* DOMUtils */].getElementFromType('menu-items', 'id').innerHTML = `
+            <p stlye="text-align: center; padding-top: 20px;">
+                Currently no condiments in the menu
+            </p>`;
+            return;
+        }
         res.map((condiment, idx) => {
             let classType = idx % 2 ? 'odd' : 'even';
             tmpl += `<div class="condiment ${classType} items" data-id="${condiment.id}">
@@ -18613,8 +18636,6 @@ class CondimentsMenuComponents {
             </div>`;
         });
         __WEBPACK_IMPORTED_MODULE_3__utils_dom__["a" /* DOMUtils */].applyTmpl('menu-items', 'id', tmpl);
-        __WEBPACK_IMPORTED_MODULE_3__utils_dom__["a" /* DOMUtils */].applyStyle('menu-items', 'id', ['backgroundColor'], ['#F79700']);
-        __WEBPACK_IMPORTED_MODULE_3__utils_dom__["a" /* DOMUtils */].applyStyle('menu-parent', 'id', ['backgroundColor'], ['#F79700']);
         return Promise.resolve();
     }
     addClickEvent() {

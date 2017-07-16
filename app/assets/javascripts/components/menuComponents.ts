@@ -56,6 +56,14 @@ export class MenuComponents {
      * @memberof MenuComponents
      */
     buildMenu(burgers: Array<Burger>) {
+        if (burgers.length === 0) {
+            DOMUtils.getElementFromType('menu-items', 'id').innerHTML = `
+            <p stlye="text-align: center; padding-top: 20px;">
+                Currently no burger in the menu
+            </p>`;
+            return;
+        }
+
         // clean the menu in case something is already here
         DOMUtils.getElementFromType('menu-items', 'id').innerHTML = '';
         DOMUtils.applyStyle('menu-items', 'id', ['backgroundColor'], ['#CF9867']);

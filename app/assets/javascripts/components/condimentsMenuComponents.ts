@@ -69,6 +69,18 @@ export class CondimentsMenuComponents {
         if (Utils.getType(res) !== 'Array')
             return Promise.reject('res is not a type of Array');
 
+        DOMUtils.applyStyle('menu-items', 'id', ['backgroundColor'], ['#F79700']);
+        DOMUtils.applyStyle('menu-parent', 'id', ['backgroundColor'], ['#F79700']);
+
+
+         if (res.length === 0) {
+            DOMUtils.getElementFromType('menu-items', 'id').innerHTML = `
+            <p stlye="text-align: center; padding-top: 20px;">
+                Currently no condiments in the menu
+            </p>`;
+            return;
+        }
+
         res.map((condiment: Condiments, idx: number) => {
             let classType = idx % 2 ? 'odd' : 'even';
 
@@ -82,8 +94,6 @@ export class CondimentsMenuComponents {
 
         // Append the template to the dom
         DOMUtils.applyTmpl('menu-items', 'id', tmpl);
-        DOMUtils.applyStyle('menu-items', 'id', ['backgroundColor'], ['#F79700']);
-        DOMUtils.applyStyle('menu-parent', 'id', ['backgroundColor'], ['#F79700']);
 
         return Promise.resolve();
     }
