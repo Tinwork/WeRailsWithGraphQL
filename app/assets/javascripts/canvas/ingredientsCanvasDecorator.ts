@@ -15,6 +15,7 @@ export class IngredientsCanvasDecorator {
         name: 'top-bread',
         path: Utils.asset_path(`burgers/${burgerHelper.getPathForName('whopper_bread')}`),
         canvasObject: Object.create({}),
+        isAn: false
     };
 
     /**
@@ -28,6 +29,7 @@ export class IngredientsCanvasDecorator {
         name: 'bottom-bread',
         path: Utils.asset_path(`burgers/${burgerHelper.getPathForName('bottom')}`),
         canvasObject: Object.create({}),
+        isAn: false
     };
 
     /**

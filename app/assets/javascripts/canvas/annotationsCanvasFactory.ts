@@ -47,6 +47,7 @@ export class AnnotationsCanvasFactory {
      * @memberof AnnotationsCanvasFactory
      */
     buildAnnotation(res: any, name: string): Promise<any> {
+        let id: number = 0;
         /* 
          *  The process is to create an array based on the ingredients JSON and the CanvasObject array
          *
@@ -58,10 +59,17 @@ export class AnnotationsCanvasFactory {
             return Promise.reject('No ingredient exist');
 
         // Filter for one ingredient
-        let filterIngredients = this.ingredients.filter((ingredient: CanvasObject) => {
-            if (ingredient.name === name) 
+        let filterIngredients = this.ingredients.filter((ingredient: CanvasObject, idx: number) => {
+            if (ingredient.name === name && !ingredient.isAn) {
+                ingredient.isAn = true;
+                id = idx;
                 return ingredient;
+            }
         });
+
+        // The data is empty because it has already been set or no
+        if (filterIngredients.length === 0)
+            return Promise.resolve();
 
         // Filter for one ingredient
         let filterData = data.filter((d: any) => {
@@ -69,7 +77,7 @@ export class AnnotationsCanvasFactory {
                 return d;
         });
 
-        this.appendBulletToCanvas(filterIngredients, filterData);        
+        this.appendBulletToCanvas(filterIngredients, filterData, id);        
     }
 
     
@@ -79,17 +87,24 @@ export class AnnotationsCanvasFactory {
      * @param {Array<CanvasObject>} filterDatas 
      * @memberof AnnotationsCanvasFactory
      */
-    appendBulletToCanvas(filterDatas: Array<CanvasObject>, data: any): void {
-        filterDatas.map((d: CanvasObject, idx: number) => {
+    appendBulletToCanvas(filterDatas: Array<CanvasObject>, data: any, id: number): void {
+        console.log(filterDatas);
+        console.log(data);
+        // filterDatas.map((d: CanvasObject, idx: number) => {
+        //     let props = this.calculateCenter(d.canvasObject);
+        
+        //     // Getting the props for drawing a cirlce
+        //     CanvasHelper.generateCircle(this.createRadiusOpts(props));
+        //     CanvasHelper.drawLine(this.createLineOpts(props, idx));
+        //     CanvasHelper.renderText(this.createTextPos(props, idx, data[idx]))
+        // });
 
-
-            let props = this.calculateCenter(d.canvasObject);
+        let props = this.calculateCenter(filterDatas[0].canvasObject);
         
             // Getting the props for drawing a cirlce
-            CanvasHelper.generateCircle(this.createRadiusOpts(props));
-            CanvasHelper.drawLine(this.createLineOpts(props, idx));
-            CanvasHelper.renderText(this.createTextPos(props, idx, data[idx]))
-        });
+        CanvasHelper.generateCircle(this.createRadiusOpts(props));
+        CanvasHelper.drawLine(this.createLineOpts(props, id));
+        CanvasHelper.renderText(this.createTextPos(props, id, data[0]))
     }
 
 

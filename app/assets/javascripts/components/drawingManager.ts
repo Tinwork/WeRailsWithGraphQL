@@ -17,7 +17,8 @@ import { IngredientsCanvasManager } from '../canvas/ingredientsCanvasManager';
 export interface CanvasObject {
     name: string,
     path: string,
-    canvasObject: any
+    canvasObject: any,
+    isAn: boolean,
 }
 
 /**
@@ -138,7 +139,8 @@ class DrawingManager {
             let ingredientObj: CanvasObject = {
                 name: ingredient.name,
                 path: useHelper ? Utils.asset_path(`burgers/${burgerHelper.getPathForName(ingredient.name)}`) : ``,
-                canvasObject: Object.create({})
+                canvasObject: Object.create({}),
+                isAn: false
             }
 
             this.canvasObj.push(ingredientObj);

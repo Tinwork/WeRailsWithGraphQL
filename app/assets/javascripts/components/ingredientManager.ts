@@ -30,10 +30,6 @@ export const ingredientCallback = function(props: any){
     return _ingredientInstance.retrieveIngredients()
                        .then((res: JSON) => _ingredientInstance.setProps(obj, res, ctx))
                        .then(() => _ingredientInstance.buildAnnotation(name))
-                       .then(() => {
-                           DOMUtils.applyClass('ingredients-panel', 'id', 'hidePanel', 'add');
-                           DOMUtils.applyClass('ingredients-panel', 'id', 'showPanel', 'rm');
-                       })
                        .catch((e: string) => Promise.reject(e));
 }
 

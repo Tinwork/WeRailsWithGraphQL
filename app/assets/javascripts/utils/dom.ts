@@ -263,7 +263,7 @@ export class DOMUtils {
                     centerMode: false,
                     arrows: false,
                     speed: 300,
-                    slidesToShow: 3,
+                    slidesToShow: 2,
                     adaptiveHeight: true
         });
     }
