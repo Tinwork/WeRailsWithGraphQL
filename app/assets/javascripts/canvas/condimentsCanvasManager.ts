@@ -6,6 +6,7 @@ import { AbstractCanvasManager } from './abstractCanvasManager';
 
 // Import Utils
 import { Utils } from '../utils/utils';
+import { DOMUtils } from '../utils/dom';
 
 // Import the helpers
 import { burgerHelper } from '../kings/burgerHelper';
@@ -85,6 +86,7 @@ export class CondimentsCanvasManager extends AbstractCanvasManager{
      * @memberof CondimentsCanvasManager
      */
     _drawCondiment(blob: Blob): Promise<any> {
+        DOMUtils.applyStyle('condiments', 'id', ['backgroundImage'], ['none']);
         let img: HTMLImageElement = new Image(),
             url: any = self.URL.createObjectURL(blob),
             ratio: number = burgerHelper.getRatio();

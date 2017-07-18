@@ -155,6 +155,7 @@ class DrawingManager {
      * @memberof DrawingManager
      */
     draw(): any {
+        DOMUtils.applyStyle('interact-layout', 'id', ['backgroundImage'], ["url(image_path('plate_wood.png'))"]);
         let ingredientCanvasFactory = new IngredientsCanvasManager(this.canvasObj, this.ctx);
         return ingredientCanvasFactory.drawSVGElement();
     }

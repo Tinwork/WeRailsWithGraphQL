@@ -4,6 +4,7 @@ import { AbstractCanvasManager } from './abstractCanvasManager';
 // Import the utils
 import { burgerHelper } from '../kings/burgerHelper';
 import { Utils } from '../utils/utils';
+import { DOMUtils } from '../utils/dom';
 
 // Import canvas helper
 import { CanvasHelper } from './canvasHelper';
@@ -64,7 +65,7 @@ export class BeverageCanvasManager extends AbstractCanvasManager {
      * @memberof BeverageCanvasManager
      */
     _drawFacade(blob: Blob): any {
-
+        DOMUtils.applyStyle('drink', 'id', ['backgroundImage'], ['none'])
         let img: HTMLImageElement = new Image(),
             url: any = self.URL.createObjectURL(blob),
             ratio: number = burgerHelper.getRatio();

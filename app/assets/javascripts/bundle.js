@@ -17985,6 +17985,7 @@ class DrawingManager {
         return Promise.resolve('done');
     }
     draw() {
+        __WEBPACK_IMPORTED_MODULE_2__utils_dom__["a" /* DOMUtils */].applyStyle('interact-layout', 'id', ['backgroundImage'], ["url(image_path('plate_wood.png'))"]);
         let ingredientCanvasFactory = new __WEBPACK_IMPORTED_MODULE_3__canvas_ingredientsCanvasManager__["a" /* IngredientsCanvasManager */](this.canvasObj, this.ctx);
         return ingredientCanvasFactory.drawSVGElement();
     }
@@ -18554,7 +18555,9 @@ class BeverageComponents {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__abstractCanvasManager__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__kings_burgerHelper__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_utils__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__canvasHelper__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_dom__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__canvasHelper__ = __webpack_require__(6);
+
 
 
 
@@ -18575,6 +18578,7 @@ class BeverageCanvasManager extends __WEBPACK_IMPORTED_MODULE_0__abstractCanvasM
             .catch((e) => console.log(e));
     }
     _drawFacade(blob) {
+        __WEBPACK_IMPORTED_MODULE_3__utils_dom__["a" /* DOMUtils */].applyStyle('drink', 'id', ['backgroundImage'], ['none']);
         let img = new Image(), url = self.URL.createObjectURL(blob), ratio = __WEBPACK_IMPORTED_MODULE_1__kings_burgerHelper__["a" /* burgerHelper */].getRatio();
         img.src = url;
         return new Promise((resolve, reject) => {
@@ -18594,8 +18598,8 @@ class BeverageCanvasManager extends __WEBPACK_IMPORTED_MODULE_0__abstractCanvasM
         });
     }
     _drawText(res) {
-        __WEBPACK_IMPORTED_MODULE_3__canvasHelper__["a" /* CanvasHelper */].setProps(this.ctx);
-        __WEBPACK_IMPORTED_MODULE_3__canvasHelper__["a" /* CanvasHelper */].renderText({
+        __WEBPACK_IMPORTED_MODULE_4__canvasHelper__["a" /* CanvasHelper */].setProps(this.ctx);
+        __WEBPACK_IMPORTED_MODULE_4__canvasHelper__["a" /* CanvasHelper */].renderText({
             x: (this.ctx.canvas.width / (2 * this.sizing())),
             y: (this.ctx.canvas.height / (1 * this.sizing())) - 50,
             text: this.Locale.ilnHelper('beverage', [
@@ -18704,10 +18708,12 @@ class CondimentsMenuComponents {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__abstractCanvasManager__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_utils__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__kings_burgerHelper__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__canvasHelper__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__graphql_queryManager__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__graphql_queryRoutes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_dom__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__kings_burgerHelper__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__canvasHelper__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__graphql_queryManager__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__graphql_queryRoutes__ = __webpack_require__(3);
+
 
 
 
@@ -18725,7 +18731,7 @@ class CondimentsCanvasManager extends __WEBPACK_IMPORTED_MODULE_0__abstractCanva
             .then((res) => {
             this.condiment = res;
         })
-            .then(() => __WEBPACK_IMPORTED_MODULE_1__utils_utils__["a" /* Utils */].fetchSVG(__WEBPACK_IMPORTED_MODULE_1__utils_utils__["a" /* Utils */].asset_path(__WEBPACK_IMPORTED_MODULE_2__kings_burgerHelper__["a" /* burgerHelper */].getCondimentPath(this.condiment.label)), this.condiment.label))
+            .then(() => __WEBPACK_IMPORTED_MODULE_1__utils_utils__["a" /* Utils */].fetchSVG(__WEBPACK_IMPORTED_MODULE_1__utils_utils__["a" /* Utils */].asset_path(__WEBPACK_IMPORTED_MODULE_3__kings_burgerHelper__["a" /* burgerHelper */].getCondimentPath(this.condiment.label)), this.condiment.label))
             .then((b) => this._drawCondiment(b))
             .then(() => this._drawText())
             .then(() => this._calculateCalories())
@@ -18733,15 +18739,16 @@ class CondimentsCanvasManager extends __WEBPACK_IMPORTED_MODULE_0__abstractCanva
             .catch((e) => Promise.reject(e));
     }
     _retrieveCondimentByID() {
-        let _queryInstance = new __WEBPACK_IMPORTED_MODULE_4__graphql_queryManager__["a" /* QueryManager */](__WEBPACK_IMPORTED_MODULE_1__utils_utils__["a" /* Utils */].retrieveGraphQLToken());
+        let _queryInstance = new __WEBPACK_IMPORTED_MODULE_5__graphql_queryManager__["a" /* QueryManager */](__WEBPACK_IMPORTED_MODULE_1__utils_utils__["a" /* Utils */].retrieveGraphQLToken());
         return _queryInstance.fetchGraph({
-            route: __WEBPACK_IMPORTED_MODULE_5__graphql_queryRoutes__["a" /* GraphQLRoutes */].getCondimentsById(),
+            route: __WEBPACK_IMPORTED_MODULE_6__graphql_queryRoutes__["a" /* GraphQLRoutes */].getCondimentsById(),
             datas: { id: this.condimentID }
         })
             .then((res) => Promise.resolve(res.data.condiment));
     }
     _drawCondiment(blob) {
-        let img = new Image(), url = self.URL.createObjectURL(blob), ratio = __WEBPACK_IMPORTED_MODULE_2__kings_burgerHelper__["a" /* burgerHelper */].getRatio();
+        __WEBPACK_IMPORTED_MODULE_2__utils_dom__["a" /* DOMUtils */].applyStyle('condiments', 'id', ['backgroundImage'], ['none']);
+        let img = new Image(), url = self.URL.createObjectURL(blob), ratio = __WEBPACK_IMPORTED_MODULE_3__kings_burgerHelper__["a" /* burgerHelper */].getRatio();
         img.src = url;
         return new Promise((resolve, reject) => {
             img.onload = function () {
@@ -18762,8 +18769,8 @@ class CondimentsCanvasManager extends __WEBPACK_IMPORTED_MODULE_0__abstractCanva
         });
     }
     _drawText() {
-        __WEBPACK_IMPORTED_MODULE_3__canvasHelper__["a" /* CanvasHelper */].setProps(this.ctx);
-        __WEBPACK_IMPORTED_MODULE_3__canvasHelper__["a" /* CanvasHelper */].renderText({
+        __WEBPACK_IMPORTED_MODULE_4__canvasHelper__["a" /* CanvasHelper */].setProps(this.ctx);
+        __WEBPACK_IMPORTED_MODULE_4__canvasHelper__["a" /* CanvasHelper */].renderText({
             x: (this.ctx.canvas.width / (2 * this.sizing())),
             y: (this.ctx.canvas.height / (1 * this.sizing())) - 50,
             text: this.Locale.ilnHelper('condiment', [
