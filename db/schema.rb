@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626170435) do
+ActiveRecord::Schema.define(version: 20170718111846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,13 +72,20 @@ ActiveRecord::Schema.define(version: 20170626170435) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "friendships", force: :cascade do |t|
+    t.integer "friendable_id"
+    t.integer "friend_id"
+    t.integer "blocker_id"
+    t.boolean "pending",       default: true
+    t.index ["friendable_id", "friend_id"], name: "index_friendships_on_friendable_id_and_friend_id", unique: true, using: :btree
+  end
+
   create_table "ingredient_translations", force: :cascade do |t|
     t.integer  "ingredient_id", null: false
     t.string   "locale",        null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "label"
-    t.text     "text"
     t.index ["ingredient_id"], name: "index_ingredient_translations_on_ingredient_id", using: :btree
     t.index ["locale"], name: "index_ingredient_translations_on_locale", using: :btree
   end

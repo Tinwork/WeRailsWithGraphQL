@@ -21,7 +21,7 @@
     }
 
     &.carousel-container {
-      height: auto;
+      height: 50%;
       background-color: $mainMenuColor;
 
 
@@ -100,6 +100,8 @@
     &#ingredients-panel {
       position: absolute;
       height: 100%;
+      max-height: 100%;
+      overflow: auto;
       top: 0;
       transition: all ease .25s;
       left: 0%;
@@ -248,7 +250,11 @@
 
   #condiments {
     background-color: $condiments-layout;
+    background-image: url(image_path('icons/snacks.svg'));
     transition: all ease .25s;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 150px auto;
 
     &.even {
       background-color: $condiment-odd;
@@ -262,7 +268,11 @@
   #drink{
     background-color: $drink-layout;
     transition: all ease .25s;
-
+    background-image: url(image_path('icons/cold_drinks.svg'));
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 150px auto;
+  
     &.even {
       background-color: $beverage-odd;
     }

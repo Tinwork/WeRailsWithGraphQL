@@ -12,6 +12,11 @@ Rails.application.routes.draw do
 
     # Routes defined for devise
     devise_for :users
+
+    # REST user queries endpoint
+    get "/user/(:id)", to: "frontend/user#index"
+    get "/user/(:id)/friends", to: "frontend/user#with_friends"
+    get "/user/(:id)/friends/details", to: "frontend/user#with_friends_details"
   end
 
   # GraphQL POST queries endpoint
