@@ -14,8 +14,8 @@ const BURGER_SIZE_OPTS = {
 // Define Types Available constant
 const TYPES_AVAILABLE = [
     ['steak', 'chicken', 'bacon', 'fish'],
-    ['salad', 'onion', 'pickle', 'tomato'],
-    ['cheese_one', 'cheese_two'],
+    ['salad', 'salade', 'onion', 'oignon', 'pickle', 'cornichon', 'tomato', 'tomate'],
+    ['cheese_one', 'cheese_two', 'fromage', 'cheese'],
     ['fish_bread', 'whopper_bread', 'crispy_bread']
 ]
 
@@ -148,7 +148,7 @@ export const burgerHelper = ((OPTIONS) => {
          */
         getBeveragePath: (name: string) => {
             let bv = BEVERAGES_TYPE.filter((beverage: string) => {
-                if (beverage.includes(name))
+                if (beverage.includes(name.toLowerCase()))
                     return beverage;
             });
 

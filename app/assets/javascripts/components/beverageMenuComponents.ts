@@ -52,6 +52,7 @@ export class BeverageMenuComponents {
         return this.fetchAllBeverage()
             .then(res => this.populateSidebar(res.data.beverages))
             .then(this.addClickEvent)
+            .then(() => DOMUtils.addSlick())
             .catch(e => console.log(e));
     }
 

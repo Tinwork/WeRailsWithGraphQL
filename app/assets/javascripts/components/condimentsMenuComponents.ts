@@ -50,6 +50,7 @@ export class CondimentsMenuComponents {
         return this.fetchAllCondiments()
                    .then(this.populateSidebar) 
                    .then(this.addClickEvent)
+                   .then(() => DOMUtils.addSlick())
                    .catch((e: string) => Promise.reject(e));
     }
 

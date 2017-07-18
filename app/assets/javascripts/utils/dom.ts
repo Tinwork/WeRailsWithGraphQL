@@ -251,7 +251,11 @@ export class DOMUtils {
      * @memberof DOMUtils
      */
     static addSlick() {
-        $('.carousel-container').slick({
+        let el = DOMUtils.getElementFromType('menu-items', 'id');
+        DOMUtils.toggle(el, 'rm', 'slick-initialized');
+        DOMUtils.toggle(el, 'rm', 'slick-slider');
+        DOMUtils.toggle(el, 'rm', 'slick-vertical');
+        $('.carousel-container').not('.slick-initialized').slick({
                     autoplay: false,
                     infinite: true,
                     vertical: true,
@@ -260,7 +264,7 @@ export class DOMUtils {
                     arrows: false,
                     speed: 300,
                     slidesToShow: 3,
-                    adaptiveHeight: false
+                    adaptiveHeight: true
         });
     }
 }

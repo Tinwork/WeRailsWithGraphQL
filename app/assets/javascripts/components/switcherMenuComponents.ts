@@ -74,7 +74,6 @@ export class SwitcherMenuComponents {
      */
     static initMenu(menuInstance: any): Promise<any> {
         return menuInstance.initMenuComponent()
-                    .then(() => DOMUtils.addSlick())
                     .then(() => Promise.resolve())
                     .catch((e: string) => Promise.reject(e));
     }

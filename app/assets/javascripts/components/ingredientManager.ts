@@ -4,6 +4,7 @@ import { GraphQLRoutes } from '../graphql/queryRoutes';
 
 // Import Utils
 import { Utils } from '../utils/utils';
+import { DOMUtils } from '../utils/dom';
 
 // Import the main drawing manager
 import { CanvasObject } from '../components/drawingManager';
@@ -17,8 +18,10 @@ import { AnnotationsCanvasFactory } from '../canvas/annotationsCanvasFactory';
  * @param {Number} id
  * @return {Promise: <any>}
  */
-export const ingredientCallback = (props: any) => {
+export const ingredientCallback = function(props: any){
+    console.log(this);
     const { id, obj, ctx } = props;
+    let name : string = this.getAttribute('data-name');
     let token: string = Utils.retrieveGraphQLToken();
     
     // Create an instance of our component that we're going to return
@@ -26,7 +29,11 @@ export const ingredientCallback = (props: any) => {
 
     return _ingredientInstance.retrieveIngredients()
                        .then((res: JSON) => _ingredientInstance.setProps(obj, res, ctx))
-                       .then(() => _ingredientInstance.buildAnnotation())
+                       .then(() => _ingredientInstance.buildAnnotation(name))
+                       .then(() => {
+                           DOMUtils.applyClass('ingredients-panel', 'id', 'hidePanel', 'add');
+                           DOMUtils.applyClass('ingredients-panel', 'id', 'showPanel', 'rm');
+                       })
                        .catch((e: string) => Promise.reject(e));
 }
 
@@ -66,7 +73,7 @@ class IngredientManager {
     
         return queryInstance.fetchGraph({
             route: GraphQLRoutes.getIngredients(),
-            datas: {
+            datas: { 
                 'id': this.menuID
             }
         })
@@ -78,12 +85,12 @@ class IngredientManager {
     /**
      * 
      * 
-     * @param {Array<CanvasObject>} obj 
+     * @param {name} string 
      * @memberof IngredientManager
      */
-    buildAnnotation() {
+    buildAnnotation(name: string) {
         let _instanceAnnot = new AnnotationsCanvasFactory(this.ctx, this.canvasProps);
-        _instanceAnnot.buildAnnotation(this.jsonIng);
+        _instanceAnnot.buildAnnotation(this.jsonIng, name);
     }
 
 

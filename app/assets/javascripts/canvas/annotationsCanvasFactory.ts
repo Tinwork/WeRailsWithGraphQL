@@ -46,7 +46,7 @@ export class AnnotationsCanvasFactory {
      * @returns {Promise<any>} 
      * @memberof AnnotationsCanvasFactory
      */
-    buildAnnotation(res: any): Promise<any> {
+    buildAnnotation(res: any, name: string): Promise<any> {
         /* 
          *  The process is to create an array based on the ingredients JSON and the CanvasObject array
          *
@@ -57,18 +57,19 @@ export class AnnotationsCanvasFactory {
         if (data.length === 0)
             return Promise.reject('No ingredient exist');
 
-        // Otherwise loop threw the CanvasObject
+        // Filter for one ingredient
         let filterIngredients = this.ingredients.filter((ingredient: CanvasObject) => {
-            let filterData = data.filter((d: any) => {
-                if (d.label === ingredient.name)
-                    return d;
-            });
-
-            if (filterData.length !== 0)
-                return filterData;
+            if (ingredient.name === name) 
+                return ingredient;
         });
 
-        this.appendBulletToCanvas(filterIngredients, data);        
+        // Filter for one ingredient
+        let filterData = data.filter((d: any) => {
+            if (d.label === name) 
+                return d;
+        });
+
+        this.appendBulletToCanvas(filterIngredients, filterData);        
     }
 
     
