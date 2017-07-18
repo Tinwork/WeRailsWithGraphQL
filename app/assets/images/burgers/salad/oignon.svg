@@ -1,0 +1,15 @@
+<svg id="round_burger" data-name="round burger" xmlns="http://www.w3.org/2000/svg" width="289" height="8" viewBox="0 0 289 8">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f2edd6;
+      }
+    </style>
+  </defs>
+  <g id="onion">
+    <rect class="cls-1" width="79" height="8"/>
+    <rect id="Rectangle_1_copie" data-name="Rectangle 1 copie" class="cls-1" x="82" width="79" height="8"/>
+    <rect id="Rectangle_1_copie_2" data-name="Rectangle 1 copie 2" class="cls-1" x="163" width="79" height="8"/>
+    <rect id="Rectangle_1_copie_3" data-name="Rectangle 1 copie 3" class="cls-1" x="244" width="45" height="8"/>
+  </g>
+</svg>

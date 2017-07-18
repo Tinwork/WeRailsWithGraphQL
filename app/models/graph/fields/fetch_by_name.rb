@@ -15,10 +15,10 @@ module Fields
       return_type = type
       GraphQL::Field.define do
         type(return_type)
-        description("Find a #{model.name} by Name")
-        argument(:label, !types.String, "Name of the record")
+        description("Find a #{model.name} by name")
+        argument(:username, !types.String, "Name of the record")
         resolve ->(obj, args, ctx) {
-          model.find(label: args["label"])
+          model.find_by(username: args["username"])
         }
       end
     end

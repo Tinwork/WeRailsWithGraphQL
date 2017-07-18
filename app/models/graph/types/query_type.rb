@@ -41,5 +41,7 @@ module Types
         Condiment.all
       end
     end
+
+    field :user, UserType, field: Fields::FetchByName.build(type: UserType, model: User)
   end
 end

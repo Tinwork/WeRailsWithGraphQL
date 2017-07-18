@@ -19,6 +19,8 @@ class User < ApplicationRecord
   validates :username, :presence => true, :uniqueness => { :case_sensitive => false }
   # Admin
   include UserAdmin
+  # Include Amistad
+  include Amistad::FriendModel
 
   # Override method for sign in with login field
   def self.find_for_database_authentication(warden_conditions)
@@ -28,5 +30,9 @@ class User < ApplicationRecord
     elsif conditions.has_key?(:username) || conditions.has_key?(:email)
       where(conditions.to_h).first
     end
+  end
+
+  def self.find_by_id(id)
+    find(id)
   end
 end

@@ -33,6 +33,9 @@ gem 'devise'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Amistad
+gem 'amistad'
+
 # GraphQL 
 gem 'graphql'
 gem 'graphiql-rails'

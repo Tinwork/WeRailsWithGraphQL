@@ -1,0 +1,13 @@
+<svg id="round_burger" data-name="round burger" xmlns="http://www.w3.org/2000/svg" width="287" height="5" viewBox="0 0 287 5">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #eeeba8;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="cheese">
+    <path id="Forme_5" data-name="Forme 5" class="cls-1" d="M0,0.075H287V5H0V0.075ZM125,6L136-5,154,8Z"/>
+  </g>
+</svg>
